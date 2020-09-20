@@ -1,9 +1,9 @@
     <footer class="rodape">
-        <div class="navbar navbar-expand-lg navbar-dark bg-light">
-            <div class="container">
+        <div class="navbar navbar-light">
+            <div class="ml-5 rodapLogoPad">
                 <img src="img/Logo-Pandora.png" width="90px" alt="">
+                <span class="ml-3 text-muted">Pandora Express 2020 - Todos os direitos reservados</span>
             </div>
-            <span class="text-muted">Pandora Express 2020 - Todos os direitos reservados</span>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

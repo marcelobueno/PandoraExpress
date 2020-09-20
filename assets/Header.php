@@ -24,7 +24,7 @@
                             <a class="nav-link text-dark" href="?pagina=Home">Início</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Cadastros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
@@ -43,7 +43,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Relatórios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -53,7 +53,7 @@
                                 <a class="dropdown-item" href="#">Fechamento Mensal</a>
                             </div>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Ocorrências
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown3">

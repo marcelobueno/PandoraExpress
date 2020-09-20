@@ -7,3 +7,13 @@ html, body{
     min-height: 700px;
     background-color: #f0efeb;
 }
+
+.menuItem:hover{
+    border-radius: 5px;
+    padding: 0, 12px, 12px, 0;
+    background-color: #EAB819;
+}
+
+.rodapLogoPad{
+    padding-left: 140px;
+}
