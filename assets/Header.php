@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pandora Express | Sistema de gerenciamento</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/Styles.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <img class="img-fluid mt-3 mb-3" src="img/Logo-Pandora.png" alt="Logo da Pandora Express" title="Pandora Express" width="200px">
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseitem1" aria-controls="collapseitem1" aria-label="Togge navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="container">
+
+                <div id="collapseitem1" class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="?pagina=Home">Início</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cadastros
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                <a class="dropdown-item" href="#">Clientes</a>
+                                <a class="dropdown-item" href="#">Motoboys</a>
+                                <a class="dropdown-item" href="#">Tabela de Preços</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item dropdown-toggle" href="#" id="cadNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Novo
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="#cadNovoDropdown">
+                                    <a class="dropdown-item" href="#">Cliente</a>
+                                    <a class="dropdown-item" href="#">Motoboy</a>
+                                    <a class="dropdown-item" href="#">Tabela de Preços</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Relatórios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" href="#">Entregas</a>
+                                <a class="dropdown-item" href="#">Ordens de Serviço</a>
+                                <a class="dropdown-item" href="#">Retornos</a>
+                                <a class="dropdown-item" href="#">Fechamento Mensal</a>
+                            </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ocorrências
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                <a class="dropdown-item" href="#">Retorno</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                </div>         
+        </nav>
+    </header>
