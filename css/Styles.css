@@ -1,6 +1,11 @@
 html, body{
     margin: 0;
     padding: 0;
+    background-color: #f0efeb;
+}
+
+.cabecalho {
+    background-color: ghostwhite;
 }
 
 .corpo{
@@ -16,4 +21,9 @@ html, body{
 
 .rodapLogoPad{
     padding-left: 140px;
+}
+
+.tdItemBorder{
+    border-radius: 3px;
+    border: solid 1px #EAB819;
 }
