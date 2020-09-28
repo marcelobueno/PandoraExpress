@@ -1,20 +1,26 @@
 <?php
 
+session_start();
+
 if(!isset($_SESSION['administrador'])){
     $_SESSION['administrador'] = null;
+}
+if(!isset($_SESSION['nivel_acesso'])){
+    $_SESSION['nivel_acesso'] = null;
 }
 
 if($_SESSION['administrador'] == null){
     include 'assets/Login.php';
 }
 else{
-include 'assets/Header.php';
+    include 'assets/Header.php';
+
 
     if(isset($_GET['pagina'])){
         $pagina = $_GET['pagina'];
     }
     else{
-        $pagina = 'Login';
+        $pagina = 'Home';
     }
 
     switch($pagina){

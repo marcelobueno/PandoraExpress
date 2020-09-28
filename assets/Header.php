@@ -11,6 +11,20 @@
     <header class="cabecalho">
         <div class="container">
             <img class="img-fluid mt-3 mb-3" src="img/Logo-Pandora.png" alt="Logo da Pandora Express" title="Pandora Express" width="200px">
+            <div class="float-right mt-4">
+                <span class="text-muted">Olá, <?php echo $_SESSION['administrador'];?><br></span>
+                <?php
+                    if($_SESSION['nivel_acesso'] == 3){
+                        ?><span class="float-right text-sm text-muted">Desenvolvedor<br></span><?php
+                    }
+                    elseif($_SESSION['nivel_acesso'] == 2){
+                        ?><span class="float-right text-sm text-muted">Gerente<br></span><?php
+                    }
+                    else{
+                        ?><span class="float-right text-sm text-muted">Operador<br></span><?php
+                    }
+                ?>
+            </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseitem1" aria-controls="collapseitem1" aria-label="Togge navigation">
@@ -61,6 +75,8 @@
                             </div>
                         </li>
                     </ul>
+                    
+                    <span class="float-right nav-link text-dark"><a href="assets/Logout.php">Logout.</a></span>
                 </div>
                 </div>         
         </nav>
