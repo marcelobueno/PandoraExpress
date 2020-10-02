@@ -15,7 +15,7 @@
         </div>
         <div class="row mt-4">
             <div class="col col-3">
-                <button id="btnMostrarErro" class="btn btn-danger">Mostrar</button>
+                <button id="btnMostrarErro" class="btn btn-danger" hidden>Mostrar</button>
             </div>
             <div class="col">
                 <div class="card mt-5 mb-5">

@@ -26,6 +26,8 @@ else{
     switch($pagina){
         case 'Login': include 'assets/Login.php'; break;
         case 'Home': include 'assets/Main.php'; break;
+        case 'Usuarios': include 'assets/Cadastros/Usuarios.php'; break;
+        case 'Cadastro-de-usuario': include 'assets/Cadastros/Cad_Usuario.php'; break;
         default: include 'assets/Login.php'; break;
     }
 

@@ -10,20 +10,27 @@
 <body>
     <header class="cabecalho">
         <div class="container">
-            <img class="img-fluid mt-3 mb-3" src="img/Logo-Pandora.png" alt="Logo da Pandora Express" title="Pandora Express" width="200px">
-            <div class="float-right mt-4">
-                <span class="text-muted">Olá, <?php echo $_SESSION['administrador'];?><br></span>
-                <?php
-                    if($_SESSION['nivel_acesso'] == 3){
-                        ?><span class="float-right text-sm text-muted">Desenvolvedor<br></span><?php
-                    }
-                    elseif($_SESSION['nivel_acesso'] == 2){
-                        ?><span class="float-right text-sm text-muted">Gerente<br></span><?php
-                    }
-                    else{
-                        ?><span class="float-right text-sm text-muted">Operador<br></span><?php
-                    }
-                ?>
+            <div class="row">
+                <div class="col">
+                    <img class="img-fluid mt-3 mb-3" src="img/Logo-Pandora.png" alt="Logo da Pandora Express" title="Pandora Express" width="200px">
+                </div>
+                <div class="col"></div>
+                <div class="col col-sm-6">
+                    <div class=" float-right mt-3">
+                        <span class="text-muted" style="font-size: 14px;">Olá, <?php echo $_SESSION['administrador'];?><br></span>
+                        <?php
+                            if($_SESSION['nivel_acesso'] == 3){
+                                ?><span class="text-sm text-muted" style="font-size: 12px;">Desenvolvedor<br></span><?php
+                            }
+                            elseif($_SESSION['nivel_acesso'] == 2){
+                                ?><span class="text-sm text-muted" style="font-size: 12px;">Gerente Geral<br></span><?php
+                            }
+                            else{
+                                ?><span class="text-sm text-muted" style="font-size: 12px;">Operador<br></span><?php
+                            }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
@@ -74,9 +81,20 @@
                                 <a class="dropdown-item" href="#">Retorno</a>
                             </div>
                         </li>
+                        <?php 
+                        if($_SESSION['nivel_acesso'] == 3){?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Usuários
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                                <a class="dropdown-item" href="?pagina=Usuarios">Usuários</a>
+                            </div>
+                        </li>
+                        <?php } ?>
                     </ul>
                     
-                    <span class="float-right nav-link text-dark"><a href="assets/Logout.php">Logout.</a></span>
+                    <span class="float-right"><a href="assets/Logout.php" style="text-decoration: none; color: #343a40;">Logout.</a></span>
                 </div>
                 </div>         
         </nav>
