@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Pandora Express | Sistema de gerenciamento</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="css/Styles.css">
 </head>
 <body>
@@ -49,17 +50,17 @@
                                 Cadastros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                <a class="dropdown-item" href="#">Clientes</a>
-                                <a class="dropdown-item" href="#">Motoboys</a>
-                                <a class="dropdown-item" href="#">Tabela de Preços</a>
+                                <a class="dropdown-item" href="?pagina=Clientes">Clientes</a>
+                                <a class="dropdown-item" href="?pagina=Motoboys">Motoboys</a>
+                                <a class="dropdown-item" href="?pagina=Tabelas">Tabela de Preços</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item dropdown-toggle" href="#" id="cadNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Novo
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="#cadNovoDropdown">
-                                    <a class="dropdown-item" href="#">Cliente</a>
-                                    <a class="dropdown-item" href="#">Motoboy</a>
-                                    <a class="dropdown-item" href="#">Tabela de Preços</a>
+                                    <a class="dropdown-item" href="?pagina=Cadastro-de-Cliente">Cliente</a>
+                                    <a class="dropdown-item" href="?pagina=Cadastro-de-Motoboy">Motoboy</a>
+                                    <a class="dropdown-item" href="?pagina=Cadastro-de-Tabela">Tabela de Preços</a>
                                 </div>
                             </div>
                         </li>
@@ -74,11 +75,18 @@
                                 <a class="dropdown-item" href="#">Fechamento Mensal</a>
                             </div>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Ocorrências
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                <a class="dropdown-item" href="#">Retorno</a>
+                                <a class="dropdown-item" href="#">Retornos</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item dropdown-toggle" href="#" id="navNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Nova Ocorrência
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="#navNovoDropdown">
+                                    <a class="dropdown-item" href="#">Retorno</a>
+                                </div>
                             </div>
                         </li>
                         <?php 
