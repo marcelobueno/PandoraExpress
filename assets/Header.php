@@ -55,7 +55,7 @@
                                 <a class="dropdown-item" href="?pagina=Tabelas">Tabela de Preços</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item dropdown-toggle" href="#" id="cadNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Novo
+                                    Novo Cadastro
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="#cadNovoDropdown">
                                     <a class="dropdown-item" href="?pagina=Cadastro-de-Cliente">Cliente</a>
@@ -74,11 +74,29 @@
                                 <a class="dropdown-item" href="#">Retornos</a>
                                 <a class="dropdown-item" href="#">Fechamento Mensal</a>
                             </div>
+                        </li>
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Ocorrências
+                                Entregas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                <a class="dropdown-item" href="#">Ordens de Serviço</a>
+                                <a class="dropdown-item" href="#">Entregas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item dropdown-toggle" href="#" id="entregaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Nova
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="#entregaDropdown">
+                                    <a class="dropdown-item" href="#">Ordem de Serviço</a>
+                                    <a class="dropdown-item" href="#">Entrega</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Ocorrências
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
                                 <a class="dropdown-item" href="#">Retornos</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item dropdown-toggle" href="#" id="navNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,10 +110,10 @@
                         <?php 
                         if($_SESSION['nivel_acesso'] == 3){?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Usuários
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
                                 <a class="dropdown-item" href="?pagina=Usuarios">Usuários</a>
                             </div>
                         </li>
