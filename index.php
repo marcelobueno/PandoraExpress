@@ -28,7 +28,7 @@ else{
         case 'Home': include 'assets/Main.php'; break;
         case 'Clientes': include 'assets/Cadastros/Clientes.php'; break;
         case 'Motoboys': include 'assets/Cadastros/Motoboys.php'; break;
-        case 'Tabelas': include 'assets/Cadastros/Tabelas_Preco.php';
+        case 'Tabelas': include 'assets/Cadastros/Tabelas_Preco.php'; break;
         case 'Usuarios': include 'assets/Usuarios/Usuarios.php'; break;
         case 'Retornos': include 'assets/Ocorrencias/Retornos.php'; break;
         case 'Cadastro-de-usuario': include 'assets/Usuarios/Cad_Usuario.php'; break;
