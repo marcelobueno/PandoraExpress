@@ -31,10 +31,14 @@ else{
         case 'Tabelas': include 'assets/Cadastros/Tabelas_Preco.php'; break;
         case 'Usuarios': include 'assets/Usuarios/Usuarios.php'; break;
         case 'Retornos': include 'assets/Ocorrencias/Retornos.php'; break;
+        case 'Ordens-de-Servico': include 'assets/Entregas/Ordens_Servico.php'; break;
+        case 'Entregas': include 'assets/Entregas/Entregas.php'; break;
         case 'Cadastro-de-usuario': include 'assets/Usuarios/Cad_Usuario.php'; break;
         case 'Cadastro-de-Cliente': include 'assets/Cadastros/Novo/Cliente.php'; break;
         case 'Cadastro-de-Motoboy': include 'assets/Cadastros/Novo/Motoboy.php'; break;
         case 'Cadastro-de-Tabela': include 'assets/Cadastros/Novo/Tabela_Preco.php'; break;
+        case 'Cadastro-de-Ordem-de-Servico': include 'assets/Entregas/Nova/Ordem_Servico.php'; break;
+        case 'Cadastro-de-Entrega': include 'assets/Entregas/Nova/Entrega.php'; break;
         case 'Nova-Ocorrencia': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
         default: include 'assets/Login.php'; break;
     }

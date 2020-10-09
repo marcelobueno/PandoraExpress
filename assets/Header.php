@@ -80,15 +80,15 @@
                                 Entregas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                <a class="dropdown-item" href="#">Ordens de Serviço</a>
-                                <a class="dropdown-item" href="#">Entregas</a>
+                                <a class="dropdown-item" href="?pagina=Ordens-de-Servico">Ordens de Serviço</a>
+                                <a class="dropdown-item" href="?pagina=Entregas">Entregas</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item dropdown-toggle" href="#" id="entregaDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Nova
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="#entregaDropdown">
-                                    <a class="dropdown-item" href="#">Ordem de Serviço</a>
-                                    <a class="dropdown-item" href="#">Entrega</a>
+                                    <a class="dropdown-item" href="?pagina=Cadastro-de-Ordem-de-Servico">Ordem de Serviço</a>
+                                    <a class="dropdown-item" href="?pagina=Cadastro-de-Entrega">Entrega</a>
                                 </div>
                             </div>
                         </li>
@@ -108,13 +108,20 @@
                             </div>
                         </li>
                         <?php 
-                        if($_SESSION['nivel_acesso'] == 3){?>
+                        if($_SESSION['nivel_acesso'] >= 2){?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Usuários
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
                                 <a class="dropdown-item" href="?pagina=Usuarios">Usuários</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item dropdown-toggle" href="#" id="navNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Novo
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="#navNovoDropdown">
+                                    <a class="dropdown-item" href="?pagina=Cadastro-de-usuario">Usuário</a>
+                                </div>
                             </div>
                         </li>
                         <?php } ?>

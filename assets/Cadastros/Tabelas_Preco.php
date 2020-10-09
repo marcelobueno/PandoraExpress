@@ -5,14 +5,14 @@ include './assets/Verifica_login.php';
     <main class="corpo mt-3 mb-3">
         <div class="container">
             <h3 class="text-dark text-center">Tabelas de Preço</h3>
-            <table id="listaClientes" class="display table table-bordered" style="width:100%">
+            <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID da Tabela</th>
+                        <th width="100px">ID da Tabela</th>
                         <th>Nome da Tabela</th>
                         <th>Cliente</th>
-                        <th>Tipo de Cobrança</th>
-                        <th>Valor</th>
+                        <th width="100px">Cobrança</th>
+                        <th width="100px">Valor</th>
                     </tr>
                 </thead>
                 <tbody>

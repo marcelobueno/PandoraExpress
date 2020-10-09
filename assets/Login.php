@@ -15,9 +15,14 @@
         </div>
         <div class="row mt-4">
             <div class="col col-3">
-                <button id="btnMostrarErro" class="btn btn-danger" hidden>Mostrar</button>
             </div>
             <div class="col">
+                <?php 
+                    if(isset($_SESSION['alert'])){
+                        echo $_SESSION['alert'];
+                        unset($_SESSION['alert']);
+                    }
+                ?>
                 <div class="card mt-5 mb-5">
                     <div class="ml-5 mr-5 mt-5 mb-5">
                         <div class="text-center mb-2">

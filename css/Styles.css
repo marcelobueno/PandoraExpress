@@ -27,4 +27,6 @@ html, body{
     border-radius: 3px;
     border: solid 1px #EAB819;
 }
-
+#iptCadCliNome {
+    color: black;
+}

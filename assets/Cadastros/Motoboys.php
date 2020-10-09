@@ -6,13 +6,13 @@ include './assets/Formatar.php';
     <main class="corpo mt-3 mb-3">
         <div class="container">
             <h3 class="text-dark text-center">Motoboys</h3>
-            <table id="" class="display table table-bordered" style="width:100%">
+            <table id="" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID do Motoboy</th>
+                        <th width="100px">ID Motoboy</th>
                         <th>Nome Completo</th>
-                        <th>CPF</th>
-                        <th>Telefone</th>
+                        <th width="160px">CPF/CNPJ</th>
+                        <th width="130px">Telefone</th>
                     </tr>
                 </thead>
                 <tbody>

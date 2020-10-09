@@ -1,5 +1,11 @@
 <?php
 
+#---------------------------------------------------------------------------------------------------------------
+# Objetivo: Formatar strings de CPF, CNPJ (FormatarDoc) e Telefone (FormatarTel)
+# Autor: Marcelo Bueno
+# Última revisão: 08/10/2020
+#---------------------------------------------------------------------------------------------------------------
+
 function FormatarDoc($cpf_cnpj){
 
     $cpf_cnpj = preg_replace("/[^0-9]/", "", $cpf_cnpj);

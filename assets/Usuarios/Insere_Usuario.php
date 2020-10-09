@@ -1,4 +1,11 @@
 <?php
+
+#---------------------------------------------------------------------------------------------------------------
+# Objetivo: Recebe as informações vindas do formulário de cadastro de Usuários
+# Autor: Marcelo Bueno
+# Última revisão: 08/10/2020
+#---------------------------------------------------------------------------------------------------------------
+
 include '../Conexao.php';
 session_start();
 
@@ -12,4 +19,5 @@ $sql = "INSERT INTO `usuarios`(`id_usuario`, `login_usuario`, `senha_usuario`, `
 
 $exec = mysqli_query($conn, $sql);
 
+$_SESSION['alert'] = '<div class="alert alert-success" role="alert">Usuário cadastrado com sucesso</div>';
 header('location:.../index.php?pagina=Usuarios');
