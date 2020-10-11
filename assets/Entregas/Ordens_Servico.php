@@ -23,23 +23,21 @@ include './assets/Verifica_login.php';
                     
                     $busca_clientes = mysqli_query($conn, $sql);
 
-                    while($row = mysqli_fetch_assoc($busca_clientes)){
-                    $id_os = $row['id_ordem'] ?>
+                    while($row = mysqli_fetch_assoc($busca_clientes)){ 
+                    $id_ordem = $row['id_ordem']; ?>
                     <tr>
                         <td class="text-center"><?php echo $row['id_ordem']; ?></td>
                         <td><?php echo $row['nome_cliente']; ?></td>
                         <td class="text-center"><span class="badge badge-success" style="font-size: 15px;">
-                            <?php $count = 0;
+                            <?php
 
-                            $sql = "SELECT * FROM `entregas`, `ordem_servico` WHERE entregas.id_ordem_servico = $id_os";
+                            $sql = "SELECT * FROM `entregas` WHERE entregas.id_ordem_servico = $id_ordem";
                             
                             $exec = mysqli_query($conn, $sql);
                             
                             $result = mysqli_num_rows($exec);
-                            
-                            $count += $result;
 
-                            echo $count;
+                            echo $result;
                             ?>
                         </span></td>
                         <td><?php echo $row['data_os']; ?></td>
