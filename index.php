@@ -15,7 +15,8 @@ if($_SESSION['administrador'] == null){
 else{
     include 'assets/Header.php';
 
-
+    $_SESSION['title'] = "Pandora Express";
+    
     if(isset($_GET['pagina'])){
         $pagina = $_GET['pagina'];
     }
@@ -40,6 +41,7 @@ else{
         case 'Cadastro-de-Ordem-de-Servico': include 'assets/Entregas/Nova/Ordem_Servico.php'; break;
         case 'Cadastro-de-Entrega': include 'assets/Entregas/Nova/Entrega.php'; break;
         case 'Nova-Ocorrencia': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
+        case 'Visualizar-Entregas': include 'assets/Entregas/View/ViewOs.php'; break;
         default: include 'assets/Login.php'; break;
     }
 

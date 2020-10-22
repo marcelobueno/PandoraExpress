@@ -8,7 +8,7 @@
 
     <title>Login | Pandora Express</title>
   </head>
-  <body style="background-color: #38a3a5;">
+  <body style="background-image: url(img/bg.jpg);">
     <div class="container">
         <div class="text-center mt-5 mb-3">
             

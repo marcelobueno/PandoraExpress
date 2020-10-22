@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------------------------------------------
 # Objetivo: Recebe as informações vindas do formulário de Registro de novas Entregas
 # Autor: Marcelo Bueno
-# Última revisão: 10/10/2020
+# Última revisão: 11/10/2020
 #---------------------------------------------------------------------------------------------------------------
 
 session_start();
@@ -12,7 +12,7 @@ require '../../Conexao.php';
 require '../../Verifica_login.php';
 
 $id_os = $_POST['ordem_servico'];
-$id_cliente = $_POST['id_cliente'];
+$id_tabela = $_POST['tabela_preco'];
 $nome = filter_input(INPUT_POST, 'nome_dest' , FILTER_SANITIZE_STRING);
 $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
 $numero = filter_input(INPUT_POST, 'numero', FILTER_SANITIZE_STRING);
@@ -26,10 +26,17 @@ $data = $_POST['data'];
 $pagamento = $_POST['forma_pagamento'];
 $valor = $_POST['valor'];
 
+$sql = "SELECT `id_cliente` FROM `ordem_servico` WHERE ordem_servico.id_ordem = $id_os";
+$exec = mysqli_query($conn, $sql);
+
+$result = mysqli_fetch_assoc($exec);
+$id_cliente = $result['id_cliente'];
+
 if(strpos($valor , ","))
 {
     $valor = number_format($_POST['valor_cobranca'], 2, '.', '');
 }
+
 
 if($nome == null || $id_os == null || $motoboy == null || $data == null || $endereco == null || $numero == null || $bairro == null || $cidade == null || $estado == null || $cep == null)
 {  
@@ -39,15 +46,21 @@ if($nome == null || $id_os == null || $motoboy == null || $data == null || $ende
 }
 else
 {
-    $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Cliente cadastrado com sucesso</div>';
+    $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Entrega registrada com sucesso</div>';
 
     $sql = "INSERT INTO `entregas`(`id_entrega`, `id_ordem_servico`, `id_cliente`, `id_motoboy`, 
     `data_entrega`, `forma_pagamento`, `valor_mercadoria`, `id_tabela_preco`, `nome_destinatario`, 
     `end_entrega`, `end_num_entrega`, `end_bairro_entrega`, `end_cidade_entrega`, `end_estado_entrega`, 
     `end_cep_entrega`, `end_comp_entrega`, `status_entrega`) VALUES 
-      (DEFAULT,'$nome',$id_os,$id_cliente,$motoboy,'$data', '$pagamento', '$endereco','$numero','$complemento','$bairro','$cidade','$estado','$cep')";
+    (DEFAULT,$id_os,$id_cliente,$motoboy,'$data','$pagamento',$valor,$id_tabela,'$nome',
+    '$endereco',$numero,'$bairro','$cidade','$estado','$cep','$complemento','Em Aberto')";
 
     $exec = mysqli_query($conn, $sql);
+
+    if(!$exec)
+    {
+        echo "Erro na query" . mysqli_error($exec);
+    }
 
     header('location:../../../index.php?pagina=Cadastro-de-Entrega');
 }

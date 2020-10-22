@@ -1,10 +1,11 @@
 <?php
-include './assets/Conexao.php';
-include './assets/Verifica_login.php';
-include './assets/Formatar.php';
+require './assets/Conexao.php';
+require './assets/Verifica_login.php';
+require './assets/Formatar.php';
 ?>
-    <main class="corpo mt-3 mb-3">
+    <main class="corpo">
         <div class="container">
+            <span><br></span>
             <h3 class="text-dark text-center">Clientes</h3>
             <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">

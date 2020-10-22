@@ -1,11 +1,12 @@
 <?php
-include './assets/Conexao.php';
-include './assets/Verifica_login.php';
+require './assets/Conexao.php';
+require './assets/Verifica_login.php';
 ?>
-    <main class="corpo mt-3 mb-3">
-        <div class="container">
+    <main class="corpo">
+        <div class="container mb-3">
             <div class="text-center">
-                <h2 class="mb-3">Usuários do Sistema</h2>
+                <span><br></span>
+                <h2 class="mb-3 text-dark">Usuários do Sistema</h2>
             </div>
             <?php 
                 if(isset($_SESSION['alert'])){

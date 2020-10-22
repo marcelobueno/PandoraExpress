@@ -2,8 +2,9 @@
 include './assets/Conexao.php';
 include './assets/Verifica_login.php';
 ?>
-    <main class="corpo mt-3 mb-3">
+    <main class="corpo">
         <div class="container">
+            <span><br></span>
             <h3 class="text-dark text-center">Tabelas de Preço</h3>
             <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">
@@ -26,11 +27,11 @@ include './assets/Verifica_login.php';
 
                     while($row = mysqli_fetch_assoc($busca_clientes)){ ?>
                     <tr>
-                        <td><?php echo $row['id_tabela_preco']; ?></td>
-                        <td><?php echo $row['nome_tabela']; ?></td>
-                        <td><?php echo $row['nome_cliente']; ?></td>
-                        <td>Por: <?php echo $row['tipo_cobranca']; ?></td>
-                        <td>R$<?php echo number_format($row['valor_cobranca'], 2, ',', ''); ?></td>
+                        <td><?= $row['id_tabela_preco']; ?></td>
+                        <td><?= $row['nome_tabela']; ?></td>
+                        <td><?= $row['nome_cliente']; ?></td>
+                        <td>Por: <?= $row['tipo_cobranca']; ?></td>
+                        <td>R$<?= number_format($row['valor_cobranca'], 2, ',', ''); ?></td>
                     </tr>
                     <?php } ?>
                 </tbody>

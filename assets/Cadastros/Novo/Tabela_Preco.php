@@ -2,9 +2,10 @@
 include './assets/Conexao.php';
 include './assets/Verifica_login.php';
 ?>
-    <main class="corpo mt-3 mb-3">
+    <main class="corpo">
         <div class="container">
             <div class="text-center">
+                <span><br></span>
                 <h2 class="mb-3">Cadastro de Tabela de Preço</h2>
             </div>
             <?php 

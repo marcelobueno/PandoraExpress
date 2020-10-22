@@ -1,32 +1,82 @@
-html, body{
+html, body
+{
     margin: 0;
     padding: 0;
     background-color: #f0efeb;
 }
 
-.cabecalho {
+.cabecalho 
+{
     background-color: ghostwhite;
 }
 
-.corpo{
+.corpo
+{
     min-height: 700px;
-    background-color: #f0efeb;
+    background-size: 100%;
+    background-image: url(../img/bgsp.jpg);
 }
 
-.menuItem:hover{
+.menuItem:hover
+{
     border-radius: 5px;
     padding: 0, 12px, 12px, 0;
     background-color: #EAB819;
 }
 
-.rodapLogoPad{
+.rodapLogoPad
+{
     padding-left: 140px;
 }
 
-.tdItemBorder{
+.tdItemBorder
+{
     border-radius: 3px;
     border: solid 1px #EAB819;
 }
-#iptCadCliNome {
+#iptCadCliNome 
+{
     color: black;
+}
+
+.contentResponsive
+{
+    justify-content: space-between;
+}
+
+.cardInfo
+{
+    border-radius: 10px;
+    height: 100px;
+}
+
+.cardInfoOne
+{
+    height: 100px;
+    width: 30%;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-top: 20px;
+}
+
+.cardItemCount
+{
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 60px;
+}
+
+.cardItemText
+{
+    padding-top: 53px;
+    padding-left: 10px;
+}
+
+.cardInfoMain
+{
+    height: 530px;
+    width: 350px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
 }
