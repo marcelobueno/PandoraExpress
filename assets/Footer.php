@@ -1,6 +1,6 @@
-    <footer class="rodape navbar-dark bg-warning text-center">
+    <footer class="rodape navbar-dark bg-dark text-center">
         <div class="">
-            <span class="text-dark font-weight-light"><b>Pandora Express 2020 - Todos os direitos reservados</b></span>
+            <span class="text-light font-weight-light"><b>Pandora Express 2020 - Todos os direitos reservados</b></span>
         </div> 
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

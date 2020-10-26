@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #495057;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseitem1" aria-controls="collapseitem1" aria-label="Togge navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,10 +43,10 @@
                 <div id="collapseitem1" class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="?pagina=Home">Início</a>
+                            <a class="nav-link text-light" href="?pagina=Home">Início</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Cadastros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
@@ -65,7 +65,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Relatórios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -76,7 +76,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Entregas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
@@ -93,7 +93,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Ocorrências
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
@@ -110,7 +110,7 @@
                         <?php 
                         if($_SESSION['nivel_acesso'] >= 2){?>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Usuários
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
@@ -127,7 +127,7 @@
                         <?php } ?>
                     </ul>
                     
-                    <span class="float-right"><a href="assets/Logout.php" style="text-decoration: none; color: #343a40;">Logout.</a></span>
+                    <span class="float-right"><a href="assets/Logout.php" style="text-decoration: none; color: #fff;">Logout.</a></span>
                 </div>
                 </div>         
         </nav>

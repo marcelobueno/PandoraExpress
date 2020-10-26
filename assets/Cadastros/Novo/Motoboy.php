@@ -22,7 +22,7 @@ include './assets/Verifica_login.php';
                             <input class="form-control" type="text" name="nome_motoboy" id="iptCadMtbNome" required>
                         </div>
                         <div class="col">
-                            <label class="font-weight-normal" for="cpf_motoboy">CPF/CNPJ (somente números): </label>
+                            <label class="font-weight-normal" for="cpf_motoboy">CPF/CNPJ: </label>
                             <input class="form-control" type="text" name="cpf_motoboy" id="iptCadMtbCpf" required>
                         </div>
                     </div>
@@ -56,13 +56,13 @@ include './assets/Verifica_login.php';
                         <div class="col">
                             <label class="font-weight-normal" for="estado">Estado: </label>
                             <select class="form-control" name="estado" id="iptCadMtbEstado" required>
-                                <option value="SP">São Paulo</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="MG">Minas Gerais</option>
+                                <option value="SP">SP</option>
+                                <option value="RJ">RJ</option>
+                                <option value="MG">MG</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label class="font-weight-normal" for="cep">CEP (Somente números): </label>
+                            <label class="font-weight-normal" for="cep">CEP: </label>
                             <input class="form-control" type="text" name="cep" id="iptCadMtbCep" required>
                         </div>
                     </div>

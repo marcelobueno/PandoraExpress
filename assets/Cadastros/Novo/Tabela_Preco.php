@@ -47,7 +47,7 @@ include './assets/Verifica_login.php';
                             </select>
                         </div>
                         <div class="col col-3">
-                            <label class="font-weight-normal" for="valor_cobranca">Valor a ser cobrado R$: </label>
+                            <label class="font-weight-normal" for="valor_cobranca">Valor R$: </label>
                             <input class="form-control" type="number" step="0.10" name="valor_cobranca" id="iptCadTblValor" required>
                         </div>
                         <div class="col"></div>

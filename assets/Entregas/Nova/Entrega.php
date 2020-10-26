@@ -28,7 +28,7 @@ include './assets/Verifica_login.php';
 
                                     while($row = mysqli_fetch_assoc($exec))
                                     { ?>
-                                        <option value="<?php echo $row['id_ordem']; ?>"><?php echo $row['nome_cliente']; ?> - O.S: <?php echo $row['id_ordem']; ?></option>
+                                        <option value="<?php echo $row['id_ordem']; ?>">O.S: #<?php echo $row['id_ordem']; ?> - <?php echo $row['nome_cliente']; ?></option>
                                     <?php }
                                 ?>
                             </select>

@@ -4,8 +4,8 @@ include './assets/Verifica_login.php';
 ?>
     <main class="corpo">
         <div class="container">
-        <span><br></span>
-        <h3 class="text-dark text-center">Entregas</h3>
+            <span><br></span>
+            <h3 class="text-dark text-center">Entregas</h3>
             <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">
                     <tr>

@@ -22,7 +22,7 @@ require './assets/Verifica_login.php';
                             <input class="form-control" type="text" name="nome_cliente" id="iptCadCliNome" required placeholder="Ex: Farmácia Exemplo LTDA.">
                         </div>
                         <div class="col">
-                            <label class="font-weight-normal" for="cnpj">CPF/CNPJ (somente números): </label>
+                            <label class="font-weight-normal" for="cnpj">CPF/CNPJ: </label>
                             <input class="form-control" type="text" name="cnpj" id="iptCadCliCnpj" required placeholder="Ex: 29281857000190">
                         </div>
                     </div>
@@ -55,13 +55,13 @@ require './assets/Verifica_login.php';
                             <div class="col">
                                 <label class="font-weight-normal" for="estado">Estado: </label>
                                 <select class="form-control" name="estado" id="iptCadCliEstado" required>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="MG">Minas Gerais</option>
+                                    <option value="SP">SP</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="MG">MG</option>
                                 </select>
                             </div>
                             <div class="col">
-                                <label class="font-weight-normal" for="cep">CEP (Somente números): </label>
+                                <label class="font-weight-normal" for="cep">CEP: </label>
                                 <input class="form-control" type="text" name="cep" id="iptCadCliCep" required>
                             </div>
                         </div>

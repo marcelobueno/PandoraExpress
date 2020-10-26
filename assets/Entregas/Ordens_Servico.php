@@ -1,19 +1,19 @@
 <?php
-include './assets/Conexao.php';
-include './assets/Verifica_login.php';
+require './assets/Conexao.php';
+require './assets/Verifica_login.php';
 ?>
     <main class="corpo">
         <div class="container">
             <span><br></span>
-        <h3 class="text-dark text-center">Ordens de Serviço</h3>
-            <table id="listaClientes" class="display table table-bordered" style="width:100%;">
+            <h3 class="text-dark text-center">Ordens de Serviço</h3>
+            <table class="display table table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <th width="100px">ID da O.S</th>
-                        <th width="300px">Cliente</th>
-                        <th width="70px">Entregas</th>
-                        <th width="150px">Data de Abertura</th>
-                        <th width="150px">Status</th>
+                        <th>Cliente</th>
+                        <th>Entregas</th>
+                        <th>Data de Abertura</th>
+                        <th>Status</th>
                         <th>Visualizar</th>
                     </tr>
                 </thead>
@@ -32,13 +32,9 @@ include './assets/Verifica_login.php';
                         <td><?php echo $row['nome_cliente']; ?></td>
                         <td class="text-center"><span class="badge badge-success" style="font-size: 15px;">
                             <?php
-
                             $sql = "SELECT * FROM `entregas` WHERE entregas.id_ordem_servico = $id_ordem";
-                            
                             $exec = mysqli_query($conn, $sql);
-                            
                             $result = mysqli_num_rows($exec);
-
                             echo $result;
                             ?>
                         </span></td>

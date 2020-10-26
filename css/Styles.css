@@ -14,14 +14,15 @@ html, body
 {
     min-height: 700px;
     background-size: 100%;
-    background-image: url(../img/bgsp.jpg);
+    background-color: #e9ecef;
+    /*background-image: url(../img/bgsp.jpg);*/
 }
 
 .menuItem:hover
 {
     border-radius: 5px;
     padding: 0, 12px, 12px, 0;
-    background-color: #EAB819;
+    background-color: #6c757d;
 }
 
 .rodapLogoPad
@@ -79,4 +80,34 @@ html, body
     width: 350px;
     border-radius: 10px;
     background-color: #D9D9D9;
+}
+
+.cardEntInfo
+{
+    height: auto;
+    min-height: 400px;
+    border-radius: 10px;
+}
+
+#cardTitleEnt
+{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding-bottom: 2px;
+}
+
+#cardTitleEnt2
+{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding-bottom: 2px;
+}
+
+#cardEntGraf
+{
+    max-height: 400px;
 }
