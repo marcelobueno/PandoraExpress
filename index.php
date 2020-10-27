@@ -42,6 +42,7 @@ else{
         case 'Cadastro-de-Entrega': include 'assets/Entregas/Nova/Entrega.php'; break;
         case 'Nova-Ocorrencia': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
         case 'Visualizar-Entregas': include 'assets/Entregas/View/ViewOs.php'; break;
+        case 'Detalhes-Entrega': include 'assets/Entregas/View/ViewEnt.php'; break;
         default: include 'assets/Login.php'; break;
     }
 

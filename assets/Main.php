@@ -134,8 +134,17 @@ require 'assets/Verifica_login.php';
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $sql = "SELECT `id_motoboy`, `nome_motoboy` FROM `motoboys`";
+                                        $data = date("Y-m-d");
+                                        $sql = "SELECT mot.id_motoboy, mot.nome_motoboy, ent.data_entrega 
+                                        FROM `motoboys` AS mot, `entregas` AS ent
+                                        WHERE ent.data_entrega = '$data' AND ent.id_motoboy = mot.id_motoboy";
                                         $exec = mysqli_query($conn, $sql);
+                                        $result = mysqli_fetch_assoc($exec);
+                                        if($result == null)
+                                        { ?>
+                                            <p class="text-center text-danger font-weight-bolder">Não existem entregas para hoje.</p>
+                                        <?php }
+                                        else {
                                         while($row = mysqli_fetch_assoc($exec))
                                         { ?>
                                             <tr>
@@ -151,8 +160,8 @@ require 'assets/Verifica_login.php';
                                                     </form>
                                                 </td>
                                             </tr>
-                                        <?php }
-                                    ?>
+                                        <?php } 
+                                        } ?>
                                 </tbody>
                             </table>
                         </div>

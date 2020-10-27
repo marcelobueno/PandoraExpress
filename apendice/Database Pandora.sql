@@ -64,9 +64,16 @@ CREATE TABLE IF NOT EXISTS entregas(
 	forma_pagamento ENUM('dinheiro', 'cartão') NOT NULL,
 	valor_mercadoria DOUBLE(10,2) NOT NULL,
 	id_tabela_preco INT NOT NULL,
-	status_entrega ENUM('Em aberto', 'Em andamento', 'Entregue') NOT NULL,
+	status_entrega ENUM('Em aberto', 'Em andamento', 'Entregue', 'Cancelada') NOT NULL,
 	CONSTRAINT fk_id_ordem FOREIGN KEY (id_ordem_servico) REFERENCES ordem_servico (id_ordem),
 	CONSTRAINT fk_id_cliente_entrega FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
 	CONSTRAINT fk_id_motoboy FOREIGN KEY (id_motoboy) REFERENCES motoboys (id_motoboy),
 	CONSTRAINT fk_id_tabela FOREIGN KEY (id_tabela_preco) REFERENCES tabela_preco (id_tabela_preco)
+);
+
+CREATE TABLE IF NOT EXISTS retornos(
+	id_retorno INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	flag ENUM('Retorno 1', 'Retorno 2', 'Retorno 3', 'Retorno 4', 'Retorno 5'),
+	id_entrega INT NOT NULL,
+	CONSTRAINT fk_id_entrega FOREIGN KEY (id_entrega) REFERENCES entregas (id_entrega)
 );

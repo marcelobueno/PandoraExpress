@@ -19,6 +19,7 @@ $id_os = $_POST['ordem'];
                         <th width="180px">Nome Destinatário</th>
                         <th>Endereço</th>
                         <th width="100px">Status</th>
+                        <th>Detalhes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,10 +53,27 @@ $id_os = $_POST['ordem'];
                                 <?php echo $row['status_entrega']; ?>
                             </b></td>
                         <?php } ?>
+                        <td class="text-center">
+                            <form action="?pagina=Detalhes-Entrega" method="post">
+                                <button class="btn btn-sm btn-outline-dark" type="submit" name="entrega" value="<?= $row['id_entrega']; ?>">Visualizar 
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+                                        <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>
+            <div>
+                <p><b class="text-danger">Encerrar Ordem de Serviço: </b></p>
+                <p><b class="text-danger">Importante! </b>Para encerrar uma ordem de serviço 
+                todas as entregas devem estar com o status <b class="text-success">Entregue</b> 
+                ou <b class="text-danger">Cancelada</b>. Após fechada a Ordem de Serviço não
+                poderá ser aberta novamente.</p>
+            </div>
         </div>
     </main>
 <?php } 
@@ -84,6 +102,7 @@ if(isset($_POST['motoboy']))
                         <th width="180px">Nome Destinatário</th>
                         <th>Endereço</th>
                         <th width="100px">Status</th>
+                        <th>Detalhes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,10 +137,23 @@ if(isset($_POST['motoboy']))
                                 <?php echo $row['status_entrega']; ?>
                             </b></td>
                         <?php } ?>
+                        <td class="text-center">
+                            <form action="?pagina=Detalhes-Entrega" method="post">
+                                <button class="btn btn-sm btn-outline-dark" type="submit" name="entrega" value="<?= $row['id_entrega']; ?>">Visualizar 
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+                                        <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>
+            <div>
+                <p><b class="text-danger">Encerrar Ordem de Serviço: </b></p>
+            </div>
         </div>
     </main>
 <?php }
