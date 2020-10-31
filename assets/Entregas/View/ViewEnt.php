@@ -38,6 +38,7 @@ $result = mysqli_fetch_assoc($exec);
                     <p><b class="text-danger">CEP: </b><?= mb_substr($result['end_cep_entrega'], 0, 5) ."-"
                     . mb_substr($result['end_cep_entrega'], 5); ?></p>
                     <p><b class="text-danger">Complemento: </b><?= $result['end_comp_entrega']; ?></p>
+                    <p><b class="text-danger">Data de Entrega: </b><?= $result['data_entrega']; ?></p>
                 </div>
                 <div class="col col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                     <h4>Status da Entrega:</h4>
@@ -70,7 +71,9 @@ $result = mysqli_fetch_assoc($exec);
                             <option value="Retorno" <?=($result['status_entrega'] == 'Retorno')?'selected':''?> disabled>Retorno</option>
                         </select>
                         <label for="observacoes"><b class="text-danger">Observações: </b></label>
-                        <textarea class="form-control" name="observacoes" cols="30" rows="10"><?= $result['observacoes']; ?></textarea>
+                        <textarea class="form-control" name="observacoes" cols="30" rows="5"><?= $result['observacoes']; ?></textarea>
+                        <label class="mt-2" for="cobranca"><b class="text-danger">Cobrança Extra:</b></label>
+                        <input class="form-control" type="number" name="cobranca" step="0.10" value="<?= $result['cobranca_extra']; ?>"></input>
                         <button class="btn btn-lg btn-dark mt-3" name="id_entrega" type="submit" value="<?= $id_entrega; ?>" <?=($result['status_entrega'] == 'Entregue' || $result['status_entrega'] == 'Cancelada' || $result['status_entrega'] == 'Retorno')?'disabled':''?>>Atualizar</button>
                     </form>
                     <p class="mt-2"><b class="text-danger">Atenção!</b><br>Após atualizar para <b class="text-success">Entregue</b> ou <b class="text-danger">Cancelada</b> você 

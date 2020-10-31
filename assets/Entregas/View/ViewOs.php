@@ -131,9 +131,14 @@ if(isset($_POST['motoboy']))
                             <td class="text-center text-warning"><b>
                                 <?php echo $row['status_entrega']; ?>
                             </b></td>
-                        <?php }else
+                        <?php }elseif($row['status_entrega'] == "Entregue")
                         { ?>
                             <td class="text-center text-success"><b>
+                                <?php echo $row['status_entrega']; ?>
+                            </b></td>
+                        <?php }else
+                        { ?>
+                            <td class="text-center text-danger"><b>
                                 <?php echo $row['status_entrega']; ?>
                             </b></td>
                         <?php } ?>
@@ -151,9 +156,6 @@ if(isset($_POST['motoboy']))
                     <?php } ?>
                 </tbody>
             </table>
-            <div>
-                <p><b class="text-danger">Encerrar Ordem de Serviço: </b></p>
-            </div>
         </div>
     </main>
 <?php }

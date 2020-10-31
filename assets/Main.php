@@ -135,9 +135,10 @@ require 'assets/Verifica_login.php';
                                 <tbody>
                                     <?php
                                         $data = date("Y-m-d");
-                                        $sql = "SELECT mot.id_motoboy, mot.nome_motoboy, ent.data_entrega 
+                                        $sql = "SELECT DISTINCT mot.id_motoboy, mot.nome_motoboy, ent.data_entrega, ent.status_entrega
                                         FROM `motoboys` AS mot, `entregas` AS ent
-                                        WHERE ent.data_entrega = '$data' AND ent.id_motoboy = mot.id_motoboy";
+                                        WHERE ent.data_entrega = '$data' AND ent.id_motoboy = mot.id_motoboy AND ent.status_entrega != 'Entregue'
+                                        AND ent.status_entrega != 'Cancelada'";
                                         $exec = mysqli_query($conn, $sql);
                                         $result = mysqli_fetch_assoc($exec);
                                         if($result == null)

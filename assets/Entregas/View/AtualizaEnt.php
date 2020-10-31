@@ -2,7 +2,7 @@
 #---------------------------------------------------------------------------------------------------------------
 # Objetivo: Recebe as informações vindas do formulário de atualização de Status das Entregas
 # Autor: Marcelo Bueno
-# Última revisão: 27/10/2020
+# Última revisão: 31/10/2020
 #---------------------------------------------------------------------------------------------------------------
 
 session_start();
@@ -14,8 +14,14 @@ $status = $_POST['status'];
 $id_entrega = $_POST['id_entrega'];
 $id_motoboy = $_POST['motoboy'];
 $observacoes = $_POST['observacoes'];
+$cobranca = $_POST['cobranca'];
 
-$sql = "UPDATE `entregas` SET `status_entrega` = '$status', `observacoes` = '$observacoes', `id_motoboy` = $id_motoboy 
+if(strpos($cobranca , ","))
+{
+    $cobranca = number_format($_POST['cobranca'], 2, '.', '');
+}
+
+$sql = "UPDATE `entregas` SET `status_entrega` = '$status', `observacoes` = '$observacoes', `id_motoboy` = $id_motoboy, `cobranca_extra` = $cobranca 
 WHERE entregas.id_entrega = $id_entrega";
 $exec = mysqli_query($conn, $sql);
 
