@@ -12,8 +12,11 @@ require '../../Verifica_login.php';
 
 $status = $_POST['status'];
 $id_entrega = $_POST['id_entrega'];
+$id_motoboy = $_POST['motoboy'];
+$observacoes = $_POST['observacoes'];
 
-$sql = "UPDATE `entregas` SET `status_entrega` = '$status' WHERE entregas.id_entrega = $id_entrega";
+$sql = "UPDATE `entregas` SET `status_entrega` = '$status', `observacoes` = '$observacoes', `id_motoboy` = $id_motoboy 
+WHERE entregas.id_entrega = $id_entrega";
 $exec = mysqli_query($conn, $sql);
 
 if(!$exec)

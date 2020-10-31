@@ -41,26 +41,39 @@ $result = mysqli_fetch_assoc($exec);
                 </div>
                 <div class="col col-12 col-md-6 col-lg-6 col-xl-6 mt-3">
                     <h4>Status da Entrega:</h4>
-                    <p><b class="text-danger">Motoboy: </b>
-                        <?php
-                            $sql = "SELECT `nome_motoboy` FROM `motoboys`, `entregas` 
-                            WHERE entregas.id_motoboy = motoboys.id_motoboy";
-                            $exec = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_assoc($exec);
-                            echo $row['nome_motoboy'];
-                        ?>
-                    </p>
                     <form action="assets/Entregas/View/AtualizaEnt.php" method="post">
+                        <label for="motoboy"><b class="text-danger">Motoboy:</b></label>
+                        <select class="form-control" name="motoboy">
+                            <?php
+                                $sql = "SELECT `nome_motoboy` FROM `motoboys`, `entregas` 
+                                WHERE entregas.id_motoboy = motoboys.id_motoboy AND entregas.id_entrega = $id_entrega";
+                                $exec = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_assoc($exec);
+                                $nome_motoboy = $row['nome_motoboy'];
+
+                                $sql2 = "SELECT `nome_motoboy`, `id_motoboy` FROM `motoboys`";
+                                $exec2 = mysqli_query($conn, $sql2);
+                                while($row2 = mysqli_fetch_assoc($exec2))
+                                { 
+                                ?>
+                                    <option value="<?= $row2['id_motoboy']; ?>" <?=($row2['nome_motoboy'] == $nome_motoboy)?'selected':''?>><?= $row2['nome_motoboy']; ?></option>
+                                <?php 
+                                }
+                            ?>
+                        </select>
                         <label for="status"><b class="text-danger">Status:</b></label>
                         <select class="form-control" name="status" <?=($result['status_entrega'] == 'Entregue' || $result['status_entrega'] == 'Cancelada')?'disabled':''?>>
                             <option value="Em aberto" <?=($result['status_entrega'] == 'Em aberto')?'selected':''?>>Em aberto</option>
                             <option value="Em andamento" <?=($result['status_entrega'] == 'Em andamento')?'selected':''?>>Em andamento</option>
                             <option value="Entregue" <?=($result['status_entrega'] == 'Entregue')?'selected':''?>>Entregue</option>
                             <option value="Cancelada" <?=($result['status_entrega'] == 'Cancelada')?'selected':''?>>Cancelada</option>
+                            <option value="Retorno" <?=($result['status_entrega'] == 'Retorno')?'selected':''?> disabled>Retorno</option>
                         </select>
-                        <button class="btn btn-lg btn-dark mt-3" name="id_entrega" type="submit" value="<?= $id_entrega; ?>" <?=($result['status_entrega'] == 'Entregue' || $result['status_entrega'] == 'Cancelada')?'disabled':''?>>Atualizar</button>
+                        <label for="observacoes"><b class="text-danger">Observações: </b></label>
+                        <textarea class="form-control" name="observacoes" cols="30" rows="10"><?= $result['observacoes']; ?></textarea>
+                        <button class="btn btn-lg btn-dark mt-3" name="id_entrega" type="submit" value="<?= $id_entrega; ?>" <?=($result['status_entrega'] == 'Entregue' || $result['status_entrega'] == 'Cancelada' || $result['status_entrega'] == 'Retorno')?'disabled':''?>>Atualizar</button>
                     </form>
-                    <p class="mt-2"><b class="text-danger">Atenção!</b> após atualizar para Entregue ou Cancelada você 
+                    <p class="mt-2"><b class="text-danger">Atenção!</b><br>Após atualizar para <b class="text-success">Entregue</b> ou <b class="text-danger">Cancelada</b> você 
                     não poderá mais alterar o Status da entrega.</p>
                 </div>
             </div>

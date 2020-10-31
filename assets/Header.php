@@ -12,12 +12,12 @@
     <header class="cabecalho">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                     <img class="img-fluid mt-3 mb-3" src="img/Logo-Pandora.png" alt="Logo da Pandora Express" title="Pandora Express" width="200px">
                 </div>
-                <div class="col"></div>
-                <div class="col col-sm-6">
-                    <div class=" float-right mt-3">
+                <div class="col col-0 col-md-4 col-lg-4 col-xl-4"></div>
+                <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="float-right mt-3">
                         <span class="text-muted" style="font-size: 14px;">Olá, <?php echo $_SESSION['administrador'];?><br></span>
                         <?php
                             if($_SESSION['nivel_acesso'] == 3){
@@ -69,10 +69,9 @@
                                 Relatórios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="#">Entregas</a>
-                                <a class="dropdown-item" href="#">Ordens de Serviço</a>
-                                <a class="dropdown-item" href="#">Retornos</a>
-                                <a class="dropdown-item" href="#">Fechamento Mensal</a>
+                                <a class="dropdown-item" href="#">Fechamento - Cliente</a>
+                                <a class="dropdown-item" href="#">Fechamento - Motoboy</a>
+                                <a class="dropdown-item" href="#">Fechamento - Gerencial</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -97,13 +96,13 @@
                                 Ocorrências
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                                <a class="dropdown-item" href="#">Retornos</a>
+                                <a class="dropdown-item" href="?pagina=Retornos">Retornos</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item dropdown-toggle" href="#" id="navNovoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Nova Ocorrência
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="#navNovoDropdown">
-                                    <a class="dropdown-item" href="#">Retorno</a>
+                                    <a class="dropdown-item" href="?pagina=Novo-Retorno">Retorno</a>
                                 </div>
                             </div>
                         </li>
