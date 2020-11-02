@@ -1,0 +1,19 @@
+{
+    "name": "marcelofbueno/pandoraexpress",
+    "description": "Sistema de gerenciamento logistico da Pandora Express",
+    "type": "project",
+    "require": {
+        "dompdf/dompdf": "^0.8.6",
+        "coffeecode/datalayer": "^1.1"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Marcelo Bueno",
+            "email": "marcelo.f.bueno@hotmail.com",
+            "role": "Developer",
+            "homepage": "https://marceloferrazbueno.com.br"
+        }
+    ],
+    "minimum-stability": "stable"
+}

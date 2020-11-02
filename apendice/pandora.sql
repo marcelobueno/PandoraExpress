@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Out-2020 às 15:54
+-- Tempo de geração: 02-Nov-2020 às 20:38
 -- Versão do servidor: 10.4.13-MariaDB
 -- versão do PHP: 7.4.7
 
@@ -91,7 +91,23 @@ INSERT INTO `entregas` (`id_entrega`, `id_ordem_servico`, `id_cliente`, `id_moto
 (4, 2, 4, 1, '2020-10-31', 'dinheiro', 110.50, 0.00, 4, 'Flavia Tavares', 'Rua Masafusa Yokota', '6', 'Jardim Camila', 'Mauá', 'SP', '09361010', 'Casa 2', 'Em aberto', ''),
 (5, 2, 4, 3, '2020-10-31', 'cartão', 219.90, 0.00, 4, 'Augusto Bernardino de Campos', 'Rua Aquidaban', '560', 'Vila Nossa Senha das Vitórias', 'Mauá', 'SP', '09361150', 'Casa 2', 'Em aberto', ''),
 (6, 1, 1, 4, '2020-10-31', 'cartão', 119.90, 0.00, 1, 'Igor Santos', 'Rua Campos Sales', '2190', 'Vila Bocaina', 'Mauá', 'SP', '09361450', 'Bloco 3 Apartamento 515', 'Em aberto', 'Teste 2'),
-(7, 1, 1, 2, '2020-10-31', 'cartão', 214.00, 5.00, 1, 'VITOR MOAES OS SANTOS', 'RUA EIRAS GARCIA', '159', 'VILA MONMENTO', 'SÃO PAULO', 'SP', '01550030', '', 'Em aberto', 'Alterado boy de: Bruno para: Arnaldo');
+(7, 1, 1, 2, '2020-10-31', 'cartão', 214.00, 5.00, 1, 'VITOR MOAES OS SANTOS', 'RUA EIRAS GARCIA', '159', 'VILA MONMENTO', 'SÃO PAULO', 'SP', '01550030', '', 'Em aberto', 'Alterado boy de: Bruno para: Arnaldo'),
+(8, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(9, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(10, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(11, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(12, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(13, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(14, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(15, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(16, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(17, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(18, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(19, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(20, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(21, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(22, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
+(23, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', '');
 
 -- --------------------------------------------------------
 
@@ -294,7 +310,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de tabela `entregas`
 --
 ALTER TABLE `entregas`
-  MODIFY `id_entrega` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_entrega` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `motoboys`

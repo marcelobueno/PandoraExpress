@@ -2,6 +2,8 @@
 
 session_start();
 
+require __DIR__.'/vendor/autoload.php';
+
 if(!isset($_SESSION['administrador'])){
     $_SESSION['administrador'] = null;
 }

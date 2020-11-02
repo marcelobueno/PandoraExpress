@@ -47,9 +47,14 @@ $id_os = $_POST['ordem'];
                             <td class="text-center text-warning"><b>
                                 <?php echo $row['status_entrega']; ?>
                             </b></td>
-                        <?php }else
+                        <?php }elseif($row['status_entrega'] == "Entregue")
                         { ?>
                             <td class="text-center text-success"><b>
+                                <?php echo $row['status_entrega']; ?>
+                            </b></td>
+                        <?php }else
+                        { ?>
+                            <td class="text-center text-danger"><b>
                                 <?php echo $row['status_entrega']; ?>
                             </b></td>
                         <?php } ?>

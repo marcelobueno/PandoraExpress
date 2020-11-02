@@ -10,9 +10,11 @@ require './assets/Verifica_login.php';
             <thead class="thead-dark">
                 <tr>
                     <th width="100px">ID Retorno</th>
-                    <th>Ref. Entrega</th>
-                    <th>Ref. O.S</th>
+                    <th width="100px">Ref. Entrega</th>
+                    <th width="100px">Ref. O.S</th>
+                    <th>Cliente</th>
                     <th>Status</th>
+                    <th>Flag</th>
                     <th>Detalhes</th>
                 </tr>
             </thead>
@@ -27,13 +29,43 @@ require './assets/Verifica_login.php';
                         <td class="text-center"><?= $row['id_entrega']; ?></td>
                         <td class="text-center">
                             <?php
-                            $query = "SELECT id_ordem_servico FROM entregas WHERE entregas.id_entrega = {$row['id_entrega']}";
-                            $exec = mysqli_query($conn, $query);
-                            $result = mysqli_fetch_assoc($exec);
-                            echo $result['id_ordem_servico'];
+                                $query = "SELECT id_ordem_servico FROM entregas WHERE entregas.id_entrega = {$row['id_entrega']}";
+                                $exec = mysqli_query($conn, $query);
+                                $result = mysqli_fetch_assoc($exec);
+                                echo $result['id_ordem_servico'];
                             ?>
                         </td>
-                        <td class="text-center"><?= $row['status_retorno']; ?></td>
+                        <td>
+                            <?php
+                                $sql2 = "SELECT clientes.nome_cliente FROM clientes, ordem_servico 
+                                WHERE ordem_servico.id_ordem = {$result['id_ordem_servico']} AND ordem_servico.id_cliente = clientes.id_cliente";
+                                $exec = mysqli_query($conn, $sql2);
+                                $cli = mysqli_fetch_assoc($exec);
+                                echo $cli['nome_cliente'];
+                            ?>
+                        </td>
+                        <?php if($row['status_retorno'] == "Em aberto")
+                        { ?>
+                            <td class="text-center text-info"><b>
+                                <?php echo $row['status_retorno']; ?>
+                            </b></td>
+                        <?php }elseif($row['status_retorno'] == "Em andamento")
+                        { ?>
+                            <td class="text-center text-warning"><b>
+                                <?php echo $row['status_retorno']; ?>
+                            </b></td>
+                        <?php }elseif($row['status_retorno'] == "Entregue")
+                        { ?>
+                            <td class="text-center text-success"><b>
+                                <?php echo $row['status_retorno']; ?>
+                            </b></td>
+                        <?php }else
+                        { ?>
+                            <td class="text-center text-danger"><b>
+                                <?php echo $row['status_retorno']; ?>
+                            </b></td>
+                        <?php } ?>
+                        <td class="text-center"><b class="text-danger"><?= $row['flag']; ?></b></td>
                         <td class="text-center">
                             <form action="?pagina=Detalhes-Entrega" method="post">
                                 <button class="btn btn-sm btn-outline-dark" type="submit" name="entrega" value="<?= $row['id_entrega']; ?>">Visualizar

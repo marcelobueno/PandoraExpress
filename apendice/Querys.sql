@@ -28,3 +28,9 @@ WHERE
 motoboys.id_motoboy = entregas.id_motoboy AND
 clientes.id_cliente = entregas.id_cliente AND
 ordem_servico.id_ordem = entregas.id_ordem_servico
+
+//INSERT entregas
+INSERT INTO `entregas`(`id_entrega`, `id_ordem_servico`, `id_cliente`, `id_motoboy`, `data_entrega`, `forma_pagamento`, 
+`valor_mercadoria`, `cobranca_extra`, `id_tabela_preco`, `nome_destinatario`, `end_entrega`, `end_num_entrega`, `end_bairro_entrega`, 
+`end_cidade_entrega`, `end_estado_entrega`, `end_cep_entrega`, `end_comp_entrega`, `status_entrega`, `observacoes`) 
+VALUES (DEFAULT,1,1,2,'2020-11-05','Cartão',109.90,0.0,1,'Cliente Exemplo','Rua Exemplo','600','Bairro Exemplo','Cidade Exemplo','SP','09361000','','Em aberto','')
