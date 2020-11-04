@@ -121,6 +121,49 @@
         "homepage": "https://github.com/dompdf/dompdf"
     },
     {
+        "name": "nnnick/chartjs",
+        "version": "v2.9.4",
+        "version_normalized": "2.9.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/chartjs/Chart.js.git",
+            "reference": "9bd4cf82fda9f50a5fb50b72843e06ab88124278"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/9bd4cf82fda9f50a5fb50b72843e06ab88124278",
+            "reference": "9bd4cf82fda9f50a5fb50b72843e06ab88124278",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2020-10-19T12:22:11+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "release/2.0": "v2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "NICK DOWNIE",
+                "email": "hello@nickdownie.com"
+            }
+        ],
+        "description": "Simple HTML5 charts using the canvas element.",
+        "homepage": "https://www.chartjs.org/",
+        "keywords": [
+            "JS",
+            "chart"
+        ]
+    },
+    {
         "name": "phenx/php-font-lib",
         "version": "0.5.2",
         "version_normalized": "0.5.2.0",

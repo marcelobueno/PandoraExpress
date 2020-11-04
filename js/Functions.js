@@ -1,11 +1,6 @@
-var btnErroLogin = document.getElementById('btnMostrarErro');
-var errorOccult = document.querySelector('.error-ocult');
+//------------------------------------------------------------------------------------------------------------------------------
+// Gráfico da página principal.
+// Autor: Marcelo Bueno/ChartJs
+// Implementado em: 04/11/2020
+//------------------------------------------------------------------------------------------------------------------------------
 
-btnErroLogin.addEventListener('click', function() {
-    
-  if(errorOccult.style.display == 'block') {
-      errorOccult.style.display = 'none';
-  } else {
-      errorOccult.style.display = 'block';
-  }
-});

@@ -180,6 +180,7 @@ require 'assets/Verifica_login.php';
                         </div>
                         <div class="col">
                             <!--Conteúdo grafico-->
+                            <canvas id="grafEntregas" class="mt-5"></canvas>
                         </div>
                     </div>
                 </div>
