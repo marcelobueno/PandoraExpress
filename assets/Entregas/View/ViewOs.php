@@ -31,8 +31,10 @@ $id_os = $_POST['ordem'];
                     WHERE entregas.id_ordem_servico = $id_os";
 
                     $busca_clientes = mysqli_query($conn, $sql);
+                    $array = [];
 
-                    while($row = mysqli_fetch_assoc($busca_clientes)){ ?>
+                    while($row = mysqli_fetch_assoc($busca_clientes)){ 
+                        $array += [$row['id_entrega'] => $row['status_entrega']]; ?>
                     <tr>
                         <td class="text-center"><?php echo $row['id_entrega']; ?></td>
                         <td><?php echo $row['nome_destinatario']; ?></td>
@@ -73,14 +75,47 @@ $id_os = $_POST['ordem'];
                 </tbody>
             </table>
             <div>
-                <p><b class="text-danger">Encerrar Ordem de Serviço: </b></p>
-                <p><b class="text-danger">Importante! </b>Para encerrar uma ordem de serviço 
-                todas as entregas devem estar com o status <b class="text-success">Entregue</b> 
-                ou <b class="text-danger">Cancelada</b>. Após fechada a Ordem de Serviço não
-                poderá ser aberta novamente.</p>
+                <?php
+                #---------------------------------------------------------------------------------------------------
+                # A variável $continua é iniciada como true habilitando o botão para fechar a ordem de serviço
+                # porém se houverem entregas não finalizadas a função é passada para false desabilitando o botão
+                #---------------------------------------------------------------------------------------------------
+                    $continua = true;
+                    if(in_array('Em aberto', $array) || in_array('Em andamento', $array))
+                    {
+                        $continua = false;
+                    }
+                ?>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmaEncerraOS"
+                <?=($continua == false)?'disabled':''; ?>>
+                    Encerrar Ordem de Serviço
+                </button>
+                <div class="modal fade" id="confirmaEncerraOS" tabindex="-1" aria-labelledby="encerraOsLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="encerraOsLabel">Atenção!!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="font-weight-normal">Para encerrar a Ordem de Serviço, todas as entregas devem estar finalizadas e
+                            com o Status como <b class="text-success">Entregue</b>, <b class="text-danger">Cancelada</b> ou 
+                            <b class="text-danger">Retorno</b>. Deseja prosseguir ?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-success" onclick="<?= 'php' ?>">Confirmar</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </main>
+    <span class="mb-3"><br></span>
 <?php } 
 
 if(isset($_POST['motoboy']))

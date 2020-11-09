@@ -172,15 +172,25 @@ require 'assets/Verifica_login.php';
                     <div id="cardEntGraf" class="card cardEntInfo">
                         <div class="row">
                             <div id="cardTitleEnt2" class="col bg-dark">
-                                <svg width="20px" height="20px" viewBox="0 0 16 16" class="text-light mb-1 bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                                <svg width="20px" height="20px" viewBox="0 0 16 16" class="text-light bi bi-journal-bookmark-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                    <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
                                 </svg>
-                                <span class="text-light font-weight-bolder">Gráfico Informativo - Entregas por Cliente</span>
+                                <span class="text-light font-weight-bolder">Anotações e Observações</span>
                             </div>
                         </div>
                         <div class="col">
-                            <!--Conteúdo grafico-->
-                            <canvas id="grafEntregas" class="mt-5"></canvas>
+                            <!--Conteúdo anotações-->
+                            <form action="assets/Atualiza_ant.php" method="post">
+                                <?php
+                                    $query = "SELECT * FROM `anotacao`";
+                                    $busca = mysqli_query($conn,$query);
+                                    $linha = mysqli_fetch_assoc($busca);
+                                ?>
+                                <textarea class="form-control mt-4 text-danger font-weight-bolder" name="anotacao" cols="30" rows="10"><?= $linha['anotacao']; ?></textarea>
+                                <button class="btn btn-lg btn-dark mt-2 float-right" type="submit">Atualizar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

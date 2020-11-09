@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e464aa3cf2bb463b92daa264473cde23",
+    "content-hash": "d3b8664b29da54267a4390d456c1fde0",
     "packages": [
         {
             "name": "coffeecode/datalayer",
@@ -122,47 +122,6 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2020-08-30T22:54:22+00:00"
-        },
-        {
-            "name": "nnnick/chartjs",
-            "version": "v2.9.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chartjs/Chart.js.git",
-                "reference": "9bd4cf82fda9f50a5fb50b72843e06ab88124278"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chartjs/Chart.js/zipball/9bd4cf82fda9f50a5fb50b72843e06ab88124278",
-                "reference": "9bd4cf82fda9f50a5fb50b72843e06ab88124278",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "release/2.0": "v2.0-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "NICK DOWNIE",
-                    "email": "hello@nickdownie.com"
-                }
-            ],
-            "description": "Simple HTML5 charts using the canvas element.",
-            "homepage": "https://www.chartjs.org/",
-            "keywords": [
-                "JS",
-                "chart"
-            ],
-            "time": "2020-10-19T12:22:11+00:00"
         },
         {
             "name": "phenx/php-font-lib",
@@ -295,5 +254,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
