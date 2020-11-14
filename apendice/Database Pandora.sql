@@ -81,3 +81,8 @@ CREATE TABLE IF NOT EXISTS retornos(
 	CONSTRAINT fk_id_entrega FOREIGN KEY (id_entrega) REFERENCES entregas (id_entrega),
 	CONSTRAINT fk_id_tabelapreco FOREIGN KEY (id_tabela) REFERENCES tabela_preco (id_tabela_preco)
 );
+
+CREATE TABLE IF NOT EXISTS anotacoes(
+	id_anotacao INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	anotacao TEXT NOT NULL
+)

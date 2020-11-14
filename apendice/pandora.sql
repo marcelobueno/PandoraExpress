@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Nov-2020 às 20:38
+-- Tempo de geração: 14-Nov-2020 às 19:09
 -- Versão do servidor: 10.4.13-MariaDB
--- versão do PHP: 7.4.7
+-- versão do PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `pandora`
 --
+CREATE DATABASE IF NOT EXISTS `pandora` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `pandora`;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `anotacoes`
+--
+
+CREATE TABLE `anotacoes` (
+  `id_anotacao` int(11) NOT NULL,
+  `anotacao` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `anotacoes`
+--
+
+INSERT INTO `anotacoes` (`id_anotacao`, `anotacao`) VALUES
+(1, '14/11/2020 - Entrega #5 em atraso, priorizar essa entrega!');
 
 -- --------------------------------------------------------
 
@@ -88,10 +108,10 @@ CREATE TABLE `entregas` (
 INSERT INTO `entregas` (`id_entrega`, `id_ordem_servico`, `id_cliente`, `id_motoboy`, `data_entrega`, `forma_pagamento`, `valor_mercadoria`, `cobranca_extra`, `id_tabela_preco`, `nome_destinatario`, `end_entrega`, `end_num_entrega`, `end_bairro_entrega`, `end_cidade_entrega`, `end_estado_entrega`, `end_cep_entrega`, `end_comp_entrega`, `status_entrega`, `observacoes`) VALUES
 (2, 1, 1, 1, '2020-10-31', 'dinheiro', 107.90, 0.00, 1, 'Catharine Bueno', 'Rua Francisco Jardim', '622', 'Jardim Anchieta', 'Mauá', 'SP', '09361000', '', 'Entregue', 'Entregue para a própria cliente.'),
 (3, 1, 1, 2, '2020-10-31', 'dinheiro', 109.90, 0.00, 5, 'Maria das Dores', 'Rua Exemplo', '320', 'Bairro Campestre', 'Santo André', 'SP', '09472980', '', 'Retorno', 'Alterado boy de Bruno para Rodrigo'),
-(4, 2, 4, 1, '2020-10-31', 'dinheiro', 110.50, 0.00, 4, 'Flavia Tavares', 'Rua Masafusa Yokota', '6', 'Jardim Camila', 'Mauá', 'SP', '09361010', 'Casa 2', 'Em aberto', ''),
-(5, 2, 4, 3, '2020-10-31', 'cartão', 219.90, 0.00, 4, 'Augusto Bernardino de Campos', 'Rua Aquidaban', '560', 'Vila Nossa Senha das Vitórias', 'Mauá', 'SP', '09361150', 'Casa 2', 'Em aberto', ''),
+(4, 2, 4, 1, '2020-10-31', 'dinheiro', 110.50, 0.00, 4, 'Flavia Tavares', 'Rua Masafusa Yokota', '6', 'Jardim Camila', 'Mauá', 'SP', '09361010', 'Casa 2', 'Entregue', 'Atualizada para Entregue'),
+(5, 2, 4, 3, '2020-10-31', 'cartão', 219.90, 0.00, 4, 'Augusto Bernardino de Campos', 'Rua Aquidaban', '560', 'Vila Nossa Senha das Vitórias', 'Mauá', 'SP', '09361150', 'Casa 2', 'Entregue', 'Alterada para Entregue'),
 (6, 1, 1, 4, '2020-10-31', 'cartão', 119.90, 0.00, 1, 'Igor Santos', 'Rua Campos Sales', '2190', 'Vila Bocaina', 'Mauá', 'SP', '09361450', 'Bloco 3 Apartamento 515', 'Em aberto', 'Teste 2'),
-(7, 1, 1, 2, '2020-10-31', 'cartão', 214.00, 5.00, 1, 'VITOR MOAES OS SANTOS', 'RUA EIRAS GARCIA', '159', 'VILA MONMENTO', 'SÃO PAULO', 'SP', '01550030', '', 'Em aberto', 'Alterado boy de: Bruno para: Arnaldo'),
+(7, 1, 1, 2, '2020-10-31', 'cartão', 214.00, 5.00, 1, 'VITOR MOAES OS SANTOS', 'RUA EIRAS GARCIA', '159', 'VILA MONMENTO', 'SÃO PAULO', 'SP', '01550030', '', 'Retorno', 'Alterado boy de: Bruno para: Arnaldo'),
 (8, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
 (9, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
 (10, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
@@ -159,7 +179,7 @@ CREATE TABLE `ordem_servico` (
 
 INSERT INTO `ordem_servico` (`id_ordem`, `data_os`, `id_cliente`, `status_os`) VALUES
 (1, '2020-09-25', 1, 'Aberta'),
-(2, '2020-10-10', 4, 'Aberta'),
+(2, '2020-10-10', 4, 'Fechada'),
 (3, '2020-10-24', 5, 'Aberta'),
 (4, '2020-10-24', 1, 'Aberta');
 
@@ -182,7 +202,8 @@ CREATE TABLE `retornos` (
 --
 
 INSERT INTO `retornos` (`id_retorno`, `flag`, `id_entrega`, `id_tabela`, `status_retorno`) VALUES
-(1, 'Retorno 1', 3, 12, 'Em aberto');
+(1, 'Retorno 1', 3, 12, 'Entregue'),
+(2, 'Retorno 1', 7, 12, 'Em aberto');
 
 -- --------------------------------------------------------
 
@@ -244,6 +265,12 @@ INSERT INTO `usuarios` (`id_usuario`, `login_usuario`, `senha_usuario`, `nivel_a
 --
 
 --
+-- Índices para tabela `anotacoes`
+--
+ALTER TABLE `anotacoes`
+  ADD PRIMARY KEY (`id_anotacao`);
+
+--
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
@@ -301,6 +328,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `anotacoes`
+--
+ALTER TABLE `anotacoes`
+  MODIFY `id_anotacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
@@ -328,7 +361,7 @@ ALTER TABLE `ordem_servico`
 -- AUTO_INCREMENT de tabela `retornos`
 --
 ALTER TABLE `retornos`
-  MODIFY `id_retorno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_retorno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `tabela_preco`

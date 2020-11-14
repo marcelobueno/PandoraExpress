@@ -48,7 +48,10 @@ require 'assets/Verifica_login.php';
                                 <div class="row">
                                     <h2 class="cardItemCount">
                                         <?php
-                                            $sql = "SELECT * FROM `entregas`";
+                                            $sql = "SELECT * FROM `entregas` 
+                                            WHERE entregas.status_entrega != 'Entregue' 
+                                            AND entregas.status_entrega != 'Cancelada' 
+                                            AND entregas.status_entrega != 'Retorno'";
                                             $exec = mysqli_query($conn, $sql);
                                             $count = mysqli_num_rows($exec);
                                             echo $count;
@@ -77,7 +80,8 @@ require 'assets/Verifica_login.php';
                                 <div class="row">
                                     <h2 class="cardItemCount">
                                         <?php
-                                            $sql = "SELECT * FROM `ordem_servico`";
+                                            $sql = "SELECT * FROM `ordem_servico` 
+                                            WHERE ordem_servico.status_os = 'Aberta'";
                                             $exec = mysqli_query($conn, $sql);
                                             $count = mysqli_num_rows($exec);
                                             echo $count;
@@ -103,7 +107,16 @@ require 'assets/Verifica_login.php';
                             </div>
                             <div class="col-8 text-light ml-2" id="cardInfoFour">
                                 <div class="row">
-                                    <h2 class="cardItemCount">0</h2>
+                                    <h2 class="cardItemCount">
+                                        <?php
+                                            $sql = "SELECT * FROM `retornos` 
+                                            WHERE retornos.status_retorno != 'Entregue' 
+                                            AND retornos.status_retorno != 'Cancelada'";
+                                            $exec = mysqli_query($conn, $sql);
+                                            $count = mysqli_num_rows($exec);
+                                            echo $count;
+                                        ?>
+                                    </h2>
                                     <span class="cardItemText">Retornos</span>
                                 </div>
                             </div>
@@ -184,11 +197,11 @@ require 'assets/Verifica_login.php';
                             <!--Conteúdo anotações-->
                             <form action="assets/Atualiza_ant.php" method="post">
                                 <?php
-                                    $query = "SELECT * FROM `anotacao`";
+                                    $query = "SELECT * FROM `anotacoes`";
                                     $busca = mysqli_query($conn,$query);
                                     $linha = mysqli_fetch_assoc($busca);
                                 ?>
-                                <textarea class="form-control mt-4 text-danger font-weight-bolder" name="anotacao" cols="30" rows="10"><?= $linha['anotacao']; ?></textarea>
+                                <textarea class="form-control mt-4 text-primary font-weight-normal" name="anotacao" cols="30" rows="10"><?= $linha['anotacao']; ?></textarea>
                                 <button class="btn btn-lg btn-dark mt-2 float-right" type="submit">Atualizar</button>
                             </form>
                         </div>

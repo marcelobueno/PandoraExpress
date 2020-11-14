@@ -5,6 +5,13 @@ require './assets/Verifica_login.php';
     <main class="corpo">
         <div class="container">
             <span><br></span>
+            <?php
+                if(isset($_SESSION['alert']))
+                {
+                    echo $_SESSION['alert'];
+                    unset($_SESSION['alert']);
+                }
+            ?>
             <h3 class="text-dark text-center">Ordens de Serviço</h3>
             <table class="display table table-bordered">
                 <thead class="thead-dark">
@@ -21,7 +28,7 @@ require './assets/Verifica_login.php';
                     <?php
 
                     $sql = "SELECT `id_ordem`, `nome_cliente`, `data_os`, `status_os` FROM `ordem_servico`, `clientes`
-                    WHERE ordem_servico.id_cliente = clientes.id_cliente";
+                    WHERE ordem_servico.id_cliente = clientes.id_cliente ORDER BY ordem_servico.id_ordem DESC";
                     
                     $busca_clientes = mysqli_query($conn, $sql);
 

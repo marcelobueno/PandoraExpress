@@ -35,6 +35,7 @@ else{
         case 'Usuarios': include 'assets/Usuarios/Usuarios.php'; break;
         case 'Retornos': include 'assets/Ocorrencias/Retornos.php'; break;
         case 'Novo-Retorno': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
+        case 'Confirmar-Retorno': include 'assets/Ocorrencias/Novo/Novo_ret.php'; break;
         case 'Ordens-de-Servico': include 'assets/Entregas/Ordens_Servico.php'; break;
         case 'Entregas': include 'assets/Entregas/Entregas.php'; break;
         case 'Cadastro-de-usuario': include 'assets/Usuarios/Cad_Usuario.php'; break;

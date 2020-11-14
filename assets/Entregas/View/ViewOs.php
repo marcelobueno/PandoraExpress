@@ -86,6 +86,9 @@ $id_os = $_POST['ordem'];
                         $continua = false;
                     }
                 ?>
+                <p class="font-weight-normal">
+                    Para fechar a Ordem de Serviço todas as entregas devem estar encerradas.
+                </p>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#confirmaEncerraOS"
                 <?=($continua == false)?'disabled':''; ?>>
                     Encerrar Ordem de Serviço
@@ -100,14 +103,16 @@ $id_os = $_POST['ordem'];
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p class="font-weight-normal">Para encerrar a Ordem de Serviço, todas as entregas devem estar finalizadas e
-                            com o Status como <b class="text-success">Entregue</b>, <b class="text-danger">Cancelada</b> ou 
-                            <b class="text-danger">Retorno</b>. Deseja prosseguir ?
+                        <p class="font-weight-normal">
+                        Tem certeza que deseja fechar esta Ordem de Serviço ?
                         </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-success" onclick="<?= 'php' ?>">Confirmar</button>
+                        <form action="assets/Entregas/View/Encerra_OS.php" method="post">
+                            <input hidden name="id_os" value="<?= $id_os ?>">
+                            <button type="submit" class="btn btn-success">Confirmar</button>
+                        </form>
                     </div>
                     </div>
                 </div>
