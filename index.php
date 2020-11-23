@@ -36,6 +36,7 @@ else{
         case 'Retornos': include 'assets/Ocorrencias/Retornos.php'; break;
         case 'Novo-Retorno': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
         case 'Confirmar-Retorno': include 'assets/Ocorrencias/Novo/Novo_ret.php'; break;
+        case 'Detalhes-Retorno': include 'assets/Ocorrencias/view/Detalhes_Ret.php'; break;
         case 'Ordens-de-Servico': include 'assets/Entregas/Ordens_Servico.php'; break;
         case 'Entregas': include 'assets/Entregas/Entregas.php'; break;
         case 'Cadastro-de-usuario': include 'assets/Usuarios/Cad_Usuario.php'; break;
@@ -47,6 +48,9 @@ else{
         case 'Nova-Ocorrencia': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
         case 'Visualizar-Entregas': include 'assets/Entregas/View/ViewOs.php'; break;
         case 'Detalhes-Entrega': include 'assets/Entregas/View/ViewEnt.php'; break;
+        case 'Fechamento-Cliente': include 'assets/Relatorios/Relatorio_Cliente.php'; break;
+        case 'Fechamento-Motoboy': include 'assets/Relatorios/Relatorio_Motoboy.php'; break;
+        case 'Fechamento-Gerencial': include 'assets/Relatorios/Relatorio_Gerencial.php'; break;
         default: include 'assets/Login.php'; break;
     }
 

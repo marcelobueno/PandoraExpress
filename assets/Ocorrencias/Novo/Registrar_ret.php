@@ -22,7 +22,7 @@ if(isset($_POST['id_entrega']) && !empty($_POST['id_entrega']))
     $query = "SELECT * FROM `retornos` WHERE retornos.id_entrega = $id_entrega";
     $exec = mysqli_query($conn, $query);
 
-    if($exec == true) //Verifica se o retorno já existe, se existir apenas altera os status.
+    if($exec != null) //Verifica se o retorno já existe, se existir apenas altera os status.
     {
         $query1 = "UPDATE `retornos` SET `flag`= '$flag',`id_tabela`= $id_tabela,`status_retorno`= '$status_retorno' 
         WHERE retornos.id_entrega = $id_entrega";

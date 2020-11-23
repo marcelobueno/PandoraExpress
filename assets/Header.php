@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="css/Styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="cabecalho">
@@ -69,9 +71,9 @@
                                 Relatórios
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="#">Fechamento - Cliente</a>
-                                <a class="dropdown-item" href="#">Fechamento - Motoboy</a>
-                                <a class="dropdown-item" href="#">Fechamento - Gerencial</a>
+                                <a class="dropdown-item" href="?pagina=Fechamento-Cliente">Fechamento - Cliente</a>
+                                <a class="dropdown-item" href="?pagina=Fechamento-Motoboy">Fechamento - Motoboy</a>
+                                <a class="dropdown-item" href="?pagina=Fechamento-Gerencial">Fechamento - Gerencial</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

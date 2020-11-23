@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Nov-2020 às 19:09
+-- Tempo de geração: 23-Nov-2020 às 20:27
 -- Versão do servidor: 10.4.13-MariaDB
--- versão do PHP: 7.2.31
+-- versão do PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `anotacoes` (
 --
 
 INSERT INTO `anotacoes` (`id_anotacao`, `anotacao`) VALUES
-(1, '14/11/2020 - Entrega #5 em atraso, priorizar essa entrega!');
+(1, '17/11/2020 - Criar sistema de E-mail que notifique os clientes sobre a abertura de Ordens de Serviço.');
 
 -- --------------------------------------------------------
 
@@ -106,28 +106,28 @@ CREATE TABLE `entregas` (
 --
 
 INSERT INTO `entregas` (`id_entrega`, `id_ordem_servico`, `id_cliente`, `id_motoboy`, `data_entrega`, `forma_pagamento`, `valor_mercadoria`, `cobranca_extra`, `id_tabela_preco`, `nome_destinatario`, `end_entrega`, `end_num_entrega`, `end_bairro_entrega`, `end_cidade_entrega`, `end_estado_entrega`, `end_cep_entrega`, `end_comp_entrega`, `status_entrega`, `observacoes`) VALUES
-(2, 1, 1, 1, '2020-10-31', 'dinheiro', 107.90, 0.00, 1, 'Catharine Bueno', 'Rua Francisco Jardim', '622', 'Jardim Anchieta', 'Mauá', 'SP', '09361000', '', 'Entregue', 'Entregue para a própria cliente.'),
-(3, 1, 1, 2, '2020-10-31', 'dinheiro', 109.90, 0.00, 5, 'Maria das Dores', 'Rua Exemplo', '320', 'Bairro Campestre', 'Santo André', 'SP', '09472980', '', 'Retorno', 'Alterado boy de Bruno para Rodrigo'),
-(4, 2, 4, 1, '2020-10-31', 'dinheiro', 110.50, 0.00, 4, 'Flavia Tavares', 'Rua Masafusa Yokota', '6', 'Jardim Camila', 'Mauá', 'SP', '09361010', 'Casa 2', 'Entregue', 'Atualizada para Entregue'),
-(5, 2, 4, 3, '2020-10-31', 'cartão', 219.90, 0.00, 4, 'Augusto Bernardino de Campos', 'Rua Aquidaban', '560', 'Vila Nossa Senha das Vitórias', 'Mauá', 'SP', '09361150', 'Casa 2', 'Entregue', 'Alterada para Entregue'),
-(6, 1, 1, 4, '2020-10-31', 'cartão', 119.90, 0.00, 1, 'Igor Santos', 'Rua Campos Sales', '2190', 'Vila Bocaina', 'Mauá', 'SP', '09361450', 'Bloco 3 Apartamento 515', 'Em aberto', 'Teste 2'),
-(7, 1, 1, 2, '2020-10-31', 'cartão', 214.00, 5.00, 1, 'VITOR MOAES OS SANTOS', 'RUA EIRAS GARCIA', '159', 'VILA MONMENTO', 'SÃO PAULO', 'SP', '01550030', '', 'Retorno', 'Alterado boy de: Bruno para: Arnaldo'),
-(8, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(9, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(10, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(11, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(12, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(13, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(14, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(15, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(16, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(17, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(18, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(19, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(20, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(21, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(22, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', ''),
-(23, 1, 1, 2, '2020-11-05', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Em aberto', '');
+(2, 1, 1, 1, '2020-11-01', 'dinheiro', 107.90, 0.00, 1, 'Catharine Bueno', 'Rua Francisco Jardim', '622', 'Jardim Anchieta', 'Mauá', 'SP', '09361000', '', 'Entregue', 'Entregue para a própria cliente.'),
+(3, 1, 1, 2, '2020-11-01', 'dinheiro', 109.90, 0.00, 1, 'Maria das Dores', 'Rua Exemplo', '320', 'Bairro Campestre', 'Santo André', 'SP', '09472980', '', 'Retorno', 'Alterado boy de Bruno para Rodrigo'),
+(4, 2, 4, 1, '2020-11-01', 'dinheiro', 110.50, 0.00, 4, 'Flavia Tavares', 'Rua Masafusa Yokota', '6', 'Jardim Camila', 'Mauá', 'SP', '09361010', 'Casa 2', 'Entregue', 'Atualizada para Entregue'),
+(5, 2, 4, 3, '2020-11-01', 'cartão', 219.90, 0.00, 4, 'Augusto Bernardino de Campos', 'Rua Aquidaban', '560', 'Vila Nossa Senha das Vitórias', 'Mauá', 'SP', '09361150', 'Casa 2', 'Entregue', 'Alterada para Entregue'),
+(6, 1, 1, 4, '2020-11-01', 'cartão', 119.90, 0.00, 1, 'Igor Santos', 'Rua Campos Sales', '2190', 'Vila Bocaina', 'Mauá', 'SP', '09361450', 'Bloco 3 Apartamento 515', 'Retorno', 'Teste 2'),
+(7, 1, 1, 2, '2020-11-01', 'cartão', 214.00, 5.00, 1, 'VITOR MOAES OS SANTOS', 'RUA EIRAS GARCIA', '159', 'VILA MONMENTO', 'SÃO PAULO', 'SP', '01550030', '', 'Retorno', 'Alterado boy de: Bruno para: Arnaldo'),
+(8, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(9, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 6, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(10, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 9, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(11, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(12, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 6, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(13, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(14, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(15, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(16, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(17, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(18, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(19, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(20, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(21, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(22, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', ''),
+(23, 1, 1, 2, '2020-11-01', 'cartão', 109.90, 0.00, 1, 'Cliente Exemplo', 'Rua Exemplo', '600', 'Bairro Exemplo', 'Cidade Exemplo', 'SP', '09361000', '', 'Entregue', '');
 
 -- --------------------------------------------------------
 
@@ -178,10 +178,10 @@ CREATE TABLE `ordem_servico` (
 --
 
 INSERT INTO `ordem_servico` (`id_ordem`, `data_os`, `id_cliente`, `status_os`) VALUES
-(1, '2020-09-25', 1, 'Aberta'),
+(1, '2020-11-01', 1, 'Fechada'),
 (2, '2020-10-10', 4, 'Fechada'),
-(3, '2020-10-24', 5, 'Aberta'),
-(4, '2020-10-24', 1, 'Aberta');
+(3, '2020-10-24', 5, 'Fechada'),
+(4, '2020-10-24', 1, 'Fechada');
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,8 @@ CREATE TABLE `retornos` (
 
 INSERT INTO `retornos` (`id_retorno`, `flag`, `id_entrega`, `id_tabela`, `status_retorno`) VALUES
 (1, 'Retorno 1', 3, 12, 'Entregue'),
-(2, 'Retorno 1', 7, 12, 'Em aberto');
+(2, 'Retorno 1', 7, 12, 'Entregue'),
+(4, 'Retorno 1', 6, 12, 'Entregue');
 
 -- --------------------------------------------------------
 
@@ -361,7 +362,7 @@ ALTER TABLE `ordem_servico`
 -- AUTO_INCREMENT de tabela `retornos`
 --
 ALTER TABLE `retornos`
-  MODIFY `id_retorno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_retorno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tabela_preco`

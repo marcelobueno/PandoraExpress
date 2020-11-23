@@ -77,13 +77,14 @@ else
                     ?>
                     <label class="font-weight-normal" for="status_retorno"><b class="text-danger">Status Retorno:</b></label>
                     <select class="form-control" name="status_retorno">
-                        <option value="Em aberto">Em aberto</option>
-                        <option value="Em andamento">Em andamento</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelada">Cancelada</option>
+                        <option value="Em aberto"<?=($buscaRetornoInfo['status_retorno'] == 'Em aberto')? 'selected':''; ?>>Em aberto</option>
+                        <option value="Em andamento"<?=($buscaRetornoInfo['status_retorno'] == 'Em andamento')? 'selected':''; ?>>Em andamento</option>
+                        <option value="Entregue"<?=($buscaRetornoInfo['status_retorno'] == 'Entregue')? 'selected':''; ?>>Entregue</option>
+                        <option value="Cancelada"<?=($buscaRetornoInfo['status_retorno'] == 'Cancelada')? 'selected':''; ?>>Cancelada</option>
                     </select>
                     <p class="font-weight-normal mt-2"><b class="text-danger">Confirmar Retorno</b></p>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmaRetornoModal">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmaRetornoModal"
+                    <?=($buscaRetornoInfo['status_retorno'] == 'Entregue' || $buscaRetornoInfo['status_retorno'] == 'Cancelada')? 'disabled':''; ?>>
                         Confirmar
                     </button>
                     <div class="modal fade" id="confirmaRetornoModal" tabindex="-1" aria-labelledby="confirmaRetornoModalLabel" aria-hidden="true">
@@ -110,4 +111,6 @@ else
             <div class="col col-6 col-md-4 col-lg-4 col-xl-4"></div>
         </div>
     </div>
+    <form action="assets/Ocorrencias/Novo/Registrar_ret.php" method="post">
+    </form>
 </main>
