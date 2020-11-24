@@ -2,7 +2,7 @@
 
 session_start();
 
-require __DIR__.'/vendor/autoload.php';
+require __DIR__. '/vendor/autoload.php';
 
 if(!isset($_SESSION['administrador'])){
     $_SESSION['administrador'] = null;
@@ -49,6 +49,7 @@ else{
         case 'Visualizar-Entregas': include 'assets/Entregas/View/ViewOs.php'; break;
         case 'Detalhes-Entrega': include 'assets/Entregas/View/ViewEnt.php'; break;
         case 'Fechamento-Cliente': include 'assets/Relatorios/Relatorio_Cliente.php'; break;
+        case 'Fechamento-Retornos': include 'assets/Relatorios/Relatorio_Retornos.php'; break;
         case 'Fechamento-Motoboy': include 'assets/Relatorios/Relatorio_Motoboy.php'; break;
         case 'Fechamento-Gerencial': include 'assets/Relatorios/Relatorio_Gerencial.php'; break;
         default: include 'assets/Login.php'; break;

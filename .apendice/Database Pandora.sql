@@ -77,7 +77,10 @@ CREATE TABLE IF NOT EXISTS retornos(
 	flag ENUM('Retorno 1', 'Retorno 2', 'Retorno 3', 'Retorno 4', 'Retorno 5'),
 	id_entrega INT NOT NULL,
 	id_tabela INT NOT NULL,
+	id_cliente INT NOT NULL,
+	data_retorno DATE NOT NULL,
 	status_retorno ENUM('Em aberto', 'Em andamento', 'Entregue', 'Cancelada'),
+	CONSTRAINT fk_id_cliente_ret FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
 	CONSTRAINT fk_id_entrega FOREIGN KEY (id_entrega) REFERENCES entregas (id_entrega),
 	CONSTRAINT fk_id_tabelapreco FOREIGN KEY (id_tabela) REFERENCES tabela_preco (id_tabela_preco)
 );

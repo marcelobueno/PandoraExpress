@@ -12,7 +12,7 @@ $buscarClientesExec = mysqli_query($conn, $buscarClientes);
         <div class="container">
             <div class="text-center">
                 <br>
-                <h3>Fechamento - Cliente</h3>
+                <h3>Fechamento - Retornos</h3>
             </div>
             <div class="row mt-5">
                 <div class="col col-0 col-md-2 col-lg-2 col-xl-2">
@@ -21,7 +21,7 @@ $buscarClientesExec = mysqli_query($conn, $buscarClientes);
                 <div class="col col-12 col-md-8 col-lg-8 col-xl-8">
                     <div class="card">
                         <div class="ml-3 mr-3 mt-3 mb-3">
-                            <form action="./assets/Relatorios/Processar_Cliente.php" method="post" target="_blank">
+                            <form action="./assets/Relatorios/Processar_Retornos.php" method="post" target="_blank">
                                 <label class="font-weight-normal" for="cliente"><b class="text-danger">Selecione o Cliente: </b></label>
                                 <select class="form-control" name="cliente" id="">
                                     <?php

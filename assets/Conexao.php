@@ -11,4 +11,9 @@ $user = 'root';
 $pass = '';
 $database = 'pandora';
 
+/* $server = "pandoraexpress.mysql.dbaas.com.br";
+$user = "pandoraexpress";
+$pass = "MfB786860@";
+$database = "pandoraexpress"; */
+
 $conn = mysqli_connect($server, $user, $pass, $database);

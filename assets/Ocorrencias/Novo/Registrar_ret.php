@@ -18,6 +18,7 @@ if(isset($_POST['id_entrega']) && !empty($_POST['id_entrega']))
     $flag = $_POST['flag'];
     $motoboy = $_POST['motoboy'];
     $status_retorno = $_POST['status_retorno'];
+    $cliente = $_POST['id_cliente'];
 
     $query = "SELECT * FROM `retornos` WHERE retornos.id_entrega = $id_entrega";
     $exec = mysqli_query($conn, $query);
@@ -36,8 +37,8 @@ if(isset($_POST['id_entrega']) && !empty($_POST['id_entrega']))
         $query1 = "UPDATE `entregas` SET `status_entrega`= 'Retorno' WHERE entregas.id_entrega = $id_entrega";
         $exec1 = mysqli_query($conn, $query1);
 
-        $query2 = "INSERT INTO `retornos`(`id_retorno`, `flag`, `id_entrega`, `id_tabela`, `status_retorno`) 
-        VALUES (DEFAULT,'$flag',$id_entrega,$id_tabela,'$status_retorno')";
+        $query2 = "INSERT INTO `retornos`(`id_retorno`, `flag`, `id_entrega`, `id_tabela`, `id_cliente`, `status_retorno`) 
+        VALUES (DEFAULT,'$flag',$id_entrega,$id_tabela,$cliente,'$status_retorno')";
         $exec2 = mysqli_query($conn, $query2);
 
         $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Retorno registrado com sucesso!</div>';

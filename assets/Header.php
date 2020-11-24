@@ -17,7 +17,7 @@
                 <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                     <img class="img-fluid mt-3 mb-3" src="img/Logo-Pandora.png" alt="Logo da Pandora Express" title="Pandora Express" width="200px">
                 </div>
-                <div class="col col-0 col-md-4 col-lg-4 col-xl-4"></div>
+                <!--<div class="col col-0 col-md-4 col-lg-4 col-xl-4"></div>
                 <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                     <div class="float-right mt-3">
                         <span class="text-muted" style="font-size: 14px;">Olá, <?php echo $_SESSION['administrador'];?><br></span>
@@ -33,7 +33,7 @@
                             }
                         ?>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #495057;">
@@ -72,6 +72,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                 <a class="dropdown-item" href="?pagina=Fechamento-Cliente">Fechamento - Cliente</a>
+                                <a class="dropdown-item" href="?pagina=Fechamento-Retornos">Fechamento - Retornos</a>
                                 <a class="dropdown-item" href="?pagina=Fechamento-Motoboy">Fechamento - Motoboy</a>
                                 <a class="dropdown-item" href="?pagina=Fechamento-Gerencial">Fechamento - Gerencial</a>
                             </div>

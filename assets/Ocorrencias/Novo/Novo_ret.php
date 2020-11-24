@@ -83,6 +83,7 @@ else
                         <option value="Cancelada">Cancelada</option>
                     </select>
                     <p class="font-weight-normal mt-2"><b class="text-danger">Confirmar Retorno</b></p>
+                    <input type="text" name="id_cliente" hidden value="<?= $row['id_cliente']; ?>">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmaRetornoModal">
                         Confirmar
                     </button>
