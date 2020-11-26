@@ -1,58 +1,49 @@
-html, body
-{
+html, body{
     margin: 0;
     padding: 0;
     background-color: #f0efeb;
 }
 
-.cabecalho 
-{
+.cabecalho {
     background-color: ghostwhite;
 }
 
-.corpo
-{
+.corpo {
     min-height: 700px;
     background-size: 100%;
     background-color: #e9ecef;
     /*background-image: url(../img/bgsp.jpg);*/
 }
 
-.menuItem:hover
-{
+.menuItem:hover {
     border-radius: 5px;
     padding: 0, 12px, 12px, 0;
     background-color: #6c757d;
 }
 
-.rodapLogoPad
-{
+.rodapLogoPad {
     padding-left: 140px;
 }
 
-.tdItemBorder
-{
+.tdItemBorder {
     border-radius: 3px;
     border: solid 1px #EAB819;
 }
-#iptCadCliNome 
-{
+
+#iptCadCliNome {
     color: black;
 }
 
-.contentResponsive
-{
+.contentResponsive {
     justify-content: space-between;
 }
 
-.cardInfo
-{
+.cardInfo {
     border-radius: 10px;
     height: 100px;
 }
 
-.cardInfoOne
-{
+.cardInfoOne {
     height: 100px;
     width: 30%;
     text-align: center;
@@ -61,36 +52,31 @@ html, body
     padding-top: 20px;
 }
 
-.cardItemCount
-{
+.cardItemCount {
     padding-top: 10px;
     /*padding-left: 20px;*/
     font-size: 60px;
 }
 
-.cardItemText
-{
+.cardItemText {
     padding-top: 53px;
     padding-left: 10px;
 }
 
-.cardInfoMain
-{
+.cardInfoMain {
     height: 530px;
     width: 350px;
     border-radius: 10px;
     background-color: #D9D9D9;
 }
 
-.cardEntInfo
-{
+.cardEntInfo {
     height: auto;
     min-height: 400px;
     border-radius: 10px;
 }
 
-#cardTitleEnt
-{
+#cardTitleEnt {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-left: 14px;
@@ -98,8 +84,7 @@ html, body
     padding-bottom: 2px;
 }
 
-#cardTitleEnt2
-{
+#cardTitleEnt2 {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin-left: 14px;
@@ -107,3 +92,11 @@ html, body
     padding-bottom: 2px;
 }
 
+.cardInfoDetails {
+    border-radius: 7px;
+    height: auto;
+    background-color: #fff;
+    -webkit-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
+    box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
+}

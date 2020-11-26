@@ -45,6 +45,15 @@ else{
         case 'Cadastro-de-Tabela': include 'assets/Cadastros/Novo/Tabela_Preco.php'; break;
         case 'Cadastro-de-Ordem-de-Servico': include 'assets/Entregas/Nova/Ordem_Servico.php'; break;
         case 'Cadastro-de-Entrega': include 'assets/Entregas/Nova/Entrega.php'; break;
+        case 'Visualizar-Cliente': include 'assets/Cadastros/Views/View_Cliente.php'; break;
+        case 'Editar-Cliente': include 'assets/Cadastros/Views/View_Cliente.php'; break;
+        case 'Deletar-Cliente': include 'assets/Cadastros/Views/View_Cliente.php'; break;
+        case 'Visualizar-Motoboy': include 'assets/Cadastros/Views/View_Motoboy.php'; break;
+        case 'Editar-Motoboy': include 'assets/Cadastros/Views/View_Motoboy.php'; break;
+        case 'Deletar-Motoboy': include 'assets/Cadastros/Views/View_Motoboy.php'; break;
+        case 'Visualizar-Tabela': include 'assets/Cadastros/Views/View_Tabela.php'; break;
+        case 'Editar-Tabela': include 'assets/Cadastros/Views/View_Tabela.php'; break;
+        case 'Deletar-Tabela': include 'assets/Cadastros/Views/View_Tabela.php'; break;
         case 'Nova-Ocorrencia': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
         case 'Visualizar-Entregas': include 'assets/Entregas/View/ViewOs.php'; break;
         case 'Detalhes-Entrega': include 'assets/Entregas/View/ViewEnt.php'; break;
