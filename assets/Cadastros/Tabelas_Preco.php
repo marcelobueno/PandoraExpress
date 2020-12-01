@@ -5,6 +5,12 @@ include './assets/Verifica_login.php';
     <main class="corpo">
         <div class="container">
             <span><br></span>
+            <?php 
+                if(isset($_SESSION['alert'])){
+                    echo $_SESSION['alert'];
+                    unset($_SESSION['alert']);
+                }
+            ?>
             <h3 class="text-dark text-center">Tabelas de Preço</h3>
             <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">

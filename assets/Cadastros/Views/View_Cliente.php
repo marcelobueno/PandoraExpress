@@ -70,18 +70,18 @@ elseif(isset($_POST['editar_cliente']))
                 <div class="col col-12 col-md-10 col-lg-10 col-xl-10">
                     <div class="card cardInfoDetails">
                         <div class="mt-3 mr-3 mb-3 ml-3">
-                            <form action="#" method="post">
-                                <label class="font-weight-bolder text-info" for="nome_cliente">Razão Social: </label>
-                                <input class="form-control" type="text" name="nome_cliente" value="<?= $result['nome_cliente']; ?>" required>
+                            <form action="assets/Cadastros/Novo/AtualizaCli.php" method="post">
+                                <label class="font-weight-bolder text-info" for="nome">Razão Social: </label>
+                                <input class="form-control" type="text" name="nome" value="<?= $result['nome_cliente']; ?>" required>
                                 <br>
-                                <label class="font-weight-bolder text-info" for="cnpj_cliente">CPF/CNPJ: </label>
-                                <input class="form-control" type="text" name="cnpj_cliente" value="<?= $result['cnpj_cliente']; ?>" required>
+                                <label class="font-weight-bolder text-info" for="cnpj">CPF/CNPJ: </label>
+                                <input class="form-control" type="text" name="cnpj" value="<?= $result['cnpj_cliente']; ?>" required>
                                 <br>
-                                <label class="font-weight-bolder text-info" for="tel_cliente">Telefone: </label>
-                                <input class="form-control" type="text" name="tel_cliente" value="<?= $result['tel_cliente']; ?>" required>
+                                <label class="font-weight-bolder text-info" for="tel">Telefone: </label>
+                                <input class="form-control" type="text" name="tel" value="<?= $result['tel_cliente']; ?>" required>
                                 <br>
-                                <label class="font-weight-bolder text-info" for="email_cliente">E-mail: </label>
-                                <input class="form-control" type="text" name="email_cliente" value="<?= $result['email_cliente']; ?>" required>
+                                <label class="font-weight-bolder text-info" for="email">E-mail: </label>
+                                <input class="form-control" type="text" name="email" value="<?= $result['email_cliente']; ?>" required>
                                 <br>
                                 <div class="form-group">
                                     <div class="row">
@@ -124,7 +124,7 @@ elseif(isset($_POST['editar_cliente']))
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-lg btn-info" type="submit" name="id_cliente" value="<?= $cliente; ?>">Salvar</button>
+                                    <button class="btn btn-lg btn-info" type="submit" name="id" value="<?= $cliente; ?>">Salvar</button>
                                 </div>
                             </form>
                         </div>
