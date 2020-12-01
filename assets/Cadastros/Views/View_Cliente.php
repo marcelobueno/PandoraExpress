@@ -95,7 +95,7 @@ elseif(isset($_POST['editar_cliente']))
                                         </div>
                                         <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                             <label class="font-weight-bolder text-info" for="complemento">Complemento: </label>
-                                            <input class="form-control" type="text" name="complemento" value="<?= $result['end_comp_cliente']; ?>" required>
+                                            <input class="form-control" type="text" name="complemento" value="<?= $result['end_comp_cliente']; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +141,10 @@ elseif(isset($_POST['deletar_cliente']))
 { ?>
     <main class="corpo">
         <div class="container">
-            <h1>Deletar</h1>
+        <br><br><br><br><br><br><br><br><br>
+            <div class="text-center">
+                <h5 class="text-danger">No momento esta função não está disponível.</h5>
+            </div>
         </div>
     </main>
 <?php

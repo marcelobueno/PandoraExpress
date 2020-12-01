@@ -24,7 +24,7 @@ $estado = $_POST['estado'];
 $cep = $_POST['cep'];
 $id = $_POST['id'];
 
-if(!empty($nome) || !empty($cnpj) || !empty($tel) || !empty($email) || !empty($endereco) || !empty($complemento)
+if(!empty($nome) || !empty($cnpj) || !empty($tel) || !empty($email) || !empty($endereco) 
 || !empty($bairro) || !empty($cidade) || !empty($estado) || !empty($cep)){
     
     $atualizaCliente = "UPDATE `clientes` SET 
