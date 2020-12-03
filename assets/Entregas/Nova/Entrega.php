@@ -17,9 +17,10 @@ include './assets/Verifica_login.php';
             <form action="assets/Entregas/Nova/CadEnt.php" method="post">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col">
+                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                             <label class="font-weight-normal" for="ordem_servico">Ordem de Serviço: </label>
                             <select class="form-control" name="ordem_servico" id="iptCadEntOrdem" required>
+                                <option value="">Selecione uma opção</option>
                                 <?php
                                     $sql = 'SELECT OS.id_ordem, OS.id_cliente, CLI.nome_cliente FROM ordem_servico AS OS, clientes AS CLI 
                                     WHERE OS.status_os = "Aberta" AND OS.id_cliente = CLI.id_cliente';
@@ -33,9 +34,10 @@ include './assets/Verifica_login.php';
                                 ?>
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                             <label class="font-weight-normal" for="tabela_preco">Tabela Preco: </label>
                             <select class="form-control" name="tabela_preco">
+                                    <option value="">Selecione uma opção</option>
                             <?php
                                     $sql = 'SELECT `id_cliente`, `nome_tabela` from tabela_preco ORDER BY `nome_tabela`';
                                     
@@ -48,22 +50,22 @@ include './assets/Verifica_login.php';
                                 ?>
                             </select>
                         </div>
-                        <div class="col">
+                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                             <label class="font-weight-normal" for="nome_dest">Nome destinatário: </label>
                             <input class="form-control" type="text" name="nome_dest" id="iptCadEntNomeDest" required>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <div class="row">
-                            <div class="col">
+                            <div class="colcol col-8 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="endereco">Endereço: </label>
                                 <input class="form-control" type="text" name="endereco" id="iptCadEntEndereco" required>
                             </div>
-                            <div class="col col-2">
+                            <div class="col col-4">
                                 <label class="font-weight-normal" for="numero">Número: </label>
                                 <input class="form-control" type="text" name="numero" id="iptCadEntNumero" required>
                             </div>
-                            <div class="col">
+                            <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="complemento">Complemento (Opcional): </label>
                                 <input class="form-control" type="text" name="complemento" id="iptCadEntComplemento">
                             </div>
@@ -71,11 +73,11 @@ include './assets/Verifica_login.php';
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col">
+                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="bairro">Bairro: </label>
                                 <input class="form-control" type="text" name="bairro" id="iptCadEntBairro" required>
                             </div>
-                            <div class="col">
+                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="cidade">Cidade: </label>
                                 <input class="form-control" type="text" name="cidade" id="iptCadEntCidade" required>
                             </div>
@@ -88,16 +90,17 @@ include './assets/Verifica_login.php';
                                 </select>
                             </div>
                             <div class="col">
-                                <label class="font-weight-normal" for="cep">CEP (Somente números): </label>
-                                <input class="form-control" type="text" name="cep" id="iptCadEntCep" required>
+                                <label class="font-weight-normal" for="cep">CEP: </label>
+                                <input class="form-control" type="text" name="cep" id="iptCadEntCep" placeholder="09361000" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col">
+                            <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="motoboy">Motoboy: </label>
                                 <select class="form-control" name="motoboy" id="" required>
+                                    <option value="">Selecione uma opção</option>
                                     <?php
                                         $sql = "SELECT `id_motoboy`, `nome_motoboy` FROM `motoboys`";
                                         $exec = mysqli_query($conn, $sql);
@@ -109,25 +112,31 @@ include './assets/Verifica_login.php';
                                     ?>
                                 </select>
                             </div>
-                            <div class="col">
+                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="data">Data da Entrega: </label>
                                 <input class="form-control" type="date" name="data" id="" required>
                             </div>
-                            <div class="col">
+                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-normal" for="forma_pagamento">Forma de Pagamento: </label>
                                 <select class="form-control" name="forma_pagamento" id="">
+                                    <option value="">Selecione uma opção</option>
                                     <option value="dinheiro">Dinheiro</option>
                                     <option value="cartão">Cartão</option>
                                 </select>
                             </div>
-                            <div class="col">
+                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4 mt-3">
                                 <label class="font-weight-normal" for="valor">Valor da Mercadoria: </label>
-                                <input class="form-control" type="number" step="0.10" name="valor" id="">
+                                <input class="form-control" type="number" step="0.10" name="valor" placeholder="R$">
+                            </div>
+                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4 mt-3">
+                                <label class="font-weight-normal" for="nf_origem">NF de venda: </label>
+                                <input class="form-control" type="text" name="nf_origem" placeholder="EX: 15123" required>
                             </div>
                         </div>
                     </div>
                 </div>
                 <button class="btn btn-lg btn-outline-dark" type="submit">Registrar</button>
             </form>
+            <br>
         </div>
     </main>

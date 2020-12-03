@@ -25,6 +25,7 @@ $motoboy = $_POST['motoboy'];
 $data = $_POST['data'];
 $pagamento = $_POST['forma_pagamento'];
 $valor = $_POST['valor'];
+$nf = $_POST['nf_origem'];
 
 $sql = "SELECT `id_cliente` FROM `ordem_servico` WHERE ordem_servico.id_ordem = $id_os";
 $exec = mysqli_query($conn, $sql);
@@ -51,9 +52,9 @@ else
     $sql = "INSERT INTO `entregas`(`id_entrega`, `id_ordem_servico`, `id_cliente`, `id_motoboy`, 
     `data_entrega`, `forma_pagamento`, `valor_mercadoria`, `id_tabela_preco`, `nome_destinatario`, 
     `end_entrega`, `end_num_entrega`, `end_bairro_entrega`, `end_cidade_entrega`, `end_estado_entrega`, 
-    `end_cep_entrega`, `end_comp_entrega`, `status_entrega`) VALUES 
+    `end_cep_entrega`, `end_comp_entrega`, `status_entrega`, `nf_origem`) VALUES 
     (DEFAULT,$id_os,$id_cliente,$motoboy,'$data','$pagamento',$valor,$id_tabela,'$nome',
-    '$endereco',$numero,'$bairro','$cidade','$estado','$cep','$complemento','Em Aberto')";
+    '$endereco',$numero,'$bairro','$cidade','$estado','$cep','$complemento','Em Aberto','$nf')";
 
     $exec = mysqli_query($conn, $sql);
 

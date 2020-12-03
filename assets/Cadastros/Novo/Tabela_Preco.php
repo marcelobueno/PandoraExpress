@@ -20,6 +20,7 @@ include './assets/Verifica_login.php';
                         <div class="col">
                             <label class="font-weight-normal" for="cliente">Selecione o Cliente: </label>
                             <select class="form-control" name="cliente" id="iptCadTblCliente">
+                                <option value="null">Selecione o cliente</option>
                                 <?php 
                                     $sql = "SELECT `id_cliente`, `nome_cliente` FROM `clientes` ORDER BY `nome_cliente`";
                                     $exec = mysqli_query($conn, $sql);

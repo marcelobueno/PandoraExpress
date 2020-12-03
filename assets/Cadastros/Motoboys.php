@@ -25,15 +25,15 @@ include './assets/Formatar.php';
                 </thead>
                 <tbody>
                     <?php
-
+                    $count = 1;
                     $sql = "SELECT `id_motoboy`, `nome_motoboy`, `cpf_motoboy`, `tel_motoboy`
-                    FROM `motoboys`";
+                    FROM `motoboys` WHERE motoboys.status_motoboy = 'Ativo'";
 
                     $busca_clientes = mysqli_query($conn, $sql);
 
                     while($row = mysqli_fetch_assoc($busca_clientes)){
                         $cpf = $row['cpf_motoboy'];
-                        $tel = $row['tel_motoboy']; ?>
+                        $tel = $row['tel_motoboy'];  ?>
                     <tr>
                         <td><?= $row['id_motoboy']; ?></td>
                         <td><?= $row['nome_motoboy']; ?></td>
@@ -57,20 +57,118 @@ include './assets/Formatar.php';
                                         </svg>
                                     </button>
                                 </form>
-                                <form action="?pagina=Deletar-Motoboy" method="post">
-                                    <button class="btn btn-sm" type="submit" name="deletar_motoboy" value="<?= $row['id_motoboy']; ?>">
-                                        <svg title="Deletar" width="1em" height="1em" viewBox="0 0 16 16" class="text-danger bi bi-file-earmark-excel" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
-                                            <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
-                                            <path fill-rule="evenodd" d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z"/>
-                                        </svg>
-                                    </button>
-                                </form>
+                                <!--Modal para desativar motoboy-->
+                                <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#desativaMotModal<?= $count; ?>">
+                                    <svg title="Deletar" width="1em" height="1em" viewBox="0 0 16 16" class="text-danger bi bi-file-earmark-excel" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                                        <path fill-rule="evenodd" d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z"/>
+                                    </svg>
+                                </button>
+                                <div class="modal fade" id="desativaMotModal<?= $count; ?>" tabindex="-1" aria-labelledby="desativaMotModal<?= $count; ?>Label" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-danger" id="desativaMotModal<?= $count; ?>Label">Atenção!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Tem certeza que deseja desativar este Motoboy ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                                                <form action="assets/Cadastros/Desativar.php" method="post">
+                                                    <button class="btn btn-outline-danger" type="submit" name="id_motoboy" value="<?= $row['id_motoboy']; ?>">
+                                                        Desativar
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Fim do modal-->
                             </div>
                         </td>
                     </tr>
-                    <?php } ?>
+                    <?php $count += 1; } ?>
                 </tbody>
             </table>
+            <br><br>
+            <?php
+                $buscaInativos = "SELECT * FROM `motoboys` WHERE motoboys.status_motoboy = 'Inativo'";
+                $buscaInativosExec = mysqli_query($conn, $buscaInativos);
+                $linhas = mysqli_num_rows($buscaInativosExec);
+
+                if($linhas > 0){ ?>
+                <div class="accordion mt-3" id="accordionMotoboy">
+                    <div class="">
+                        <div class="" id="headingMotoboy">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block badge-dark text-left" type="button" data-toggle="collapse" data-target="#collapseMotoboy" aria-expanded="true" aria-controls="collapseMotoboy">
+                                
+                                <h5 class="text-light dropdown-toggle text-center">Motoboys inativos</h5>
+                                
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseMotoboy" class="collapse text-center" aria-labelledby="headingMotoboy" data-parent="#accordionMotoboy">
+                            <div class="card-body text-danger">
+                                <table id="" class="display table table-bordered" style="width:100%;">
+                                    <thead class="bg-danger text-light">
+                                        <tr>
+                                            <th width="100px">ID Motoboy</th>
+                                            <th>Nome Completo</th>
+                                            <th>CPF/CNPJ</th>
+                                            <th>Telefone</th>
+                                            <th width="100px" class="text-center">Reativar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while($result = mysqli_fetch_assoc($buscaInativosExec)){ ?>
+                                            <tr>
+                                                <td><?= $result['id_motoboy']; ?></td>
+                                                <td><?= $result['nome_motoboy']; ?></td>
+                                                <td><?= $result['cpf_motoboy']; ?></td>
+                                                <td><?= $result['tel_motoboy']; ?></td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#reativaMotModal">
+                                                        Reativar
+                                                    </button>
+                                                    <div class="modal fade" id="reativaMotModal" tabindex="-1" aria-labelledby="reativaMotModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title text-danger" id="reativaMotModalLabel">Atenção!</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Tem certeza que deseja reativar esse motoboy ?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                                                    <form action="assets/Cadastros/Reativar.php" method="post">
+                                                                        <button class="btn btn-outline-success" type="submit" name="id_motoboy" value="<?= $result['id_motoboy']; ?>">
+                                                                            Reativar
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            <?php } ?>
         </div>
     </main>

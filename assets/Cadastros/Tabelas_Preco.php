@@ -15,7 +15,7 @@ include './assets/Verifica_login.php';
             <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID da Tabela</th>
+                        <th>ID</th>
                         <th>Nome da Tabela</th>
                         <th>Cliente</th>
                         <th>Cobrança</th>
@@ -24,11 +24,11 @@ include './assets/Verifica_login.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-
+                <?php
+                    $count = 1;
                     $sql = "SELECT `id_tabela_preco`, `nome_tabela`, `nome_cliente`, `tipo_cobranca`, `valor_cobranca`
                     FROM `tabela_preco`, `clientes`
-                    WHERE tabela_preco.id_cliente = clientes.id_cliente";
+                    WHERE tabela_preco.id_cliente = clientes.id_cliente AND tabela_preco.status_tabela = 'Ativo'";
 
                     $busca_clientes = mysqli_query($conn, $sql);
 
@@ -57,20 +57,123 @@ include './assets/Verifica_login.php';
                                         </svg>
                                     </button>
                                 </form>
-                                <form action="?pagina=Deletar-Tabela" method="post">
-                                    <button class="btn btn-sm" type="submit" name="deletar_tabela" value="<?= $row['id_tabela_preco']; ?>">
-                                        <svg title="Deletar" width="1em" height="1em" viewBox="0 0 16 16" class="text-danger bi bi-file-earmark-excel" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
-                                            <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
-                                            <path fill-rule="evenodd" d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z"/>
-                                        </svg>
-                                    </button>
-                                </form>
+                                <!--Modal para desativar tabela-->
+                                <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#desativaTblModal<?= $count; ?>">
+                                    <svg title="Deletar" width="1em" height="1em" viewBox="0 0 16 16" class="text-danger bi bi-file-earmark-excel" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                                        <path fill-rule="evenodd" d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z"/>
+                                    </svg>
+                                </button>
+                                <div class="modal fade" id="desativaTblModal<?= $count; ?>" tabindex="-1" aria-labelledby="desativaTblModal<?= $count; ?>Label" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-danger" id="desativaTblModal<?= $count; ?>Label">Atenção!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Tem certeza que deseja desativar esta Tabela ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                                                <form action="assets/Cadastros/Desativar.php" method="post">
+                                                    <button class="btn btn-outline-danger" type="submit" name="id_tabela" value="<?= $row['id_tabela_preco']; ?>">
+                                                        Desativar
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Fim do modal-->
                             </div>
                         </td>
                     </tr>
-                    <?php } ?>
+                <?php $count++;
+                } ?>
                 </tbody>
             </table>
+            <br><br>
+            <?php
+                $buscaInativos = "SELECT `id_tabela_preco`, `nome_tabela`, `nome_cliente`, `tipo_cobranca`, `valor_cobranca`
+                FROM `tabela_preco`, `clientes`
+                WHERE tabela_preco.id_cliente = clientes.id_cliente AND tabela_preco.status_tabela = 'Inativo'";
+                $buscaInativosExec = mysqli_query($conn, $buscaInativos);
+                $linhas = mysqli_num_rows($buscaInativosExec);
+
+                if($linhas > 0){ ?>
+                <div class="accordion mt-3" id="accordionTabela">
+                    <div class="">
+                        <div class="" id="headingTabela">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block badge-dark text-left" type="button" data-toggle="collapse" data-target="#collapseTabela" aria-expanded="true" aria-controls="collapseTabela">
+                                
+                                <h5 class="text-light dropdown-toggle text-center">Tabelas inativas</h5>
+                                
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTabela" class="collapse text-center" aria-labelledby="headingTabela" data-parent="#accordionTabela">
+                            <div class="card-body text-danger">
+                                <table id="" class="display table table-bordered" style="width:100%;">
+                                    <thead class="bg-danger text-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nome da Tabela</th>
+                                            <th>Cliente</th>
+                                            <th>Cobrança</th>
+                                            <th>Valor</th>
+                                            <th class="text-center">Detalhes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while($result = mysqli_fetch_assoc($buscaInativosExec)){ ?>
+                                            <tr>
+                                                <td><?= $result['id_tabela_preco']; ?></td>
+                                                <td><?= $result['nome_tabela']; ?></td>
+                                                <td><?= $result['nome_cliente']; ?></td>
+                                                <td><?= $result['tipo_cobranca']; ?></td>
+                                                <td><?= $result['valor_cobranca']; ?></td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#reativaTblModal">
+                                                        Reativar
+                                                    </button>
+                                                    <div class="modal fade" id="reativaTblModal" tabindex="-1" aria-labelledby="reativaTblModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title text-danger" id="reativaTblModalLabel">Atenção!</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Tem certeza que deseja reativar essa tabela ?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                                                    <form action="assets/Cadastros/Reativar.php" method="post">
+                                                                        <button class="btn btn-outline-success" type="submit" name="id_tabela" value="<?= $result['id_tabela_preco']; ?>">
+                                                                            Reativar
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            <?php } ?>
         </div>
     </main>

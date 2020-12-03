@@ -25,9 +25,9 @@ require './assets/Formatar.php';
                 </thead>
                 <tbody>
                     <?php
-
+                    $count = 1;
                     $sql = "SELECT `id_cliente`, `nome_cliente`, `cnpj_cliente`, `tel_cliente`
-                    FROM `clientes`";
+                    FROM `clientes` WHERE clientes.status_cliente = 'Ativo'";
 
                     $busca_clientes = mysqli_query($conn, $sql);
 
@@ -57,20 +57,121 @@ require './assets/Formatar.php';
                                         </svg>
                                     </button>
                                 </form>
-                                <form action="?pagina=Deletar-Cliente" method="post">
-                                    <button class="btn btn-sm" type="submit" name="deletar_cliente" value="<?= $row['id_cliente']; ?>">
-                                        <svg title="Deletar" width="1em" height="1em" viewBox="0 0 16 16" class="text-danger bi bi-file-earmark-excel" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
-                                            <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
-                                            <path fill-rule="evenodd" d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z"/>
-                                        </svg>
-                                    </button>
-                                </form>
+                                <!--Modal para desativar cliente-->
+                                <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#desativaCliModal<?= $count; ?>">
+                                    <svg title="Deletar" width="1em" height="1em" viewBox="0 0 16 16" class="text-danger bi bi-file-earmark-excel" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+                                        <path fill-rule="evenodd" d="M5.18 6.616a.5.5 0 0 1 .704.064L8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 0 1 .064-.704z"/>
+                                    </svg>
+                                </button>
+                                <div class="modal fade" id="desativaCliModal<?= $count; ?>" tabindex="-1" aria-labelledby="desativaCliModal<?= $count; ?>Label" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-danger" id="desativaCliModal<?= $count; ?>Label">Atenção!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Tem certeza que deseja desativar este cliente ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                                                <form action="assets/Cadastros/Desativar.php" method="post">
+                                                    <button class="btn btn-outline-danger" type="submit" name="id_cliente" value="<?= $row['id_cliente']; ?>">
+                                                        Desativar
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Fim do modal-->
                             </div>
                         </td>
                     </tr>
-                    <?php } ?>
+                    <?php $count += 1; } ?>
                 </tbody>
             </table>
+            <br><br>
+            <?php
+                $buscaInativos = "SELECT `id_cliente`, `nome_cliente`, `cnpj_cliente`, `tel_cliente`
+                FROM `clientes` WHERE clientes.status_cliente = 'Inativo'";
+                $buscaInativosExec = mysqli_query($conn, $buscaInativos);
+                $linhas = mysqli_num_rows($buscaInativosExec);
+
+                if($linhas > 0){ ?>
+                    <div class="accordion mt-3" id="accordionCliente">
+                    <div class="">
+                        <div class="" id="headingCliente">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block badge-dark text-left" type="button" data-toggle="collapse" data-target="#collapseCliente" aria-expanded="true" aria-controls="collapseCliente">
+                                
+                                <h5 class="text-light dropdown-toggle text-center">Clientes inativos</h5>
+                                
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseCliente" class="collapse text-center" aria-labelledby="headingCliente" data-parent="#accordionCliente">
+                            <div class="card-body text-danger">
+                                <table id="" class="display table table-bordered" style="width:100%;">
+                                    <thead class="bg-danger text-light">
+                                        <tr>
+                                            <th>ID do Cliente</th>
+                                            <th>Nome/Razão Social</th>
+                                            <th>CPF/CNPJ</th>
+                                            <th>Telefone</th>
+                                            <th class="text-center">Reativar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php while($result = mysqli_fetch_assoc($buscaInativosExec)){
+                                            $cpf_cnpj = $result['cnpj_cliente'];
+                                            $tel = $result['tel_cliente']; ?>
+                                            <tr>
+                                                <td><?= $result['id_cliente']; ?></td>
+                                                <td><?= $result['nome_cliente']; ?></td>
+                                                <td><?php FormatarDoc($cpf_cnpj); ?></td>
+                                                <td><?php FormatarTel($tel); ?></td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#reativaCliModal">
+                                                        Reativar
+                                                    </button>
+                                                    <div class="modal fade" id="reativaCliModal" tabindex="-1" aria-labelledby="reativaCliModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title text-danger" id="reativaCliModalLabel">Atenção!</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Tem certeza que deseja reativar esse cliente ?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                                                                    <form action="assets/Cadastros/Reativar.php" method="post">
+                                                                        <button class="btn btn-outline-success" type="submit" name="id_cliente" value="<?= $result['id_cliente']; ?>">
+                                                                            Reativar
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            <br><br>
         </div>
     </main>
