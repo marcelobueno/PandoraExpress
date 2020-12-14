@@ -1,11 +1,12 @@
-CREATE DATABASE pandora
+/* CREATE DATABASE pandora
 
 CREATE TABLE IF NOT EXISTS usuarios(
 	id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	login_usuario VARCHAR(50) NOT NULL UNIQUE,
 	senha_usuario VARCHAR(50) NOT NULL,
 	nivel_acesso INT NOT NULL,
-	nome_usuario VARCHAR(50) NOT NULL
+	nome_usuario VARCHAR(50) NOT NULL,
+	status_usuario ENUM('Ativo','Inativo') NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS clientes(
@@ -20,7 +21,8 @@ CREATE TABLE IF NOT EXISTS clientes(
 	end_bairro_cliente VARCHAR(100) NOT NULL,
 	end_cidade_cliente VARCHAR(255) NOT NULL,
 	end_estado_cliente VARCHAR(2) NOT NULL,
-	end_cep_cliente VARCHAR(8) NOT NULL
+	end_cep_cliente VARCHAR(8) NOT NULL,
+	status_cliente ENUM('Ativo','Inativo') NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS motoboys(
@@ -35,7 +37,8 @@ CREATE TABLE IF NOT EXISTS motoboys(
 	end_bairro_motoboy VARCHAR(100) NOT NULL,
 	end_cidade_motoboy VARCHAR(255) NOT NULL,
 	end_estado_motoboy VARCHAR(2) NOT NULL,
-	end_cep_motoboy VARCHAR(8) NOT NULL
+	end_cep_motoboy VARCHAR(8) NOT NULL,
+	status_motoboy ENUM('Ativo','Inativo') NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS ordem_servico(
@@ -52,7 +55,8 @@ CREATE TABLE IF NOT EXISTS tabela_preco(
 	id_cliente INT NOT NULL,
 	tipo_cobranca ENUM('Entrega', 'Distancia', 'Hora'),
 	valor_cobranca DOUBLE(10,2) NOT NULL,
-	CONSTRAINT fk_id_tabela_cliente FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente)
+	CONSTRAINT fk_id_tabela_cliente FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
+	status_tabela ENUM('Ativo','Inativo') NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS entregas(
@@ -66,6 +70,7 @@ CREATE TABLE IF NOT EXISTS entregas(
 	id_tabela_preco INT NOT NULL,
 	status_entrega ENUM('Em aberto', 'Em andamento', 'Entregue', 'Cancelada', 'Retorno') NOT NULL,
 	observacoes TEXT NOT NULL,
+	nf_origem VARCHAR(45) NOT NULL,
 	CONSTRAINT fk_id_ordem FOREIGN KEY (id_ordem_servico) REFERENCES ordem_servico (id_ordem),
 	CONSTRAINT fk_id_cliente_entrega FOREIGN KEY (id_cliente) REFERENCES clientes (id_cliente),
 	CONSTRAINT fk_id_motoboy FOREIGN KEY (id_motoboy) REFERENCES motoboys (id_motoboy),
@@ -87,5 +92,6 @@ CREATE TABLE IF NOT EXISTS retornos(
 
 CREATE TABLE IF NOT EXISTS anotacoes(
 	id_anotacao INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	anotacao TEXT NOT NULL
-)
+	anotacao TEXT NOT NULL,
+	nivel_urgencia ENUM('Baixo', 'Medio', 'Alto') NOT NULL
+) */

@@ -28,9 +28,11 @@
                             elseif($_SESSION['nivel_acesso'] == 2){
                                 ?><span class="text-sm text-muted" style="font-size: 12px;">Gerente Geral<br></span><?php
                             }
-                            else{
+                            elseif($_SESSION['nivel_acesso'] == 1){
                                 ?><span class="text-sm text-muted" style="font-size: 12px;">Operador<br></span><?php
                             }
+                            else
+                                ?><span class="text-sm text-muted" style="font-size: 12px;">Expedição<br></span><?php
                         ?>
                     </div>
                 </div>-->
@@ -47,6 +49,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" href="?pagina=Home">Início</a>
                         </li>
+                        <?php
+
+                        if($_SESSION['nivel_acesso'] >= 1){ ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Cadastros
@@ -112,7 +117,7 @@
                         <?php 
                         if($_SESSION['nivel_acesso'] >= 2){?>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Usuários
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
@@ -124,6 +129,18 @@
                                 <div class="dropdown-menu" aria-labelledby="#navNovoDropdown">
                                     <a class="dropdown-item" href="?pagina=Cadastro-de-usuario">Usuário</a>
                                 </div>
+                            </div>
+                        </li>
+                        <?php }
+                        } if($_SESSION['nivel_acesso'] == 0){ ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Lançamentos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+                                <a class="dropdown-item" href="?pagina=Entregas-Lancadas">Entregas lançadas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="?pagina=Lancamento-Entrega">Lançar entregas</a>
                             </div>
                         </li>
                         <?php } ?>

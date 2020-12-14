@@ -1,0 +1,58 @@
+<?php
+
+require __DIR__."/../../Conexao.php";
+require __DIR__."/../../Verifica_login.php";
+
+?>
+<main class="corpo">
+        <div class="container">
+            <br>
+            <?php
+                if(isset($_SESSION['alert']))
+                {
+                    echo $_SESSION['alert'];
+                    unset($_SESSION['alert']);
+                }
+            ?>
+            <h3 class="text-center">Lançar entregas</h3>
+            <div class="row mt-4">
+                <div class="col col-0 col-md-1 col-lg-1 col-xl-1">
+
+                </div>
+                <div class="col col-12 col-md-10 col-lg-10 col-xl-10">
+                    <div class="card" id="cardInfoEntLan">
+                        <div class="mt-5 mb-5 mr-3 ml-3">
+                            <form action="assets/Entregas/Nova/CadEnt.php" method="post">
+                                <div class="row">
+                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                        <label for="cliente">Cliente:</label>
+                                        <select class="form-control" name="cliente" id="" required>
+                                            <option value="null">Selecione o cliente</option>
+                                            <?php
+                                                $bCliente = "SELECT * FROM `clientes` ORDER BY `nome_cliente`";
+                                                $bClienteExec = mysqli_query($conn, $bCliente);
+
+                                                while($row = mysqli_fetch_assoc($bClienteExec)){ ?>
+                                                    <option value="<?= $row['id_cliente']; ?>"><?= $row['nome_cliente'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                        <label for="nf">Nota fiscal:</label>
+                                        <input class="form-control" type="text" name="nf" required>
+                                    </div>
+                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                        <label for="">Confirmar</label>
+                                        <button class="btn btn-block btn-outline-success" type="submit">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-0 col-md-1 col-lg-1 col-xl-1">
+                    
+                </div>
+            </div>
+        </div>
+</main>

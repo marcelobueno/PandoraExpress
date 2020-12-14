@@ -32,9 +32,9 @@
                         </div>
                         <form action="assets/Validar_login.php" method="POST">
                             <label class="text-warning text-monospace" for="username">Usuário</label>
-                            <input class="form-control" type="text" name="username" id="loginUsername" placeholder="Administrador">
+                            <input class="form-control" type="text" name="username" id="loginUsername">
                             <label class="text-warning text-monospace" for="password">Senha</label>
-                            <input class="form-control" type="password" name="password" id="loginPassword" placeholder="*************">
+                            <input class="form-control" type="password" name="password" id="loginPassword">
                             <button class="mt-2 btn btn-outline-warning btn-lg btn-block" type="submit">Entrar</button>
                             <div id="badgeErroLogin" class="error-ocult">
                                 <p class="text-sm text-danger">Senha incorreta!</p>

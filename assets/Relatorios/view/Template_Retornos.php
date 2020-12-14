@@ -51,7 +51,7 @@ $aTotalGeral = [
             <img class="logoEmpresa" src="https://i.imgur.com/ZRbEkKR.png">
         </div>
         <div class="text-center mt-3">
-            <h4>Relatório de entregas</h4>
+            <h4>Relatório de Retornos</h4>
         </div>
         <div class="headerContent">
             <span>
@@ -80,7 +80,6 @@ $aTotalGeral = [
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
                             <!--<td><b class="font-weight-light">Ordens de Serviço:</b></td>
                             <td class="text-center"><?= $buscaOSResult; ?></td>-->
                             <?php
@@ -92,30 +91,31 @@ $aTotalGeral = [
                                 while($rows = mysqli_fetch_assoc($buscaTabelasExec))
                                 {
                                     $iValor = $rows['valor_cobranca']; ?>
-                                    <td><b class="font-weight-light"><?= $rows['nome_tabela']; ?>:</b></td>
-                                    <td class="text-center">
-                                        <?php
-                                            $buscaRetornos = "SELECT `id_entrega` 
-                                            FROM `retornos` 
-                                            WHERE retornos.id_cliente = $cliente 
-                                            AND retornos.data_retorno = '{$data->format("Y-m-d")}'
-                                            AND retornos.id_tabela = {$rows['id_tabela_preco']} 
-                                            AND retornos.status_retorno != 'Em aberto' 
-                                            AND retornos.status_retorno != 'Em andamento' 
-                                            AND retornos.status_retorno != 'Cancelada'";
+                                    <tr>
+                                        <td><b class="font-weight-light"><?= $rows['nome_tabela']; ?>:</b></td>
+                                        <td class="text-center">
+                                            <?php
+                                                $buscaRetornos = "SELECT `id_entrega` 
+                                                FROM `retornos` 
+                                                WHERE retornos.id_cliente = $cliente 
+                                                AND retornos.data_retorno = '{$data->format("Y-m-d")}'
+                                                AND retornos.id_tabela = {$rows['id_tabela_preco']} 
+                                                AND retornos.status_retorno != 'Em aberto' 
+                                                AND retornos.status_retorno != 'Em andamento' 
+                                                AND retornos.status_retorno != 'Cancelada'";
 
-                                            $buscaRetornosExec = mysqli_query($conn, $buscaRetornos);
-                                            $buscaRetornosResult = mysqli_num_rows($buscaRetornosExec);
+                                                $buscaRetornosExec = mysqli_query($conn, $buscaRetornos);
+                                                $buscaRetornosResult = mysqli_num_rows($buscaRetornosExec);
 
-                                            $iTotal = $iValor * $buscaRetornosResult;
-                                            $aTotalDia['total'] += $iTotal;
+                                                $iTotal = $iValor * $buscaRetornosResult;
+                                                $aTotalDia['total'] += $iTotal;
 
-                                            echo $buscaRetornosResult;
-                                        ?>
-                                    </td>
+                                                echo $buscaRetornosResult;
+                                            ?>
+                                        </td>
+                                    </tr>
                                 <?php }
                             ?>
-                        <tr>
                             <td class="bg-dark"><b class="text-light">Total: </b></td>
                             <td class="bg-dark text-center"><b class="text-light">R$<?= number_format($aTotalDia['total'],2,",","."); ?></b></td>
                             <?php

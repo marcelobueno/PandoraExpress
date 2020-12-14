@@ -44,8 +44,10 @@ require './assets/Verifica_login.php';
                                     elseif($row['nivel_acesso'] == 2){
                                         echo 'Gerente';
                                     }
-                                    else{
+                                    elseif($row['nivel_acesso'] == 1){
                                         echo 'Operador';
+                                    } else{
+                                        echo 'Operador Expedição';
                                     }?></td>
                             </tr>
                     <?php } 

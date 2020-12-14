@@ -57,6 +57,8 @@ else{
         case 'Nova-Ocorrencia': include 'assets/Ocorrencias/Novo/Retorno.php'; break;
         case 'Visualizar-Entregas': include 'assets/Entregas/View/ViewOs.php'; break;
         case 'Detalhes-Entrega': include 'assets/Entregas/View/ViewEnt.php'; break;
+        case 'Lancamento-Entrega': include 'assets/Entregas/Nova/Lancar_entrega.php'; break;
+        case 'Entregas-Lancadas': include 'assets/Entregas/Nova/Lancamentos.php'; break;
         case 'Fechamento-Cliente': include 'assets/Relatorios/Relatorio_Cliente.php'; break;
         case 'Fechamento-Retornos': include 'assets/Relatorios/Relatorio_Retornos.php'; break;
         case 'Fechamento-Motoboy': include 'assets/Relatorios/Relatorio_Motoboy.php'; break;

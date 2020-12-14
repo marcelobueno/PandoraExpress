@@ -100,3 +100,15 @@ html, body{
     -moz-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
     box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
 }
+
+#cardInfoEntLan {
+    background-color: #fff;
+    border-radius: 15px;
+    height: 180px;
+}
+
+.cardInfoEntrega {
+    background-color: #fff;
+    border-radius: 15px;
+    height: auto;
+}

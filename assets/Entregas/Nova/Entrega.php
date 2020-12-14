@@ -1,6 +1,8 @@
 <?php
-include './assets/Conexao.php';
-include './assets/Verifica_login.php';
+
+require __DIR__."/../../Conexao.php";
+require __DIR__."/../../Verifica_login.php";
+
 ?>
     <main class="corpo">
         <div class="container">
@@ -14,129 +16,178 @@ include './assets/Verifica_login.php';
                     unset($_SESSION['alert']);
                 }
             ?>
-            <form action="assets/Entregas/Nova/CadEnt.php" method="post">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                            <label class="font-weight-normal" for="ordem_servico">Ordem de Serviço: </label>
-                            <select class="form-control" name="ordem_servico" id="iptCadEntOrdem" required>
-                                <option value="">Selecione uma opção</option>
-                                <?php
-                                    $sql = 'SELECT OS.id_ordem, OS.id_cliente, CLI.nome_cliente FROM ordem_servico AS OS, clientes AS CLI 
-                                    WHERE OS.status_os = "Aberta" AND OS.id_cliente = CLI.id_cliente';
-                                    
-                                    $exec = mysqli_query($conn, $sql);
+            <?php
+                if(!isset($_POST['id_os'])){ ?>
+                    <div class="card mt-3 mb-3 cardInfoEntrega shadow">
+                        <div class="mt-5 mr-3 mb-3 ml-3">
+                            <form action="?pagina=Cadastro-de-Entrega" method="post">
+                                <div class="row">                       
+                                    <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <label class="font-weight-bold text-dark" for="id_os">Ordem de serviço</label>
+                                        <select class="form-control" name="id_os">
+                                            <option value="">Selecione a Ordem de serviço</option>
+                                            <?php
+                                                $sql = 'SELECT OS.id_ordem, OS.id_cliente, CLI.nome_cliente FROM ordem_servico AS OS, clientes AS CLI 
+                                                WHERE OS.status_os = "Aberta" AND OS.id_cliente = CLI.id_cliente';
+                                                
+                                                $exec = mysqli_query($conn, $sql);
 
-                                    while($row = mysqli_fetch_assoc($exec))
-                                    { ?>
-                                        <option value="<?php echo $row['id_ordem']; ?>">O.S: #<?php echo $row['id_ordem']; ?> - <?php echo $row['nome_cliente']; ?></option>
-                                    <?php }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                            <label class="font-weight-normal" for="tabela_preco">Tabela Preco: </label>
-                            <select class="form-control" name="tabela_preco">
-                                    <option value="">Selecione uma opção</option>
-                            <?php
-                                    $sql = 'SELECT `id_cliente`, `nome_tabela` from tabela_preco ORDER BY `nome_tabela`';
-                                    
-                                    $exec = mysqli_query($conn, $sql);
-
-                                    while($row = mysqli_fetch_assoc($exec))
-                                    { $id_cliente = $row['id_cliente'];?>
-                                        <option value="<?php echo $row['id_cliente']; ?>"><?php echo $row['nome_tabela']; ?></option>
-                                    <?php }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                            <label class="font-weight-normal" for="nome_dest">Nome destinatário: </label>
-                            <input class="form-control" type="text" name="nome_dest" id="iptCadEntNomeDest" required>
+                                                while($row = mysqli_fetch_assoc($exec))
+                                                { ?>
+                                                    <option value="<?php echo $row['id_ordem']; ?>">O.S: <?php echo $row['id_ordem']; ?> - <?php echo $row['nome_cliente']; ?></option>
+                                                <?php }
+                                            ?>
+                                        </select>   
+                                    </div>
+                                    <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <label class="font-weight-bold text-dark" for="nf_origem">NF de Venda</label>
+                                        <input class="form-control" type="text" name="nf_origem">
+                                    </div>              
+                                </div>
+                                <div class="float-right mt-3">
+                                    <button class="btn btn-sm btn-primary" type="submit">Avançar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="form-group mt-3">
-                        <div class="row">
-                            <div class="colcol col-8 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="endereco">Endereço: </label>
-                                <input class="form-control" type="text" name="endereco" id="iptCadEntEndereco" required>
-                            </div>
-                            <div class="col col-4">
-                                <label class="font-weight-normal" for="numero">Número: </label>
-                                <input class="form-control" type="text" name="numero" id="iptCadEntNumero" required>
-                            </div>
-                            <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="complemento">Complemento (Opcional): </label>
-                                <input class="form-control" type="text" name="complemento" id="iptCadEntComplemento">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="bairro">Bairro: </label>
-                                <input class="form-control" type="text" name="bairro" id="iptCadEntBairro" required>
-                            </div>
-                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="cidade">Cidade: </label>
-                                <input class="form-control" type="text" name="cidade" id="iptCadEntCidade" required>
-                            </div>
-                            <div class="col">
-                                <label class="font-weight-normal" for="estado">Estado: </label>
-                                <select class="form-control" name="estado" id="iptCadEntEstado" required>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="MG">Minas Gerais</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label class="font-weight-normal" for="cep">CEP: </label>
-                                <input class="form-control" type="text" name="cep" id="iptCadEntCep" placeholder="09361000" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="motoboy">Motoboy: </label>
-                                <select class="form-control" name="motoboy" id="" required>
-                                    <option value="">Selecione uma opção</option>
-                                    <?php
-                                        $sql = "SELECT `id_motoboy`, `nome_motoboy` FROM `motoboys`";
-                                        $exec = mysqli_query($conn, $sql);
+            <?php } //Final do primeiro if
 
-                                        while($row = mysqli_fetch_assoc($exec))
-                                        { ?>
-                                            <option value="<?php echo $row['id_motoboy']; ?>"><?php echo $row['nome_motoboy']; ?></option>
-                                        <?php }
-                                    ?>
-                                </select>
+                if(isset($_POST['id_os']))
+                { 
+                    $id_ordem = $_POST['id_os'];
+                    $nf_origem = $_POST['nf_origem']; 
+
+                    $bCliente = "SELECT `id_cliente` FROM `ordem_servico` WHERE ordem_servico.id_ordem = $id_ordem";
+                    $bClienteExec = mysqli_query($conn, $bCliente);
+                    $result = mysqli_fetch_assoc($bClienteExec); ?>
+
+                <div class="card mt-3 mb-3 cardInfoEntrega shadow">
+
+                    <input type="hidden" name="cadEnt">
+                    <input type="hidden" name="id_os" value="<?= $id_ordem; ?>">
+                    <input type="hidden" name="nf_origem" value="<?= $nf_origem; ?>">
+
+                    <div class="mt-3 mr-3 mb-3 ml-3">
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col col-12 col-md-5 col-lg-5 col-xl-5">
+                                    <label class="font-weight-bold text-dark" for="ordem">Ordem de Serviço</label>
+                                    <select class="form-control" name="ordem" disabled>
+                                        <?php
+                                            $bO_S = "SELECT `id_ordem`, `nome_cliente` FROM ordem_servico, clientes WHERE ordem_servico.id_cliente = {$result['id_cliente']} AND clientes.id_cliente = {$result['id_cliente']}";
+                                            $bO_SExec = mysqli_query($conn, $bO_S);
+                                            $bO_SResult = mysqli_fetch_assoc($bO_SExec);
+                                        ?>
+                                        <option value=""><?= 'O.S: ' . $bO_SResult['id_ordem'] . ' - ' . $bO_SResult['nome_cliente']; ?></option>
+                                    </select>
+                                </div>
+                                <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
+                                    <label class="font-weight-bold text-dark" for="nf">NF de venda</label>
+                                    <input class="form-control" type="text" value="<?= $nf_origem; ?>" disabled>
+                                </div>
+                                <div class="col col-12 col-md-5 col-lg-5 col-xl-5">
+                                    <label class="font-weight-bold text-dark" for="id_tabela">Tabela de preço</label>
+                                    <select class="form-control" name="id_tabela" required>
+                                        <option value="">Selecione a tabela de preço</option>
+                                        <?php
+                                            $bTabelas = "SELECT * FROM `tabela_preco` WHERE tabela_preco.id_cliente = {$result['id_cliente']}";
+                                            $bTabelasExec = mysqli_query($conn, $bTabelas);
+
+                                            while($bTabelasResult = mysqli_fetch_assoc($bTabelasExec)){ ?>
+                                                <option value="<?= $bTabelasResult['id_tabela_preco']; ?>"><?= $bTabelasResult['nome_tabela']; ?></option>
+                                            <?php }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="data">Data da Entrega: </label>
-                                <input class="form-control" type="date" name="data" id="" required>
+                            <div class="row mt-2">
+                                <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
+                                    <label class="font-weight-bold text-dark" for="id_motoboy">Motoboy</label>
+                                    <select class="form-control" name="id_motoboy" required>
+                                        <option value="">Selecione um Motoboy</option>
+                                        <?php
+
+                                            $bMotoboys = "SELECT `id_motoboy`, `nome_motoboy` FROM motoboys";
+                                            $bMotoboysExec = mysqli_query($conn, $bMotoboys);
+
+                                            while($bMotoboysResult = mysqli_fetch_assoc($bMotoboysExec)){ ?>
+                                                <option value="<?= $bMotoboysResult['id_motoboy']; ?>"><?= $bMotoboysResult['nome_motoboy']; ?></option>
+                                            <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
+                                    <label class="font-weight-bold text-dark" for="nome_destinatario">Nome do Destinatário</label>
+                                    <input class="form-control" type="text" name="nome_destinatario" required>
+                                </div>
                             </div>
-                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4">
-                                <label class="font-weight-normal" for="forma_pagamento">Forma de Pagamento: </label>
-                                <select class="form-control" name="forma_pagamento" id="">
-                                    <option value="">Selecione uma opção</option>
-                                    <option value="dinheiro">Dinheiro</option>
-                                    <option value="cartão">Cartão</option>
-                                </select>
+                            <div class="row mt-2">
+                                <div class="col col-12 col-md-5 col-lg-5 col-xl-5">
+                                    <label class="font-weight-bold text-dark" for="end_entrega">Endereço</label>
+                                    <input class="form-control" type="text" name="end_entrega" required>
+                                </div>
+                                <div class="col col-3 col-md-2 col-lg-2 col-xl-2">
+                                    <label class="font-weight-bold text-dark" for="end_num_entrega">Número</label>
+                                    <input class="form-control" type="text" name="end_num_entrega" required>
+                                </div>
+                                <div class="col col-12 col-md-5 col-lg-5 col-xl-5">
+                                    <label class="font-weight-bold text-dark" for="end_comp_entrega">Complemento (opcional)</label>
+                                    <textarea class="form-control" name="end_comp_entrega" cols="30" rows="1"></textarea>
+                                </div>
                             </div>
-                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4 mt-3">
-                                <label class="font-weight-normal" for="valor">Valor da Mercadoria: </label>
-                                <input class="form-control" type="number" step="0.10" name="valor" placeholder="R$">
+                            <div class="row mt-2">
+                                <div class="col col-9 col-md-3 col-lg-3 col-xl-3">
+                                    <label class="font-weight-bold text-dark" for="end_bairro_entrega">Bairro</label>
+                                    <input class="form-control" type="text" name="end_bairro_entrega" required>
+                                </div>
+                                <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                    <label class="font-weight-bold text-dark" for="end_cidade_entrega">Cidade</label>
+                                    <input class="form-control" type="text" name="end_cidade_entrega" required>
+                                </div>
+                                <div class="col col-6 col-md-3 col-lg-3 col-xl-3">
+                                    <label class="font-weight-bold text-dark" for="end_estado_entrega">Estado</label>
+                                    <select class="form-control" name="end_estado_entrega" required>
+                                        <option value="">Selecione o Estado</option>
+                                        <option value="SP">SP</option>
+                                        <option value="RJ">RJ</option>
+                                        <option value="MG">MG</option>
+                                    </select>
+                                </div>
+                                <div class="col col-6 col-md-2 col-lg-2 col-xl-2">
+                                    <label class="font-weight-bold text-dark" for="end_cep_entrega">Cep</label>
+                                    <input class="form-control" type="text" name="end_cep_entrega" required>
+                                </div>
                             </div>
-                            <div class="col col-6 col-md-4 col-lg-4 col-xl-4 mt-3">
-                                <label class="font-weight-normal" for="nf_origem">NF de venda: </label>
-                                <input class="form-control" type="text" name="nf_origem" placeholder="EX: 15123" required>
+                            <div class="row mt-2">
+                                <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
+                                    <label class="font-weight-bold text-dark" for="valor_mercadoria">Valor da NF R$</label>
+                                    <input class="form-control" type="number" name="valor_mercadoria" step="0.10">
+                                </div>
+                                <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                    <label class="font-weight-bold text-dark" for="forma_pagamento">Forma de Pagamento:</label>
+                                    <select class="form-control" name="forma_pagamento">
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="dinheiro">Dinheiro</option>
+                                        <option value="cartão">Cartão</option>
+                                    </select>
+                                </div>
+                                <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
+                                    <label class="font-weight-bold text-dark" for="data_entrega">Data da Entrega: </label>
+                                    <input class="form-control" type="date" name="data_entrega" required>
+                                </div>
+                                <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                    <label class="font-weight-bold text-dark" for="observacoes">Observações</label>
+                                    <textarea class="form-control" name="observacoes" cols="30" rows="1"></textarea>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row mt-4 float-right">
+                                <div class="mr-3">
+                                    <button class="btn btn-xl btn-outline-success" type="submit" name="id_entrega">Registrar entrega</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <button class="btn btn-lg btn-outline-dark" type="submit">Registrar</button>
-            </form>
-            <br>
+            <?php } ?>
         </div>
     </main>

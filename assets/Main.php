@@ -4,6 +4,8 @@ require 'assets/Verifica_login.php';
 ?>
     <main class="corpo">
         <div class="container">
+            <?php
+            if($_SESSION['nivel_acesso'] != 0){ ?>
             <div class="row ml-auto">
                 <!--Menus informativos da página inicial-->
                 <div class="col col-12 col-md-3 col-lg-3 col-xl-3 mt-3">
@@ -150,7 +152,7 @@ require 'assets/Verifica_login.php';
                                         $data = date("Y-m-d");
                                         $sql = "SELECT DISTINCT mot.id_motoboy, mot.nome_motoboy, ent.data_entrega, ent.status_entrega
                                         FROM `motoboys` AS mot, `entregas` AS ent
-                                        WHERE ent.data_entrega = '$data' AND ent.id_motoboy = mot.id_motoboy AND ent.status_entrega != 'Entregue'
+                                        WHERE ent.data_entrega = '{$data}' AND ent.id_motoboy = mot.id_motoboy AND ent.status_entrega != 'Entregue'
                                         AND ent.status_entrega != 'Cancelada'";
                                         $exec = mysqli_query($conn, $sql);
                                         $result = mysqli_fetch_assoc($exec);
@@ -197,17 +199,48 @@ require 'assets/Verifica_login.php';
                             <!--Conteúdo anotações-->
                             <form action="assets/Atualiza_ant.php" method="post">
                                 <?php
-                                    $query = "SELECT * FROM `anotacoes`";
+                                    $query = "SELECT * FROM `anotacoes` ORDER BY anotacoes.id_anotacao DESC LIMIT 5";
                                     $busca = mysqli_query($conn,$query);
-                                    $linha = mysqli_fetch_assoc($busca);
-                                ?>
-                                <textarea class="form-control mt-4 text-primary font-weight-normal" name="anotacao" cols="30" rows="10"><?= $linha['anotacao']; ?></textarea>
-                                <button class="btn btn-lg btn-dark mt-2 float-right" type="submit">Atualizar</button>
+                                    while($linha = mysqli_fetch_assoc($busca)){
+                                        if($linha['nivel_urgencia'] == 'Baixo')
+                                        { ?>
+                                            <div class="mt-2 mb-2 alert alert-success" role="alert">
+                                                <a href="#" class="alert-link">
+                                                    <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                                </a>
+                                            </div>
+                                        <?php }
+                                        elseif($linha['nivel_urgencia'] == 'Medio'){ ?>
+                                            <div class="mt-2 mb-2 alert alert-warning" role="alert">
+                                                <a href="#" class="alert-link">
+                                                    <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                                </a>
+                                            </div>
+                                        <?php } 
+                                        else{ ?>
+                                            <div class="mt-2 mb-2 alert alert-danger" role="alert">
+                                                <a href="#" class="alert-link">
+                                                    <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                                </a>
+                                            </div>
+                                        <?php } 
+                                    } ?>
+                                <!-- <textarea class="form-control mt-4 text-primary font-weight-normal" name="anotacao" cols="30" rows="10"><?= $linha['anotacao']; ?></textarea>
+                                <button class="btn btn-lg btn-dark mt-2 float-right" type="submit">Atualizar</button> -->
+                                <div class="mr-3 ml-3 mb-3">
+                                    <div class="row float-right">
+                                        <button class="mr-1 btn btn-outline-info" type="submit">Ver todas</button>
+                                        <button class="ml-1 btn btn-outline-success" type="submit">Nova Anotação</button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php } else{
+                echo '<h1 class="text-center text-danger"><br>Seja bem vindo!</h1>';
+            } ?>
             <span><br></span>
         </div>
     </main>
