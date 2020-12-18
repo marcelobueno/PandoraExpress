@@ -28,7 +28,7 @@ $result = mysqli_fetch_assoc($bEntregaExec);
                             </div>
                             <div class="col col-6 col-md-2 col-lg-2 col-xl-2">
                                 <label class="font-weight-bold text-dark" for="nf_origem">NF de venda</label>
-                                <input class="form-control text-center" type="text" name="nf_origem" value="<?= $result['nf_origem']; ?>" disabled required>
+                                <input class="form-control text-center" type="text" name="nf_origem" value="<?= $result['nf_origem']; ?>" required>
                             </div>
                             <div class="col col-12 col-md-8 col-lg-8 col-xl-8">
                                 <label class="font-weight-bold text-dark" for="id_cliente">Cliente</label>

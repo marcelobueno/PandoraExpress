@@ -27,7 +27,7 @@ require __DIR__."/../../Verifica_login.php";
                                     <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                         <label for="cliente">Cliente:</label>
                                         <select class="form-control" name="cliente" id="" required>
-                                            <option value="null">Selecione o cliente</option>
+                                            <option value="">Selecione o cliente</option>
                                             <?php
                                                 $bCliente = "SELECT * FROM `clientes` ORDER BY `nome_cliente`";
                                                 $bClienteExec = mysqli_query($conn, $bCliente);
@@ -37,11 +37,24 @@ require __DIR__."/../../Verifica_login.php";
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
                                         <label for="nf">Nota fiscal:</label>
                                         <input class="form-control" type="text" name="nf" required>
                                     </div>
                                     <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                        <label for="motoboy">Motoboy:</label>
+                                        <select class="form-control" name="motoboy" id="" required>
+                                            <option value="">Selecione o motoboy</option>
+                                            <?php
+                                                $bMotoboys = "SELECT * FROM `motoboys` ORDER BY `nome_motoboy`";
+                                                $bMotoboysExec = mysqli_query($conn, $bMotoboys);
+
+                                                while($bMotoboysResult = mysqli_fetch_assoc($bMotoboysExec)){ ?>
+                                                    <option value="<?= $bMotoboysResult['id_motoboy']; ?>"><?= $bMotoboysResult['nome_motoboy']; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
                                         <label for="">Confirmar</label>
                                         <button class="btn btn-block btn-outline-success" type="submit">Cadastrar</button>
                                     </div>

@@ -53,9 +53,9 @@ html, body{
 }
 
 .cardItemCount {
-    padding-top: 10px;
+    padding-top: 31px;
     /*padding-left: 20px;*/
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .cardItemText {

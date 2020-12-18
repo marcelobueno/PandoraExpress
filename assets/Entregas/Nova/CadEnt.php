@@ -103,8 +103,9 @@ if(!isset($_POST['cadEnt'])){
     $id_entrega = 'DEFAULT';
     $cliente = $_POST['cliente'];
     $nf = $_POST['nf'];
+    $motoboy = $_POST['motoboy'];
 
-    if(!empty($id_entrega) || !empty($cliente) || !empty($nf)){
+    if(!empty($id_entrega) || !empty($cliente) || !empty($nf) || !empty($motoboy)){
 
         $entregas = "SELECT * FROM `entregas` WHERE entregas.nf_origem = '$nf' AND entregas.id_cliente = $cliente";
         $entregasExec = mysqli_query($conn, $entregas);
@@ -118,8 +119,8 @@ if(!isset($_POST['cadEnt'])){
 
         } else{
 
-            $registrar = "INSERT INTO `entregas`(`id_entrega`, `id_cliente`, `nf_origem`) 
-                        VALUES (DEFAULT,$cliente,'{$nf}')";
+            $registrar = "INSERT INTO `entregas`(`id_entrega`, `id_cliente`, `nf_origem`, `id_motoboy`) 
+                        VALUES (DEFAULT,$cliente,'$nf',$motoboy)";
             $registrarExec = mysqli_query($conn, $registrar);
 
             if(!$registrarExec){

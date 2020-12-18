@@ -12,6 +12,7 @@ require __DIR__."/../../Verifica_login.php";
 
 $id = $_POST['id_entrega'];
 $os = $_POST["id_os"];
+$nf = $_POST['nf_origem'];
 $tabela = $_POST["id_tabela_preco"];
 $motoboy = $_POST["id_motoboy"];
 $destinatario = strtoupper($_POST["nome_destinatario"]);
@@ -47,6 +48,7 @@ if($extra == null){
 $update = "UPDATE `entregas` SET 
     `id_ordem_servico`= $os,
     `id_motoboy`= $motoboy,
+    `nf_origem` = $nf,
     `data_entrega`= '$data',
     `forma_pagamento`= '$pagamento',
     `valor_mercadoria`= $valor,

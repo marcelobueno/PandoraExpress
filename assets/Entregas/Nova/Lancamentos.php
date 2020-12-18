@@ -25,7 +25,7 @@ require __DIR__."/../../Verifica_login.php";
                             <th>ID Entrega</th>
                             <th>Cliente</th>
                             <th>NF de venda</th>
-                            <th class="text-center">Complementos</th>
+                            <!-- <th class="text-center">Complementos</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +48,7 @@ require __DIR__."/../../Verifica_login.php";
                                         ?>
                                     </td>
                                     <td class="text-center"><?= $bEntregasResult['nf_origem']; ?></td>
-                                    <td class="text-center">
+                                    <!-- <td class="text-center">
                                         <div class="row">
                                             <div class="col">
                                                 <form action="?pagina=Detalhes-Entrega" method="post">
@@ -71,7 +71,7 @@ require __DIR__."/../../Verifica_login.php";
                                                 </form>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                         <?php }
                         ?>
