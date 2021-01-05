@@ -1,6 +1,8 @@
 <?php
-require 'assets/Conexao.php';
-require 'assets/Verifica_login.php';
+
+require __DIR__ . "/Conexao.php";
+require __DIR__ . "/Verifica_login.php";
+
 ?>
 <main class="corpo">
     <div class="container">
@@ -140,15 +142,16 @@ require 'assets/Verifica_login.php';
                             </div>
                         </div>
                         <div class="col">
-                            <span><br></span>
-                            <table class="table table-sm table-hover">
-                                <thead class="bg-dark text-white">
+                            <br>
+                            <table class="table table-sm table-striped table-bordered table-hover display">
+                                <thead class="bg-light text-dark">
                                     <tr>
                                         <th>Motoboy</th>
                                         <th class="text-center">Entregas</th>
+                                        <th class="text-center">Detalhes</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="bg-light">
                                     <?php
                                     $bBoys = "SELECT * FROM motoboys";
                                     $bBoysExec = mysqli_query($conn, $bBoys);
@@ -156,23 +159,31 @@ require 'assets/Verifica_login.php';
                                     while ($bBoysRow = mysqli_fetch_assoc($bBoysExec)) {
                                         $boy_id = $bBoysRow['id_motoboy']; ?>
                                         <tr>
-                                            <td><?= $bBoysRow['nome_motoboy']; ?></td>
-                                            <td class="text-center">
-                                                <div class="badge badge-danger">
-                                                    <?php
-                                                    $ent_boy = "SELECT `id_entrega` FROM `entregas` 
-                                                    WHERE entregas.id_motoboy = {$boy_id} 
-                                                    AND entregas.status_entrega != 'Entregue' 
-                                                    AND entregas.status_entrega != 'Cancelada' 
-                                                    AND entregas.status_entrega != 'Retorno'";
-                                                    $ent_boyExec = mysqli_query($conn, $ent_boy);
+                                            <form action="?pagina=Entregas-Por-Motoboy" method="post">
 
-                                                    $ent_boy_result = mysqli_num_rows($ent_boyExec);
+                                                <td><?= $bBoysRow['nome_motoboy']; ?></td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-danger">
+                                                        <?php
+                                                        $ent_boy = "SELECT `id_entrega` FROM `entregas` 
+                                            WHERE entregas.id_motoboy = {$boy_id} 
+                                            AND entregas.status_entrega != 'Entregue' 
+                                            AND entregas.status_entrega != 'Cancelada' 
+                                            AND entregas.status_entrega != 'Retorno'";
 
-                                                    echo $ent_boy_result;
-                                                    ?>
-                                                </div>
-                                            </td>
+                                                        $ent_boyExec = mysqli_query($conn, $ent_boy);
+
+                                                        $ent_boy_result = mysqli_num_rows($ent_boyExec);
+
+                                                        echo $ent_boy_result;
+                                                        ?>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <input type="hidden" name="boy_name" value="<?= $bBoysRow['nome_motoboy']; ?>">
+                                                    <button class="btn btn-sm btn-outline-danger" name="boy_id" value="<?= $bBoysRow['id_motoboy']; ?>" type="submit">Listar</button>
+                                                </td>
+                                            </form>
                                         </tr>
                                     <?php }
                                     ?>
@@ -195,40 +206,79 @@ require 'assets/Verifica_login.php';
                         </div>
                         <div class="col">
                             <!--Conteúdo anotações-->
-                            <form action="assets/Atualiza_ant.php" method="post">
-                                <?php
-                                $query = "SELECT * FROM `anotacoes` ORDER BY anotacoes.id_anotacao DESC LIMIT 5";
-                                $busca = mysqli_query($conn, $query);
-                                while ($linha = mysqli_fetch_assoc($busca)) {
-                                    if ($linha['nivel_urgencia'] == 'Baixo') { ?>
-                                        <div class="mt-2 mb-2 alert alert-success" role="alert">
-                                            <a href="#" class="alert-link">
-                                                <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
-                                            </a>
+                            <?php
+                            $query = "SELECT * FROM `anotacoes` ORDER BY anotacoes.id_anotacao DESC LIMIT 5";
+                            $busca = mysqli_query($conn, $query);
+                            while ($linha = mysqli_fetch_assoc($busca)) {
+                                if ($linha['nivel_urgencia'] == 'Baixo') { ?>
+                                    <div class="mt-2 mb-2 alert alert-success" role="alert">
+                                        <a href="?pagina=Anotacoes" class="alert-link">
+                                            <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                        </a>
+                                    </div>
+                                <?php } elseif ($linha['nivel_urgencia'] == 'Medio') { ?>
+                                    <div class="mt-2 mb-2 alert alert-warning" role="alert">
+                                        <a href="?pagina=Anotacoes" class="alert-link">
+                                            <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                        </a>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="mt-2 mb-2 alert alert-danger" role="alert">
+                                        <a href="?pagina=Anotacoes" class="alert-link">
+                                            <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                        </a>
+                                    </div>
+                            <?php }
+                            } ?>
+                            <div class="mr-3 ml-3 mb-3">
+                                <div class="row float-right">
+                                    <a class="mr-1 btn btn-outline-info" href="?pagina=Anotacoes">Ver todas</a>
+                                    <!--Lançar Modal-->
+                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalAnt">
+                                        Nova anotação
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalAnt" tabindex="-1" aria-labelledby="modalAntLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-primary" id="modalAntLabel">Nova anotação</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="assets/Anotacoes/Atualiza_ant.php" method="post">
+                                                        <div class="my-3 mx-3">
+                                                            <?php
+                                                            $dataAnt = date('Y-m-d');
+                                                            ?>
+                                                            <label for="dataAnT"><b class="text-info">Data:</b> <?= $dataAnt; ?></label>
+                                                            <input type="hidden" name="dataAnT" value="<?= $dataAnt; ?>">
+                                                            <div class="dropdown-divider"></div>
+                                                            <label for="anotacao"><b class="text-info">Anotação:</b></label>
+                                                            <textarea class="form-control" name="anotacao" cols="30" rows="4"></textarea>
+                                                            <div class="dropdown-divider"></div>
+                                                            <label for="nivel_urgencia"><b class="text-info">Nível de urgência:</b></label>
+                                                            <select class="form-control" name="nivel_urgencia">
+                                                                <option value="">Selecione uma opção</option>
+                                                                <option value="Baixo">Baixo</option>
+                                                                <option value="Medio">Medio</option>
+                                                                <option value="Alto">Alto</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                    <button class="btn btn-info type=" submit">Registrar</button>
+                                                </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                    <?php } elseif ($linha['nivel_urgencia'] == 'Medio') { ?>
-                                        <div class="mt-2 mb-2 alert alert-warning" role="alert">
-                                            <a href="#" class="alert-link">
-                                                <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
-                                            </a>
-                                        </div>
-                                    <?php } else { ?>
-                                        <div class="mt-2 mb-2 alert alert-danger" role="alert">
-                                            <a href="#" class="alert-link">
-                                                <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
-                                            </a>
-                                        </div>
-                                <?php }
-                                } ?>
-                                <!-- <textarea class="form-control mt-4 text-primary font-weight-normal" name="anotacao" cols="30" rows="10"><?= $linha['anotacao']; ?></textarea>
-                                <button class="btn btn-lg btn-dark mt-2 float-right" type="submit">Atualizar</button> -->
-                                <div class="mr-3 ml-3 mb-3">
-                                    <div class="row float-right">
-                                        <button class="mr-1 btn btn-outline-info" type="submit">Ver todas</button>
-                                        <button class="ml-1 btn btn-outline-success" type="submit">Nova Anotação</button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -238,14 +288,15 @@ require 'assets/Verifica_login.php';
             <br>
             <h3 class="text-center">Entregas por Motoboy</h3>
             <div class="my-3">
-                <table class="table table-hover">
+                <table class="table table-sm table-striped table-bordered table-hover">
                     <thead class="bg-dark text-white">
                         <tr>
                             <th>Motoboy</th>
                             <th class="text-center">Entregas</th>
+                            <th class="text-center">Detalhes</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bg-light">
                         <?php
                         $bBoys = "SELECT * FROM motoboys";
                         $bBoysExec = mysqli_query($conn, $bBoys);
@@ -253,23 +304,31 @@ require 'assets/Verifica_login.php';
                         while ($bBoysRow = mysqli_fetch_assoc($bBoysExec)) {
                             $boy_id = $bBoysRow['id_motoboy']; ?>
                             <tr>
-                                <td><?= $bBoysRow['nome_motoboy']; ?></td>
-                                <td class="text-center">
-                                    <div class="badge badge-danger">
-                                        <?php
-                                        $ent_boy = "SELECT `id_entrega` FROM `entregas` 
-                                                    WHERE entregas.id_motoboy = {$boy_id} 
-                                                    AND entregas.status_entrega != 'Entregue' 
-                                                    AND entregas.status_entrega != 'Cancelada' 
-                                                    AND entregas.status_entrega != 'Retorno'";
-                                        $ent_boyExec = mysqli_query($conn, $ent_boy);
+                                <form action="?pagina=Entregas-Por-Motoboy" method="post">
 
-                                        $ent_boy_result = mysqli_num_rows($ent_boyExec);
+                                    <td><?= $bBoysRow['nome_motoboy']; ?></td>
+                                    <td class="text-center">
+                                        <div class="badge badge-danger">
+                                            <?php
+                                            $ent_boy = "SELECT `id_entrega` FROM `entregas` 
+                                            WHERE entregas.id_motoboy = {$boy_id} 
+                                            AND entregas.status_entrega != 'Entregue' 
+                                            AND entregas.status_entrega != 'Cancelada' 
+                                            AND entregas.status_entrega != 'Retorno'";
 
-                                        echo $ent_boy_result;
-                                        ?>
-                                    </div>
-                                </td>
+                                            $ent_boyExec = mysqli_query($conn, $ent_boy);
+
+                                            $ent_boy_result = mysqli_num_rows($ent_boyExec);
+
+                                            echo $ent_boy_result;
+                                            ?>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="hidden" name="boy_name" value="<?= $bBoysRow['nome_motoboy']; ?>">
+                                        <button class="btn btn-sm btn-outline-danger" name="boy_id" value="<?= $bBoysRow['id_motoboy']; ?>" type="submit">Listar Entregas</button>
+                                    </td>
+                                </form>
                             </tr>
                         <?php }
                         ?>

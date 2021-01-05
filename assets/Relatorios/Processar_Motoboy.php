@@ -6,23 +6,23 @@ require __DIR__."/../Conexao.php";
 require __DIR__."/../Formatar.php";
 require __DIR__."/../../vendor/autoload.php";
 
-$cliente = $_POST['cliente'];
+$motoboy = $_POST['motoboy'];
 $data_ini = $_POST['data_ini'];
 $data_fim = $_POST['data_fim'];
 
 session_start();
-$_SESSION['relatorio_cliente'] = [];
+$_SESSION['relatorio_motoboy'] = [];
 
-if(!empty($cliente) || !empty($data_ini) || !empty($data_fim))
+if(!empty($motoboy) || !empty($data_ini) || !empty($data_fim))
 {
-    $infoCliente = "SELECT `nome_cliente`, `cnpj_cliente` FROM `clientes` WHERE clientes.id_cliente = $cliente";
-    $infoClienteExec = mysqli_query($conn, $infoCliente);
-    $infoClienteResult = mysqli_fetch_assoc($infoClienteExec);
+    $infomotoboy = "SELECT `nome_motoboy`, `cpf_motoboy` FROM `motoboys` WHERE motoboys.id_motoboy = $motoboy";
+    $infomotoboyExec = mysqli_query($conn, $infomotoboy);
+    $infomotoboyResult = mysqli_fetch_assoc($infomotoboyExec);
 
-    $_SESSION['relatorio_cliente'] += [
-        "id" => $cliente,
-        "nome_cliente" => $infoClienteResult['nome_cliente'],
-        "cnpj" => $infoClienteResult['cnpj_cliente'],
+    $_SESSION['relatorio_motoboy'] += [
+        "id" => $motoboy,
+        "nome_motoboy" => $infomotoboyResult['nome_motoboy'],
+        "cpf" => $infomotoboyResult['cpf_motoboy'],
         "data_ini" => $data_ini,
         "data_fim" => $data_fim
     ];
@@ -41,11 +41,11 @@ $dompdf->loadHtml
 ');
 
 ob_start();
-require __DIR__."/view/Template_Cliente.php";
+require __DIR__."/view/Template_Motoboy.php";
 $dompdf->loadHtml(ob_get_clean());
 
 $dompdf->setPaper("A4");
 
 $dompdf->render();
 
-$dompdf->stream('relatorio_cliente_nome-cliente', ["Attachment" => false]);
+$dompdf->stream('relatorio_motoboy_nome-motoboy', ["Attachment" => false]);

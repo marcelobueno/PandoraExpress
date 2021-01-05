@@ -32,16 +32,15 @@ require './assets/Verifica_login.php';
 
                         while($row = mysqli_fetch_assoc($exec))
                         { 
-                        $cliente = $row['id_ordem_servico']; 
+                            $cliente = $row['id_cliente']; 
                         ?>
                         <tr>
                             <td class="text-center"><?= $row['id_entrega']; ?></td>
                             <td class="text-center"><?= $row['id_ordem_servico']; ?></td>
                             <td>
                                 <?php
-                                    $sql2 = "SELECT clientes.nome_cliente FROM clientes, ordem_servico 
-                                    WHERE ordem_servico.id_ordem = $cliente 
-                                    AND ordem_servico.id_cliente = clientes.id_cliente";
+                                    $sql2 = "SELECT nome_cliente FROM clientes 
+                                    WHERE clientes.id_cliente = $cliente";
                                     $exec2 = mysqli_query($conn, $sql2);
                                     $result = mysqli_fetch_assoc($exec2);
                                     echo $result['nome_cliente'];

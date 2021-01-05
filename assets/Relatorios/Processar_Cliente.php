@@ -11,6 +11,7 @@ $data_ini = $_POST['data_ini'];
 $data_fim = $_POST['data_fim'];
 
 session_start();
+
 $_SESSION['relatorio_cliente'] = [];
 
 if(!empty($cliente) || !empty($data_ini) || !empty($data_fim))

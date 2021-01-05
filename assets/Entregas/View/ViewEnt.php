@@ -164,6 +164,10 @@ $result = mysqli_fetch_assoc($bEntregaExec);
                                     <option value="">Selecione uma opção</option>
                                     <option value="dinheiro" <?= ($result['forma_pagamento'] == 'dinheiro')? 'selected':''; ?>>Dinheiro</option>
                                     <option value="cartão" <?= ($result['forma_pagamento'] == 'cartão')? 'selected':''; ?>>Cartão</option>
+                                    <option value="dinheiro/cartão" <?= ($result['forma_pagamento'] == 'dinheiro/cartão')? 'selected':''; ?>>Dinheiro/Cartão</option>
+                                    <option value="cheque" <?= ($result['forma_pagamento'] == 'cheque')? 'selected':''; ?>>Cheque</option>
+                                    <option value="pago" <?= ($result['forma_pagamento'] == 'pago')? 'selected':''; ?>>Pago</option>
+                                    <option value="a pagar" <?= ($result['forma_pagamento'] == 'a pagar')? 'selected':''; ?>>A pagar</option>
                                 </select>
                             </div>
                             <div class="col col-12 col-md-4 col-lg-4 col-xl-4">

@@ -63,7 +63,7 @@ elseif(isset($_POST['editar_cliente']))
         <div class="container">
             <br>
             <div class="text-center">
-                <h4>Editar Cliente: #<span class="text-info"><?= $cliente; ?></span></h4>
+                <h4>Editar Cliente: <span class="text-danger"><?= $result['nome_cliente']; ?></span></h4>
             </div>
             <div class="row">
                 <div class="col col-1 col-md-1 col-lg-1 col-xl-1"></div>
@@ -71,30 +71,30 @@ elseif(isset($_POST['editar_cliente']))
                     <div class="card cardInfoDetails">
                         <div class="mt-3 mr-3 mb-3 ml-3">
                             <form action="assets/Cadastros/Novo/AtualizaCli.php" method="post">
-                                <label class="font-weight-bolder text-info" for="nome">Razão Social: </label>
+                                <label class="font-weight-bolder text-dark" for="nome">Razão Social: </label>
                                 <input class="form-control" type="text" name="nome" value="<?= $result['nome_cliente']; ?>" required>
                                 <br>
-                                <label class="font-weight-bolder text-info" for="cnpj">CPF/CNPJ: </label>
+                                <label class="font-weight-bolder text-dark" for="cnpj">CPF/CNPJ: </label>
                                 <input class="form-control" type="text" name="cnpj" value="<?= $result['cnpj_cliente']; ?>" required>
                                 <br>
-                                <label class="font-weight-bolder text-info" for="tel">Telefone: </label>
+                                <label class="font-weight-bolder text-dark" for="tel">Telefone: </label>
                                 <input class="form-control" type="text" name="tel" value="<?= $result['tel_cliente']; ?>" required>
                                 <br>
-                                <label class="font-weight-bolder text-info" for="email">E-mail: </label>
+                                <label class="font-weight-bolder text-dark" for="email">E-mail: </label>
                                 <input class="form-control" type="text" name="email" value="<?= $result['email_cliente']; ?>" required>
                                 <br>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
-                                            <label class="font-weight-bolder text-info" for="endereco">Endereço: </label>
+                                            <label class="font-weight-bolder text-dark" for="endereco">Endereço: </label>
                                             <input class="form-control" type="text" name="endereco" value="<?= $result['end_cliente']; ?>" required>
                                         </div>
                                         <div class="col col-6 col-md-2 col-lg-2 col-xl-2">
-                                            <label class="font-weight-bolder text-info" for="numero">Número: </label>
+                                            <label class="font-weight-bolder text-dark" for="numero">Número: </label>
                                             <input class="form-control" type="text" name="numero" value="<?= $result['end_num_cliente']; ?>" required>
                                         </div>
                                         <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                                            <label class="font-weight-bolder text-info" for="complemento">Complemento: </label>
+                                            <label class="font-weight-bolder text-dark" for="complemento">Complemento: </label>
                                             <input class="form-control" type="text" name="complemento" value="<?= $result['end_comp_cliente']; ?>">
                                         </div>
                                     </div>
@@ -102,15 +102,15 @@ elseif(isset($_POST['editar_cliente']))
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col col-12 col-md-3 col-lg-3 col-xl-3">
-                                            <label class="font-weight-bolder text-info" for="bairro">Bairro: </label>
+                                            <label class="font-weight-bolder text-dark" for="bairro">Bairro: </label>
                                             <input class="form-control" type="text" name="bairro" value="<?= $result['end_bairro_cliente']; ?>" required>
                                         </div>
                                         <div class="col col-12 col-md-3 col-lg-3 col-xl-3">
-                                            <label class="font-weight-bolder text-info" for="cidade">Cidade: </label>
+                                            <label class="font-weight-bolder text-dark" for="cidade">Cidade: </label>
                                             <input class="form-control" type="text" name="cidade" value="<?= $result['end_cidade_cliente']; ?>" required>
                                         </div>
                                         <div class="col col-12 col-md-3 col-lg-3 col-xl-3">
-                                            <label class="font-weight-bolder text-info" for="estado">Estado: </label>
+                                            <label class="font-weight-bolder text-dark" for="estado">Estado: </label>
                                             <select class="form-control" name="estado" required>
                                                 <option value="SP" <?=($result['end_estado_cliente'] == "SP")? 'selected':''; ?>>SP</option>
                                                 <option value="RJ" <?=($result['end_estado_cliente'] == "RJ")? 'selected':''; ?>>RJ</option>
@@ -118,13 +118,19 @@ elseif(isset($_POST['editar_cliente']))
                                             </select>
                                         </div>
                                         <div class="col col-12 col-md-3 col-lg-3 col-xl-3">
-                                            <label class="font-weight-bolder text-info" for="cep">CEP: </label>
+                                            <label class="font-weight-bolder text-dark" for="cep">CEP: </label>
                                             <input class="form-control" type="text" name="cep" value="<?= $result['end_cep_cliente']; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="row my-3">
+                                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                            <label class="font-weight-bolder text-dark" for="comissao">Comissão de Entrega: </label>
+                                            <input class="form-control" type="number" step="0.10" name="comissao" value="<?= $result['comissao_boy']; ?>">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-lg btn-info" type="submit" name="id" value="<?= $cliente; ?>">Salvar</button>
+                                    <button class="btn btn-lg btn-dark" type="submit" name="id" value="<?= $cliente; ?>">Salvar</button>
                                 </div>
                             </form>
                         </div>

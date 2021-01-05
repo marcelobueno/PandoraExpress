@@ -59,10 +59,13 @@ else{
         case 'Detalhes-Entrega': include 'assets/Entregas/View/ViewEnt.php'; break;
         case 'Lancamento-Entrega': include 'assets/Entregas/Nova/Lancar_entrega.php'; break;
         case 'Entregas-Lancadas': include 'assets/Entregas/Nova/Lancamentos.php'; break;
+        case 'Entregas-Por-Motoboy': include 'assets/Entregas/View/ViewEntBoy.php'; break;
         case 'Fechamento-Cliente': include 'assets/Relatorios/Relatorio_Cliente.php'; break;
         case 'Fechamento-Retornos': include 'assets/Relatorios/Relatorio_Retornos.php'; break;
         case 'Fechamento-Motoboy': include 'assets/Relatorios/Relatorio_Motoboy.php'; break;
         case 'Fechamento-Gerencial': include 'assets/Relatorios/Relatorio_Gerencial.php'; break;
+        case 'Anotacoes': include 'assets/Anotacoes/Anotacoes.php'; break;
+        case 'Relatorio-Entrega-Motoboy': include 'assets/Entregas/View/Processar_Ent.php'; break;
         default: include 'assets/Login.php'; break;
     }
 

@@ -21,7 +21,7 @@ $buscarMotoboyExec = mysqli_query($conn, $buscarMotoboy);
                 <div class="col col-12 col-md-8 col-lg-8 col-xl-8">
                 <div class="card">
                     <div class="ml-3 mr-3 mt-3 mb-3">
-                        <form action="#" method="post" target="_blank">
+                        <form action="./assets/Relatorios/Processar_Motoboy.php" method="post" target="_blank">
                             <label class="font-weight-normal" for="motoboy"><b class="text-danger">Selecione o Motoboy: </b></label>
                             <select class="form-control" name="motoboy" id="">
                                 <?php

@@ -23,15 +23,29 @@ $cidade = $_POST['cidade'];
 $estado = $_POST['estado'];
 $cep = $_POST['cep'];
 $id = $_POST['id'];
+$comissao = $_POST['comissao'];
+
+if(strpos($comissao , ","))
+{
+    $comissao = number_format($_POST['comissao'], 2, '.', '');
+}
 
 if(!empty($nome) || !empty($cnpj) || !empty($tel) || !empty($email) || !empty($endereco) 
-|| !empty($bairro) || !empty($cidade) || !empty($estado) || !empty($cep)){
+|| !empty($bairro) || !empty($cidade) || !empty($estado) || !empty($cep) || !empty($comissao)){
     
     $atualizaCliente = "UPDATE `clientes` SET 
-    `nome_cliente`= '$nome', `cnpj_cliente`= '$cnpj', `email_cliente`= '$email', `tel_cliente`= '$tel',
-    `end_cliente`= '$endereco', `end_num_cliente`= '$numero', `end_comp_cliente`= '$complemento',
-    `end_bairro_cliente`= '$bairro', `end_cidade_cliente`= '$cidade', `end_estado_cliente`= '$estado',
-    `end_cep_cliente`= '$cep' 
+    `nome_cliente`= '$nome', 
+    `cnpj_cliente`= '$cnpj', 
+    `email_cliente`= '$email', 
+    `tel_cliente`= '$tel',
+    `end_cliente`= '$endereco', 
+    `end_num_cliente`= '$numero', 
+    `end_comp_cliente`= '$complemento',
+    `end_bairro_cliente`= '$bairro', 
+    `end_cidade_cliente`= '$cidade', 
+    `end_estado_cliente`= '$estado',
+    `end_cep_cliente`= '$cep', 
+    `comissao_boy` = $comissao
     WHERE clientes.id_cliente = $id";
 
     $atualizaClienteExec = mysqli_query($conn, $atualizaCliente);

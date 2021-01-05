@@ -16,15 +16,15 @@ require __DIR__."/../../Verifica_login.php";
             ?>
             <h3 class="text-center">Lançar entregas</h3>
             <div class="row mt-4">
-                <div class="col col-0 col-md-1 col-lg-1 col-xl-1">
+                <!-- <div class="col col-0 col-md-1 col-lg-1 col-xl-1">
 
-                </div>
-                <div class="col col-12 col-md-10 col-lg-10 col-xl-10">
+                </div> -->
+                <div class="col col-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card" id="cardInfoEntLan">
                         <div class="mt-5 mb-5 mr-3 ml-3">
                             <form action="assets/Entregas/Nova/CadEnt.php" method="post">
                                 <div class="row">
-                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                    <div class="col col-12 col-md-8 col-lg-8 col-xl-8">
                                         <label for="cliente">Cliente:</label>
                                         <select class="form-control" name="cliente" id="" required>
                                             <option value="">Selecione o cliente</option>
@@ -37,10 +37,12 @@ require __DIR__."/../../Verifica_login.php";
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
+                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                         <label for="nf">Nota fiscal:</label>
                                         <input class="form-control" type="text" name="nf" required>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                         <label for="motoboy">Motoboy:</label>
                                         <select class="form-control" name="motoboy" id="" required>
@@ -54,6 +56,10 @@ require __DIR__."/../../Verifica_login.php";
                                             <?php } ?>
                                         </select>
                                     </div>
+                                    <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <label for="observacoes">Observações:</label>
+                                        <textarea class="form-control" name="observacoes" cols="30" rows="1"></textarea>
+                                    </div>
                                     <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
                                         <label for="">Confirmar</label>
                                         <button class="btn btn-block btn-outline-success" type="submit">Cadastrar</button>
@@ -63,9 +69,9 @@ require __DIR__."/../../Verifica_login.php";
                         </div>
                     </div>
                 </div>
-                <div class="col col-0 col-md-1 col-lg-1 col-xl-1">
+                <!-- <div class="col col-0 col-md-1 col-lg-1 col-xl-1">
                     
-                </div>
+                </div> -->
             </div>
         </div>
 </main>

@@ -104,6 +104,7 @@ if(!isset($_POST['cadEnt'])){
     $cliente = $_POST['cliente'];
     $nf = $_POST['nf'];
     $motoboy = $_POST['motoboy'];
+    $observacoes = $_POST['observacoes'];
 
     if(!empty($id_entrega) || !empty($cliente) || !empty($nf) || !empty($motoboy)){
 
@@ -119,8 +120,8 @@ if(!isset($_POST['cadEnt'])){
 
         } else{
 
-            $registrar = "INSERT INTO `entregas`(`id_entrega`, `id_cliente`, `nf_origem`, `id_motoboy`) 
-                        VALUES (DEFAULT,$cliente,'$nf',$motoboy)";
+            $registrar = "INSERT INTO `entregas`(`id_entrega`, `id_cliente`, `nf_origem`, `id_motoboy`, `observacoes`) 
+                        VALUES (DEFAULT,$cliente,'$nf',$motoboy, '$observacoes')";
             $registrarExec = mysqli_query($conn, $registrar);
 
             if(!$registrarExec){
