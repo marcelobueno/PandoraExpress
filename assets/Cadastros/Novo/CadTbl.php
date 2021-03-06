@@ -15,10 +15,15 @@ $cliente = filter_input(INPUT_POST, 'cliente', FILTER_SANITIZE_STRING);
 $nome_tbl = filter_input(INPUT_POST, 'nome_tabela', FILTER_SANITIZE_STRING);
 $tipo_cobranca = filter_input(INPUT_POST, 'tipo_cobranca', FILTER_SANITIZE_STRING);
 $valor = $_POST['valor_cobranca'];
+$comissao = $_POST['comissao'];
 
 if(strpos($valor , ","))
 {
     $valor = number_format($_POST['valor_cobranca'], 2, '.', '');
+}
+if(strpos($comissao , ","))
+{
+    $comissao = number_format($_POST['comissao'], 2, '.', '');
 }
 
 
@@ -33,8 +38,8 @@ else
     $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Tabela cadastrada com sucesso</div>';
 
     $sql = "INSERT INTO `tabela_preco`(`id_tabela_preco`, `nome_tabela`, `id_cliente`, `tipo_cobranca`, 
-    `valor_cobranca`) VALUES 
-    (DEFAULT,'$nome_tbl',$cliente,'$tipo_cobranca',$valor)";
+    `valor_cobranca`, `comissao_boy`) VALUES 
+    (DEFAULT,'$nome_tbl',$cliente,'$tipo_cobranca',$valor, $comissao)";
 
     $exec = mysqli_query($conn, $sql);
 

@@ -165,11 +165,11 @@ require __DIR__ . "/Verifica_login.php";
                                                 <td class="text-center">
                                                     <div class="badge badge-danger">
                                                         <?php
-                                                        $ent_boy = "SELECT `id_entrega` FROM `entregas` 
-                                            WHERE entregas.id_motoboy = {$boy_id} 
-                                            AND entregas.status_entrega != 'Entregue' 
-                                            AND entregas.status_entrega != 'Cancelada' 
-                                            AND entregas.status_entrega != 'Retorno'";
+                                                        $ent_boy = "SELECT `id_entrega`, `id_motoboy`, `status_entrega` FROM entregas 
+                                                            WHERE entregas.id_motoboy = $boy_id 
+                                                            AND status_entrega <> 'Entregue' 
+                                                            AND status_entrega <> 'Retorno' 
+                                                            AND status_entrega <> 'Cancelada'";
 
                                                         $ent_boyExec = mysqli_query($conn, $ent_boy);
 
@@ -287,53 +287,146 @@ require __DIR__ . "/Verifica_login.php";
             <!-- Tela inicial Expedição: Inicio -->
             <br>
             <h3 class="text-center">Entregas por Motoboy</h3>
-            <div class="my-3">
-                <table class="table table-sm table-striped table-bordered table-hover">
-                    <thead class="bg-dark text-white">
-                        <tr>
-                            <th>Motoboy</th>
-                            <th class="text-center">Entregas</th>
-                            <th class="text-center">Detalhes</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-light">
-                        <?php
-                        $bBoys = "SELECT * FROM motoboys";
-                        $bBoysExec = mysqli_query($conn, $bBoys);
-
-                        while ($bBoysRow = mysqli_fetch_assoc($bBoysExec)) {
-                            $boy_id = $bBoysRow['id_motoboy']; ?>
+            <div class="row my-3">
+                <div class="col col-12 col-md-6 col-lg-6 col-xl-6 my-2">
+                    <table class="table table-sm table-striped table-bordered table-hover">
+                        <thead class="bg-dark text-white">
                             <tr>
-                                <form action="?pagina=Entregas-Por-Motoboy" method="post">
-
-                                    <td><?= $bBoysRow['nome_motoboy']; ?></td>
-                                    <td class="text-center">
-                                        <div class="badge badge-danger">
-                                            <?php
-                                            $ent_boy = "SELECT `id_entrega` FROM `entregas` 
-                                            WHERE entregas.id_motoboy = {$boy_id} 
-                                            AND entregas.status_entrega != 'Entregue' 
-                                            AND entregas.status_entrega != 'Cancelada' 
-                                            AND entregas.status_entrega != 'Retorno'";
-
-                                            $ent_boyExec = mysqli_query($conn, $ent_boy);
-
-                                            $ent_boy_result = mysqli_num_rows($ent_boyExec);
-
-                                            echo $ent_boy_result;
-                                            ?>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <input type="hidden" name="boy_name" value="<?= $bBoysRow['nome_motoboy']; ?>">
-                                        <button class="btn btn-sm btn-outline-danger" name="boy_id" value="<?= $bBoysRow['id_motoboy']; ?>" type="submit">Listar Entregas</button>
-                                    </td>
-                                </form>
+                                <th>Motoboy</th>
+                                <th class="text-center">Entregas</th>
+                                <th class="text-center">Detalhes</th>
                             </tr>
-                        <?php }
-                        ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="bg-light">
+                            <?php
+                            $bBoys = "SELECT * FROM motoboys";
+                            $bBoysExec = mysqli_query($conn, $bBoys);
+
+                            while ($bBoysRow = mysqli_fetch_assoc($bBoysExec)) {
+                                $boy_id = $bBoysRow['id_motoboy']; ?>
+                                <tr>
+                                    <form action="?pagina=Entregas-Por-Motoboy" method="post">
+
+                                        <td><?= $bBoysRow['nome_motoboy']; ?></td>
+                                        <td class="text-center">
+                                            <div class="badge badge-danger">
+                                                <?php
+                                                $ent_boy = "
+                                                SELECT `id_entrega`, `id_motoboy`, `status_entrega` FROM entregas 
+                                                    WHERE entregas.id_motoboy = {$boy_id} 
+                                                    AND status_entrega <> 'Entregue' 
+                                                    AND status_entrega <> 'Retorno' 
+                                                    AND status_entrega <> 'Cancelada'";
+
+                                                $ent_boyExec = mysqli_query($conn, $ent_boy);
+
+                                                $ent_boy_result = mysqli_num_rows($ent_boyExec);
+
+                                                echo $ent_boy_result;
+                                                ?>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <input type="hidden" name="boy_name" value="<?= $bBoysRow['nome_motoboy']; ?>">
+                                            <button class="btn btn-sm btn-outline-danger" name="boy_id" value="<?= $bBoysRow['id_motoboy']; ?>" type="submit">Listar Entregas</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            <?php }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-6 col-xl-6 my-2">
+                <div id="cardEntGraf" class="card cardEntInfo">
+                        <div class="row">
+                            <div id="cardTitleEnt2" class="col bg-dark">
+                                <svg width="20px" height="20px" viewBox="0 0 16 16" class="text-light bi bi-journal-bookmark-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                                    <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z" />
+                                </svg>
+                                <span class="text-light font-weight-bolder">Anotações e Observações</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!--Conteúdo anotações-->
+                            <?php
+                            $query = "SELECT * FROM `anotacoes` ORDER BY anotacoes.id_anotacao DESC LIMIT 5";
+                            $busca = mysqli_query($conn, $query);
+                            while ($linha = mysqli_fetch_assoc($busca)) {
+                                if ($linha['nivel_urgencia'] == 'Baixo') { ?>
+                                    <div class="mt-2 mb-2 alert alert-success" role="alert">
+                                        <a href="?pagina=Anotacoes" class="alert-link">
+                                            <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                        </a>
+                                    </div>
+                                <?php } elseif ($linha['nivel_urgencia'] == 'Medio') { ?>
+                                    <div class="mt-2 mb-2 alert alert-warning" role="alert">
+                                        <a href="?pagina=Anotacoes" class="alert-link">
+                                            <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                        </a>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="mt-2 mb-2 alert alert-danger" role="alert">
+                                        <a href="?pagina=Anotacoes" class="alert-link">
+                                            <?= $linha['data']; ?> - Nível de urgência: <?= $linha['nivel_urgencia']; ?>
+                                        </a>
+                                    </div>
+                            <?php }
+                            } ?>
+                            <div class="mr-3 ml-3 mb-3">
+                                <div class="row float-right">
+                                    <a class="mr-1 btn btn-outline-info" href="?pagina=Anotacoes">Ver todas</a>
+                                    <!--Lançar Modal-->
+                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalAnt">
+                                        Nova anotação
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalAnt" tabindex="-1" aria-labelledby="modalAntLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-primary" id="modalAntLabel">Nova anotação</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="assets/Anotacoes/Atualiza_ant.php" method="post">
+                                                        <div class="my-3 mx-3">
+                                                            <?php
+                                                            $dataAnt = date('Y-m-d');
+                                                            ?>
+                                                            <label for="dataAnT"><b class="text-info">Data:</b> <?= $dataAnt; ?></label>
+                                                            <input type="hidden" name="dataAnT" value="<?= $dataAnt; ?>">
+                                                            <div class="dropdown-divider"></div>
+                                                            <label for="anotacao"><b class="text-info">Anotação:</b></label>
+                                                            <textarea class="form-control" name="anotacao" cols="30" rows="4"></textarea>
+                                                            <div class="dropdown-divider"></div>
+                                                            <label for="nivel_urgencia"><b class="text-info">Nível de urgência:</b></label>
+                                                            <select class="form-control" name="nivel_urgencia">
+                                                                <option value="">Selecione uma opção</option>
+                                                                <option value="Baixo">Baixo</option>
+                                                                <option value="Medio">Medio</option>
+                                                                <option value="Alto">Alto</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                    <button class="btn btn-info type=" submit">Registrar</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Tela inicial Expedição: Fim -->
         <?php } ?>

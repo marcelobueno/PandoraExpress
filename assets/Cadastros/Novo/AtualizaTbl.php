@@ -15,16 +15,24 @@ $nome = $_POST['nome'];
 $tipo_cobranca = $_POST['tipo_cobranca'];
 $valor_cobranca = $_POST['valor_cobranca'];
 $id = $_POST['id'];
+$comissao = $_POST['comissao'];
 
 if(strpos($valor_cobranca , ","))
 {
     $valor_cobranca = number_format($_POST['valor_cobranca'], 2, '.', '');
 }
+if(strpos($comissao , ","))
+{
+    $comissao = number_format($_POST['comissao'], 2, '.', '');
+}
 
-if(!empty($nome) || !empty($tipo_cobranca) || !empty($valor_cobranca) || !empty($id)){
+if(!empty($nome) || !empty($tipo_cobranca) || !empty($valor_cobranca) || !empty($id) || !empty($comissao)){
 
-    $atualizaTabela = "UPDATE `tabela_preco` SET `nome_tabela`= '$nome',
-    `tipo_cobranca`= '$tipo_cobranca',`valor_cobranca`= '$valor_cobranca' WHERE tabela_preco.id_tabela_preco = $id";
+    $atualizaTabela = "UPDATE `tabela_preco` SET 
+    `nome_tabela`= '$nome',
+    `tipo_cobranca`= '$tipo_cobranca', 
+    `valor_cobranca`= '$valor_cobranca',
+    `comissao_boy` = $comissao WHERE tabela_preco.id_tabela_preco = $id";
     $atualizaTabelaExec = mysqli_query($conn, $atualizaTabela);
 
     if(!$atualizaTabelaExec){

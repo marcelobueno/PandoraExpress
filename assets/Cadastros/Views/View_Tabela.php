@@ -40,6 +40,9 @@ if(isset($_POST['visualizar_tabela']))
                             <br><br>
                             <span class="font-weight-bolder text-info">Valor Cobrado: </span>
                             <span class="font-weight-light">R$<?= $result['valor_cobranca']; ?></span>
+                            <br><br>
+                            <span class="font-weight-bolder text-info">Comissão do Boy: </span>
+                            <span class="font-weight-light">R$<?= $result['comissao_boy']; ?></span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +86,7 @@ elseif(isset($_POST['editar_tabela']))
                                 <input class="form-control" type="text" name="cliente" value="<?= $cliente . ' - Não pode ser alterado' ?>" disabled>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-6 col-md-6 col-lg-6 colxl-6">
+                                    <div class="col col-12 col-md-4 col-lg-4 colxl-4">
                                         <label class="font-weight-bolder text-info" for="tipo_cobranca">Tipo de Cobrança: </label>
                                         <select class="form-control" name="tipo_cobranca">
                                             <option value="Entrega" <?=($result['tipo_cobranca'] == 'Entrega')? 'selected': ''; ?>>Entrega</option>
@@ -91,9 +94,13 @@ elseif(isset($_POST['editar_tabela']))
                                             <option value="Distancia" <?=($result['tipo_cobranca'] == 'Distancia')? 'selected': ''; ?>>Distância</option>
                                         </select>
                                     </div>
-                                    <div class="col col-6 col-md-6 col-lg-6 colxl-6">
-                                        <label class="font-weight-normal" for="valor_cobranca">Valor R$: </label>
+                                    <div class="col col-12 col-md-4 col-lg-4 colxl-4">
+                                        <label class="font-weight-bolder text-info" for="valor_cobranca">Valor R$: </label>
                                         <input class="form-control" type="number" step="0.10" name="valor_cobranca" value="<?= $result['valor_cobranca']; ?>" required>
+                                    </div>
+                                    <div class="col col-12 col-md-4 col-lg-4 colxl-4">
+                                        <label class="font-weight-bolder text-info" for="comissao">Comissão do boy R$: </label>
+                                        <input class="form-control" type="number" step="0.10" name="comissao" value="<?= $result['comissao_boy']; ?>" required>
                                     </div>
                                 </div>
                                 <br>

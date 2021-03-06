@@ -30,7 +30,11 @@ require __DIR__ . "/../../Verifica_login.php";
                 </thead>
                 <tbody>
                     <?php
-                    $bEntregas = "SELECT * FROM `entregas` ORDER BY entregas.id_entrega DESC";
+                    /* $bEntregas = "SELECT * FROM `entregas` ORDER BY entregas.id_entrega DESC"; */
+                    $bEntregas = "SELECT * FROM `entregas` 
+                    WHERE entregas.status_entrega <> 'Entregue' 
+                    AND entregas.status_entrega <> 'Retorno' 
+                    AND entregas.status_entrega <> 'Cancelada'";
                     $bEntregasExec = mysqli_query($conn, $bEntregas);
 
                     while ($bEntregasResult = mysqli_fetch_assoc($bEntregasExec)) {

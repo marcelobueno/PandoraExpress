@@ -10,6 +10,7 @@ session_start();
 require __DIR__."/../../Conexao.php";
 require __DIR__."/../../Verifica_login.php";
 
+
 $id = $_POST['id_entrega'];
 $os = $_POST["id_os"];
 $nf = $_POST['nf_origem'];
@@ -29,6 +30,7 @@ $pagamento = $_POST["forma_pagamento"];
 $data = $_POST["data_entrega"];
 $status = $_POST["status"];
 $observacoes = $_POST["observacoes"];
+$horas = $_POST['horas'];
 
 
 if(strpos($valor , ","))
@@ -41,6 +43,15 @@ if(strpos($extra , ","))
     $extra = number_format($extra, 2, '.', '');
 }
 
+if(strpos($horas , ","))
+{
+    $horas = number_format($horas, 2, '.', '');
+}
+
+if($horas == null){
+    $horas = 0;
+}
+
 if($extra == null){
     $extra = 0;
 }
@@ -48,11 +59,12 @@ if($extra == null){
 $update = "UPDATE `entregas` SET 
     `id_ordem_servico`= $os,
     `id_motoboy`= $motoboy,
-    `nf_origem` = $nf,
+    `nf_origem`= '$nf',
     `data_entrega`= '$data',
     `forma_pagamento`= '$pagamento',
     `valor_mercadoria`= $valor,
-    `cobranca_extra`= $extra,
+    `cobranca_extra`= $extra, 
+    `horas` = $horas,
     `id_tabela_preco`= $tabela,
     `nome_destinatario`= '$destinatario',
     `end_entrega`= '$end',
@@ -65,6 +77,9 @@ $update = "UPDATE `entregas` SET
     `status_entrega`= '$status',
     `observacoes`= '$observacoes'
      WHERE entregas.id_entrega = $id";
+
+var_dump($update);
+
 $updateExec = mysqli_query($conn, $update);
 
 if(!$updateExec)

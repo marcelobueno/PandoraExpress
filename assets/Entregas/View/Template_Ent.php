@@ -6,8 +6,8 @@ $motoboy = $_SESSION['motoboy']['id'];
 
 $bEntregas = "SELECT * FROM entregas 
             WHERE entregas.id_motoboy = $motoboy 
-            AND entregas.status_entrega != 'Entregue' 
-            AND entregas.status_entrega != 'Cancelada'";
+            AND entregas.status_entrega <> 'Entregue' 
+            AND entregas.status_entrega <> 'Cancelada'";
 
 $bEntregasExec = mysqli_query($conn, $bEntregas);
 

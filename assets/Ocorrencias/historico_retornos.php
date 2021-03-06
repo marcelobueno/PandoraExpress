@@ -13,9 +13,9 @@ require './assets/Verifica_login.php';
                 }
             ?>
         <h3 class="text-center">Retornos</h3>
-        <div class="float-right my-4">
-            <a role="button" class="btn btn-sm btn-dark" href="?pagina=Historico-de-Retornos">Visualizar histórico completo</a>
-        </div>
+        <!-- <div class="float-right my-4">
+            <a role="button" class="btn btn-sm btn-dark" href="#">Visualizar histórico completo</a>
+        </div> -->
         <table id="listaClientes" class="display table table-bordered my-3" style="width:100%;">
             <thead class="thead-dark">
                 <tr>
@@ -30,9 +30,7 @@ require './assets/Verifica_login.php';
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM `retornos` 
-                WHERE status_retorno <> 'Entregue' 
-                AND status_retorno <> 'Cancelada'";
+                $sql = "SELECT * FROM `retornos`";
                 $exec = mysqli_query($conn, $sql);
 
                 while ($row = mysqli_fetch_assoc($exec)) { ?>

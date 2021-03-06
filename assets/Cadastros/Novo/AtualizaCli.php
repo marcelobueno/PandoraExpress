@@ -23,15 +23,9 @@ $cidade = $_POST['cidade'];
 $estado = $_POST['estado'];
 $cep = $_POST['cep'];
 $id = $_POST['id'];
-$comissao = $_POST['comissao'];
-
-if(strpos($comissao , ","))
-{
-    $comissao = number_format($_POST['comissao'], 2, '.', '');
-}
 
 if(!empty($nome) || !empty($cnpj) || !empty($tel) || !empty($email) || !empty($endereco) 
-|| !empty($bairro) || !empty($cidade) || !empty($estado) || !empty($cep) || !empty($comissao)){
+|| !empty($bairro) || !empty($cidade) || !empty($estado) || !empty($cep)){
     
     $atualizaCliente = "UPDATE `clientes` SET 
     `nome_cliente`= '$nome', 
@@ -44,8 +38,7 @@ if(!empty($nome) || !empty($cnpj) || !empty($tel) || !empty($email) || !empty($e
     `end_bairro_cliente`= '$bairro', 
     `end_cidade_cliente`= '$cidade', 
     `end_estado_cliente`= '$estado',
-    `end_cep_cliente`= '$cep', 
-    `comissao_boy` = $comissao
+    `end_cep_cliente`= '$cep'
     WHERE clientes.id_cliente = $id";
 
     $atualizaClienteExec = mysqli_query($conn, $atualizaCliente);

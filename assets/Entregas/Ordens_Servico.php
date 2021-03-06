@@ -13,6 +13,19 @@ require './assets/Verifica_login.php';
                 }
             ?>
             <h3 class="text-dark text-center">Ordens de Serviço</h3>
+            <div>
+                <form class="form-inline" action="?pagina=Visualizar-Entregas" method="post">
+                    <label class="font-weight-normal mr-2" for="ordem">Número da O.S: </label>
+                    <input class="form-control" type="text" name="ordem" placeholder="EX: 25">
+                    <button class="btn btn-dark" type="submit">
+                        <span class="font-italic">Buscar </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <br>
             <table class="display table table-bordered">
                 <thead class="thead-dark">
                     <tr>
@@ -27,8 +40,10 @@ require './assets/Verifica_login.php';
                 <tbody>
                     <?php
 
-                    $sql = "SELECT `id_ordem`, `nome_cliente`, `data_os`, `status_os` FROM `ordem_servico`, `clientes`
-                    WHERE ordem_servico.id_cliente = clientes.id_cliente ORDER BY ordem_servico.id_ordem DESC";
+                    $sql = "SELECT `id_ordem`, `nome_cliente`, `data_os`, `status_os` 
+                        FROM `ordem_servico`, `clientes`
+                        WHERE ordem_servico.id_cliente = clientes.id_cliente 
+                        AND ordem_servico.status_os = 'Aberta'";
                     
                     $busca_clientes = mysqli_query($conn, $sql);
 

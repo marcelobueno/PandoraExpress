@@ -122,12 +122,6 @@ elseif(isset($_POST['editar_cliente']))
                                             <input class="form-control" type="text" name="cep" value="<?= $result['end_cep_cliente']; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="row my-3">
-                                        <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
-                                            <label class="font-weight-bolder text-dark" for="comissao">Comissão de Entrega: </label>
-                                            <input class="form-control" type="number" step="0.10" name="comissao" value="<?= $result['comissao_boy']; ?>">
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="text-center">
                                     <button class="btn btn-lg btn-dark" type="submit" name="id" value="<?= $cliente; ?>">Salvar</button>

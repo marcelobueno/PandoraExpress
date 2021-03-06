@@ -18,7 +18,55 @@ require __DIR__."/../../Verifica_login.php";
             ?>
             <?php
                 if(!isset($_POST['id_os'])){ ?>
-                    <div class="card mt-3 mb-3 cardInfoEntrega shadow">
+                    <div class="card" id="cardInfoEntLan">
+                        <div class="mt-5 mb-5 mr-3 ml-3">
+                            <form action="assets/Entregas/Nova/CadEnt.php" method="post">
+                                <div class="row">
+                                    <div class="col col-12 col-md-8 col-lg-8 col-xl-8">
+                                        <label for="cliente">Cliente:</label>
+                                        <select class="form-control" name="cliente" id="" required>
+                                            <option value="">Selecione o cliente</option>
+                                            <?php
+                                                $bCliente = "SELECT * FROM `clientes` ORDER BY `nome_cliente`";
+                                                $bClienteExec = mysqli_query($conn, $bCliente);
+
+                                                while($row = mysqli_fetch_assoc($bClienteExec)){ ?>
+                                                    <option value="<?= $row['id_cliente']; ?>"><?= $row['nome_cliente'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                        <label for="nf">Nota fiscal:</label>
+                                        <input class="form-control" type="text" name="nf" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                                        <label for="motoboy">Motoboy:</label>
+                                        <select class="form-control" name="motoboy" id="" required>
+                                            <option value="">Selecione o motoboy</option>
+                                            <?php
+                                                $bMotoboys = "SELECT * FROM `motoboys` ORDER BY `nome_motoboy`";
+                                                $bMotoboysExec = mysqli_query($conn, $bMotoboys);
+
+                                                while($bMotoboysResult = mysqli_fetch_assoc($bMotoboysExec)){ ?>
+                                                    <option value="<?= $bMotoboysResult['id_motoboy']; ?>"><?= $bMotoboysResult['nome_motoboy']; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <label for="observacoes">Observações:</label>
+                                        <textarea class="form-control" name="observacoes" cols="30" rows="1"></textarea>
+                                    </div>
+                                    <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
+                                        <label for="">Confirmar</label>
+                                        <button class="btn btn-block btn-outline-success" type="submit">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <div class="card mt-3 mb-3 cardInfoEntrega shadow">
                         <div class="mt-5 mr-3 mb-3 ml-3">
                             <form action="?pagina=Cadastro-de-Entrega" method="post">
                                 <div class="row">                       
@@ -27,12 +75,12 @@ require __DIR__."/../../Verifica_login.php";
                                         <select class="form-control" name="id_os">
                                             <option value="">Selecione a Ordem de serviço</option>
                                             <?php
-                                                $sql = 'SELECT OS.id_ordem, OS.id_cliente, CLI.nome_cliente FROM ordem_servico AS OS, clientes AS CLI 
+                                                /* $sql = 'SELECT OS.id_ordem, OS.id_cliente, CLI.nome_cliente FROM ordem_servico AS OS, clientes AS CLI 
                                                 WHERE OS.status_os = "Aberta" AND OS.id_cliente = CLI.id_cliente';
                                                 
                                                 $exec = mysqli_query($conn, $sql);
 
-                                                while($row = mysqli_fetch_assoc($exec))
+                                                while($row = mysqli_fetch_assoc($exec)) */
                                                 { ?>
                                                     <option value="<?php echo $row['id_ordem']; ?>">O.S: <?php echo $row['id_ordem']; ?> - <?php echo $row['nome_cliente']; ?></option>
                                                 <?php }
@@ -49,7 +97,7 @@ require __DIR__."/../../Verifica_login.php";
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
             <?php } //Final do primeiro if
 
                 if(isset($_POST['id_os']))

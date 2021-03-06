@@ -6,14 +6,14 @@
 # Última revisão: 08/10/2020
 #---------------------------------------------------------------------------------------------------------------
 
-$server = 'localhost';
+/* $server = 'localhost';
 $user = 'root';
 $pass = '';
-$database = 'pandora';
+$database = 'pandora'; */
 
-/* $server = "pandoraexpress.mysql.dbaas.com.br";
+$server = "pandoraexpress.mysql.dbaas.com.br";
 $user = "pandoraexpress";
 $pass = "MfB786860@";
-$database = "pandoraexpress"; */
+$database = "pandoraexpress";
 
 $conn = mysqli_connect($server, $user, $pass, $database);

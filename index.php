@@ -66,6 +66,15 @@ else{
         case 'Fechamento-Gerencial': include 'assets/Relatorios/Relatorio_Gerencial.php'; break;
         case 'Anotacoes': include 'assets/Anotacoes/Anotacoes.php'; break;
         case 'Relatorio-Entrega-Motoboy': include 'assets/Entregas/View/Processar_Ent.php'; break;
+        case 'Abrir-Entrega': include  'assets/Gerencial/abrir_entrega.php'; break;
+        case 'Liberar-Entrega': include  'assets/Gerencial/atl_entrega.php'; break;
+        case 'Desconto-Cliente': include 'assets/Gerencial/descontos_clientes.php'; break;
+        case 'Gravar-Desconto-Cliente': include 'assets/Gerencial/gravar_desconto_cliente.php'; break;
+        case 'Gravar-Desconto-Motoboy': include 'assets/Gerencial/gravar_desconto_motoboy.php'; break;
+        case 'Desconto-Motoboy': include  'assets/Gerencial/descontos_motoboys.php'; break;
+        case 'Ajuda-Motoboy': include 'assets/Gerencial/ajuda_motoboys.php'; break;
+        case 'Gravar-Ajuda-Motoboy': include 'assets/Gerencial/gravar_ajuda_motoboy.php'; break;
+        case 'Historico-de-Retornos': include 'assets/Ocorrencias/historico_retornos.php'; break;
         default: include 'assets/Login.php'; break;
     }
 

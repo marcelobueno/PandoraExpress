@@ -54,26 +54,23 @@ require './assets/Verifica_login.php';
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-danger" id="retornoTitulo<?= $count; ?>">Detalhes</h5>
+                                        <h5 class="modal-title text-danger" id="retornoTitulo<?= $count; ?>"><u>Registrar retorno</u></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p><b class="text-danger">Destinatário:</b> <?= $row['nome_destinatario']; ?></p>
-                                        <p><b class="text-danger">Endereço: </b><?= $row['end_entrega'] .", "
-                                        . $row['end_num_entrega'] ." ". $row['end_bairro_entrega'] .", "
-                                        . $row['end_cidade_entrega'] ." - ". $row['end_estado_entrega']; ?></p>
-                                        <p><b class="text-danger">CEP: </b><?= mb_substr($row['end_cep_entrega'], 0, 5) ."-"
-                                        . mb_substr($row['end_cep_entrega'], 5); ?></p>
-                                        <p><b class="text-danger">Complemento: </b><?= $row['end_comp_entrega']; ?></p>
-                                        <p><b class="text-danger">Data de Entrega: </b><?= $row['data_entrega']; ?></p>
-                                        <br>
-                                        <p class="font-weight-normal">Confirmar ?</p>
+                                        <b class="text-danger">Atenção!</b><br><br>
+
+                                        Ao confirmar esta ação, a entrega n° <b class="text-danger"><?= $row['id_entrega']; ?></b> só poderá ser alterada
+                                        através da sessão de <b class="text-danger">Retornos</b>.<br><br>
+
+                                        Deseja prosseguir ?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <form action="?pagina=Confirmar-Retorno" method="post">
+                                        <form action="assets/Ocorrencias/Novo/Registrar_ret.php" method="post">
+                                            <input type="hidden" name="registrar" value="1">
                                             <button type="submit" name="id_entrega" value="<?= $row['id_entrega']; ?>" class="btn btn-danger">Confirmar</button>
                                         </form>
                                     </div>

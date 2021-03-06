@@ -15,10 +15,11 @@ if (!isset($_POST['boy_id'])) {
     $nome = $_POST['boy_name'];
 }
 
-$bEntregas = "SELECT * FROM entregas 
-            WHERE entregas.id_motoboy = $boy 
-            AND entregas.status_entrega != 'Entregue' 
-            AND entregas.status_entrega != 'Cancelada'";
+$bEntregas = "SELECT `id_entrega`, `id_motoboy`, `id_cliente`, `nf_origem`, `status_entrega` FROM entregas 
+        WHERE entregas.id_motoboy = $boy 
+        AND status_entrega <> 'Entregue' 
+        AND status_entrega <> 'Retorno' 
+        AND status_entrega <> 'Cancelada'";
 $bEntregasExec = mysqli_query($conn, $bEntregas); ?>
 
 <main class="corpo">

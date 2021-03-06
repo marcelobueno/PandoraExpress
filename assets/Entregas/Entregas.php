@@ -13,6 +13,19 @@ include './assets/Verifica_login.php';
                 }
             ?>
             <h3 class="text-dark text-center">Entregas</h3>
+            <div>
+                <form class="form-inline" action="?pagina=Detalhes-Entrega" method="post">
+                    <label class="font-weight-normal mr-2" for="entrega_nf">NF da entrega: </label>
+                    <input class="form-control" type="text" name="entrega_nf" placeholder="EX: 389821">
+                    <button class="btn btn-dark" type="submit">
+                        <span class="font-italic">Buscar </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <br>
             <table id="listaClientes" class="display table table-bordered" style="width:100%;">
                 <thead class="thead-dark">
                     <tr>
@@ -28,7 +41,10 @@ include './assets/Verifica_login.php';
 
                     $sql = "SELECT `id_entrega`, `nome_cliente`, `nf_origem`, `status_entrega` 
                     FROM `entregas`, `clientes`
-                    WHERE entregas.id_cliente = clientes.id_cliente";
+                    WHERE entregas.id_cliente = clientes.id_cliente 
+                    AND entregas.status_entrega <> 'Entregue' 
+                    AND entregas.status_entrega <> 'Retorno' 
+                    AND entregas.status_entrega <> 'Cancelada'";
 
                     $busca_clientes = mysqli_query($conn, $sql);
 

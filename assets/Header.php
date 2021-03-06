@@ -71,17 +71,24 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Relatórios
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="?pagina=Fechamento-Cliente">Fechamento - Cliente</a>
-                                <a class="dropdown-item" href="?pagina=Fechamento-Retornos">Fechamento - Retornos</a>
-                                <a class="dropdown-item" href="?pagina=Fechamento-Motoboy">Fechamento - Motoboy</a>
-                                <a class="dropdown-item" href="?pagina=Fechamento-Gerencial">Fechamento - Gerencial</a>
-                            </div>
-                        </li>
+                            <?php
+                            if($_SESSION['nivel_acesso'] <= 1){
+                                //permissão negada
+                            } else { ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Relatórios
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                        <a class="dropdown-item" href="?pagina=Fechamento-Cliente">Fechamento - Cliente</a>
+                                        <!--<a class="dropdown-item" href="?pagina=Fechamento-Retornos">Fechamento - Retornos</a>-->
+                                        <a class="dropdown-item" href="?pagina=Fechamento-Motoboy">Fechamento - Motoboy</a>
+                                        <!--<a class="dropdown-item" href="?pagina=Fechamento-Gerencial">Fechamento - Gerencial</a>-->
+                                    </div>
+                                </li>
+                            <?php }
+                            ?>
+
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Entregas
@@ -131,13 +138,26 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gerencial
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+                                <a class="dropdown-item" href="?pagina=Abrir-Entrega">Abrir entrega</a>
+                                <a class="dropdown-item" href="?pagina=Desconto-Cliente">Desconto - Clientes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="?pagina=Desconto-Motoboy">Descontos - Motoboys</a>
+                                <a class="dropdown-item" href="?pagina=Ajuda-Motoboy">Ajuda de custo - Motoboys</a>
+                            </div>
+
+                        </li>
                         <?php }
                         } if($_SESSION['nivel_acesso'] == 0){ ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-light menuItem" href="#" id="navbarDropdown7" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Lançamentos
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown6">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown7">
                                 <a class="dropdown-item" href="?pagina=Entregas-Lancadas">Entregas lançadas</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="?pagina=Lancamento-Entrega">Lançar entregas</a>

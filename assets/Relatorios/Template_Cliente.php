@@ -77,8 +77,7 @@ $totalGeral['total'] += ($aTotal['total'] - $aDescontos['total']);
 <html>
     <head>
         <title>Relatório - <?= $_SESSION['relatorio_cliente']['nome_cliente']; ?></title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <!-- <link rel="preconnect" href="./css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap">
         <style>
@@ -105,7 +104,6 @@ $totalGeral['total'] += ($aTotal['total'] - $aDescontos['total']);
     <body>
         <div class="center">
             <img class="logoEmpresa" src="https://i.imgur.com/ZRbEkKR.png">
-            <!-- <img class="logoEmpresa" src="./img/Logo-Pandora.png"> -->
         </div>
         <div class="text-center mt-3">
             <h4>Relatório de entregas</h4>

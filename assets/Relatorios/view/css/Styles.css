@@ -1,0 +1,114 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: #f0efeb;
+}
+
+.cabecalho {
+    background-color: ghostwhite;
+}
+
+.corpo {
+    min-height: 700px;
+    background-size: 100%;
+    background-color: #e9ecef;
+    /*background-image: url(../img/bgsp.jpg);*/
+}
+
+.menuItem:hover {
+    border-radius: 5px;
+    padding: 0, 12px, 12px, 0;
+    background-color: #6c757d;
+}
+
+.rodapLogoPad {
+    padding-left: 140px;
+}
+
+.tdItemBorder {
+    border-radius: 3px;
+    border: solid 1px #EAB819;
+}
+
+#iptCadCliNome {
+    color: black;
+}
+
+.contentResponsive {
+    justify-content: space-between;
+}
+
+.cardInfo {
+    border-radius: 10px;
+    height: 100px;
+}
+
+.cardInfoOne {
+    height: 100px;
+    width: 30%;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-top: 20px;
+}
+
+.cardItemCount {
+    padding-top: 31px;
+    /*padding-left: 20px;*/
+    font-size: 40px;
+}
+
+.cardItemText {
+    padding-top: 53px;
+    padding-left: 10px;
+}
+
+.cardInfoMain {
+    height: 530px;
+    width: 350px;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+}
+
+.cardEntInfo {
+    height: auto;
+    min-height: 400px;
+    border-radius: 10px;
+}
+
+#cardTitleEnt {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding-bottom: 2px;
+}
+
+#cardTitleEnt2 {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding-bottom: 2px;
+}
+
+.cardInfoDetails {
+    border-radius: 7px;
+    height: auto;
+    background-color: #fff;
+    -webkit-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
+    box-shadow: -2px 3px 5px 0px rgba(0,0,0,0.28);
+}
+
+#cardInfoEntLan {
+    background-color: #fff;
+    border-radius: 15px;
+    height: auto;
+}
+
+.cardInfoEntrega {
+    background-color: #fff;
+    border-radius: 15px;
+    height: auto;
+}

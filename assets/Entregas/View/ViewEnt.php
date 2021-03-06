@@ -3,21 +3,29 @@
 require __DIR__."/../../Conexao.php";
 require __DIR__."/../../Verifica_login.php";
 
-if(!isset($_POST['entrega']))
-{
-    echo '<p class="text-center text-danger font-weight-bolder">ID da entrega não encontrado!</p>';
+if(!isset($_POST['entrega'])) {
+    if(!isset($_POST['entrega_nf'])){
+        echo 'Entrega não encontrada';
+    } else {
+        $id_entrega = $_POST['entrega_nf'];
+
+        $bEntrega = "SELECT * FROM `entregas` WHERE entregas.nf_origem = $id_entrega";
+        $bEntregaExec = mysqli_query($conn, $bEntrega);
+        $result = mysqli_fetch_assoc($bEntregaExec);
+    }
+} else {
+    $id_entrega = $_POST['entrega'];
+
+    $bEntrega = "SELECT * FROM `entregas` WHERE entregas.id_entrega = $id_entrega";
+    $bEntregaExec = mysqli_query($conn, $bEntrega);
+    $result = mysqli_fetch_assoc($bEntregaExec);
 }
 
-$id_entrega = $_POST['entrega'];
-
-$bEntrega = "SELECT * FROM `entregas` WHERE entregas.id_entrega = $id_entrega";
-$bEntregaExec = mysqli_query($conn, $bEntrega);
-$result = mysqli_fetch_assoc($bEntregaExec);
 
 ?>
     <main class="corpo">
         <div class="container">
-            <br><h3 class="text-center">Informações da Entrega: n° <span class="text-danger"><?= $id_entrega; ?></span></h3>
+            <br><h3 class="text-center">Informações da Entrega: n° <span class="text-danger"><?= $result['id_entrega']; ?></span></h3>
             <div class="card mt-3 mb-3 cardInfoEntrega">
                 <div class="mt-3 mr-3 mb-3 ml-3">
                     <form action="assets/Entregas/View/AtualizaEnt.php" method="post">
@@ -56,7 +64,10 @@ $result = mysqli_fetch_assoc($bEntregaExec);
                                     <option value="">Selecione uma Ordem de Serviço</option>
                                     <?php
                                         
-                                        $bO_S = "SELECT `id_ordem`, `nome_cliente` FROM ordem_servico, clientes WHERE ordem_servico.id_cliente = {$result['id_cliente']} AND clientes.id_cliente = {$result['id_cliente']}";
+                                        $bO_S = "SELECT `id_ordem`, `nome_cliente` FROM ordem_servico, clientes 
+                                            WHERE ordem_servico.id_cliente = {$result['id_cliente']} 
+                                            AND clientes.id_cliente = {$result['id_cliente']} 
+                                            AND status_os = 'Aberta'";
                                         $bO_SExec = mysqli_query($conn, $bO_S);
 
                                         while($bO_SResult = mysqli_fetch_assoc($bO_SExec)){ ?>
@@ -163,8 +174,8 @@ $result = mysqli_fetch_assoc($bEntregaExec);
                                 <select class="form-control" name="forma_pagamento" id="">
                                     <option value="">Selecione uma opção</option>
                                     <option value="dinheiro" <?= ($result['forma_pagamento'] == 'dinheiro')? 'selected':''; ?>>Dinheiro</option>
-                                    <option value="cartão" <?= ($result['forma_pagamento'] == 'cartão')? 'selected':''; ?>>Cartão</option>
-                                    <option value="dinheiro/cartão" <?= ($result['forma_pagamento'] == 'dinheiro/cartão')? 'selected':''; ?>>Dinheiro/Cartão</option>
+                                    <option value="cartao" <?= ($result['forma_pagamento'] == 'cartao')? 'selected':''; ?>>Cartão</option>
+                                    <option value="dinheiro/cartao" <?= ($result['forma_pagamento'] == 'dinheiro/cartao')? 'selected':''; ?>>Dinheiro/Cartão</option>
                                     <option value="cheque" <?= ($result['forma_pagamento'] == 'cheque')? 'selected':''; ?>>Cheque</option>
                                     <option value="pago" <?= ($result['forma_pagamento'] == 'pago')? 'selected':''; ?>>Pago</option>
                                     <option value="a pagar" <?= ($result['forma_pagamento'] == 'a pagar')? 'selected':''; ?>>A pagar</option>
@@ -176,7 +187,7 @@ $result = mysqli_fetch_assoc($bEntregaExec);
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
+                            <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
                                 <label class="font-weight-bold text-dark" for="status">Status da Entrega</label>
                                 <select class="form-control" name="status" <?=($result['status_entrega'] == 'Entregue' || $result['status_entrega'] == 'Cancelada')?'disabled':''?>>
                                     <option value="Em aberto" <?=($result['status_entrega'] == 'Em aberto')?'selected':''?>>Em aberto</option>
@@ -185,6 +196,10 @@ $result = mysqli_fetch_assoc($bEntregaExec);
                                     <option value="Cancelada" <?=($result['status_entrega'] == 'Cancelada')?'selected':''?>>Cancelada</option>
                                     <option value="Retorno" <?=($result['status_entrega'] == 'Retorno')?'selected':''?> disabled>Retorno</option>
                                 </select>
+                            </div>
+                            <div class="col col-12 col-md-2 col-lg-2 col-xl-2">
+                                <label class="font-weight-bold text-dark" for="horas">Horas a cobrar</label>
+                                <input class="form-control" type="number" name="horas" step="0.10" value="<?= $result['horas']; ?>">
                             </div>
                             <div class="col col-12 col-md-4 col-lg-4 col-xl-4">
                                 <label class="font-weight-bold text-dark" for="observacoes">Observações</label>

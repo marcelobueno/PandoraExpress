@@ -32,13 +32,13 @@ if(!empty($motoboy) || !empty($data_ini) || !empty($data_fim))
 
 $dompdf = new Dompdf(["enable_remote" => true]);
 
-$dompdf->loadHtml
-('
-<style>
-
-</style>
-<img src="https://i.imgur.com/ZRbEkKR.png"/>
-');
+//$dompdf->loadHtml
+//('
+//<style>
+//
+//</style>
+//<img src="https://i.imgur.com/ZRbEkKR.png"/>
+//');
 
 ob_start();
 require __DIR__."/view/Template_Motoboy.php";
@@ -48,4 +48,4 @@ $dompdf->setPaper("A4");
 
 $dompdf->render();
 
-$dompdf->stream('relatorio_motoboy_nome-motoboy', ["Attachment" => false]);
+$dompdf->stream('relatorio_motoboy_nome-motoboy', ["Attachment" => true]);
